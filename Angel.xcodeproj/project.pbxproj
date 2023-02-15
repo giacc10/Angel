@@ -11,6 +11,11 @@
 		E328E212299D942500B7B764 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328E211299D942500B7B764 /* ContentView.swift */; };
 		E328E214299D942600B7B764 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E328E213299D942600B7B764 /* Assets.xcassets */; };
 		E328E217299D942600B7B764 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E328E216299D942600B7B764 /* Preview Assets.xcassets */; };
+		E328E222299D94F200B7B764 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328E221299D94F200B7B764 /* HomeView.swift */; };
+		E328E224299D951600B7B764 /* DataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328E223299D951600B7B764 /* DataTest.swift */; };
+		E328E228299D954800B7B764 /* Alvifont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E328E227299D954800B7B764 /* Alvifont.ttf */; };
+		E328E22A299D955900B7B764 /* White Scratches.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E328E229299D955900B7B764 /* White Scratches.ttf */; };
+		E328E22D299D96F800B7B764 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328E22C299D96F800B7B764 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,12 @@
 		E328E211299D942500B7B764 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E328E213299D942600B7B764 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E328E216299D942600B7B764 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E328E221299D94F200B7B764 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E328E223299D951600B7B764 /* DataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTest.swift; sourceTree = "<group>"; };
+		E328E227299D954800B7B764 /* Alvifont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alvifont.ttf; sourceTree = "<group>"; };
+		E328E229299D955900B7B764 /* White Scratches.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "White Scratches.ttf"; sourceTree = "<group>"; };
+		E328E22B299D95BB00B7B764 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E328E22C299D96F800B7B764 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +64,10 @@
 			children = (
 				E328E20F299D942500B7B764 /* AngelApp.swift */,
 				E328E211299D942500B7B764 /* ContentView.swift */,
+				E328E21D299D94B000B7B764 /* View */,
+				E328E21E299D94BC00B7B764 /* Model */,
+				E328E21F299D94CE00B7B764 /* Support */,
+				E328E220299D94DD00B7B764 /* Fonts */,
 				E328E213299D942600B7B764 /* Assets.xcassets */,
 				E328E215299D942600B7B764 /* Preview Content */,
 			);
@@ -65,6 +80,40 @@
 				E328E216299D942600B7B764 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E328E21D299D94B000B7B764 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E328E221299D94F200B7B764 /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E328E21E299D94BC00B7B764 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E328E223299D951600B7B764 /* DataTest.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E328E21F299D94CE00B7B764 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				E328E22C299D96F800B7B764 /* Extensions.swift */,
+				E328E22B299D95BB00B7B764 /* Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		E328E220299D94DD00B7B764 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E328E229299D955900B7B764 /* White Scratches.ttf */,
+				E328E227299D954800B7B764 /* Alvifont.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +174,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E328E22A299D955900B7B764 /* White Scratches.ttf in Resources */,
+				E328E228299D954800B7B764 /* Alvifont.ttf in Resources */,
 				E328E217299D942600B7B764 /* Preview Assets.xcassets in Resources */,
 				E328E214299D942600B7B764 /* Assets.xcassets in Resources */,
 			);
@@ -137,8 +188,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E328E22D299D96F800B7B764 /* Extensions.swift in Sources */,
+				E328E222299D94F200B7B764 /* HomeView.swift in Sources */,
 				E328E212299D942500B7B764 /* ContentView.swift in Sources */,
 				E328E210299D942500B7B764 /* AngelApp.swift in Sources */,
+				E328E224299D951600B7B764 /* DataTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,11 +324,13 @@
 				DEVELOPMENT_TEAM = 4NNU2X6939;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Angel/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -299,11 +355,13 @@
 				DEVELOPMENT_TEAM = 4NNU2X6939;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Angel/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
