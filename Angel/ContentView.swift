@@ -10,19 +10,17 @@ import SwiftUI
 struct ContentView: View {
     
     // MARK: - PROPERTIES
-    @StateObject var phrasesRealmManager = PhrasesRealmManager()
     
-    // MARK: - PROPERTY
+    // MARK: - BODY
     var body: some View {
         
         TabView {
             HomeView()
-                .environmentObject(phrasesRealmManager)
                 .tabItem {
                     Image(systemName: "doc.append")
                     Text("Feed")
                 }
-            Text("View 2")
+            PhrasesView()
                 .tabItem {
                     Image(systemName: "quote.opening")
                     Text("Phrases")
@@ -34,8 +32,8 @@ struct ContentView: View {
                 }
             Text("View 4")
                 .tabItem {
-                    Image(systemName: "gear")
-                    Text("Settings")
+                    Image(systemName: "person.circle")
+                    Text("Profile")
                 }
         }
     }

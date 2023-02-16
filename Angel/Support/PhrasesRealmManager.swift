@@ -22,14 +22,6 @@ class PhrasesRealmManager: ObservableObject {
         getAngelicPhrases()
     }
     
-//    @ObservedResults(
-//      Category.self
-//    ) var allCategories
-//
-//    @ObservedResults(
-//      AngelicPhrase.self
-//    ) var allPhrases
-    
     private func openRealm() {
         do {
             let realmPath = Bundle.main.url(forResource: "phrases", withExtension: "realm")!
@@ -44,7 +36,7 @@ class PhrasesRealmManager: ObservableObject {
         }
     }
     
-    private func getCategories() {
+    func getCategories() {
         if let localRealm = localRealm {
             let allCategories = localRealm.objects(Category.self)
             categories.removeAll()
@@ -54,7 +46,7 @@ class PhrasesRealmManager: ObservableObject {
         }
     }
     
-    private func getAngelicPhrases() {
+    func getAngelicPhrases() {
         if let localRealm = localRealm {
             let allPhrases = localRealm.objects(AngelicPhrase.self)
             angelicPhrases.removeAll()

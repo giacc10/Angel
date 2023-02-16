@@ -15,6 +15,8 @@
 		E328E228299D954800B7B764 /* Alvifont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E328E227299D954800B7B764 /* Alvifont.ttf */; };
 		E328E22A299D955900B7B764 /* White Scratches.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E328E229299D955900B7B764 /* White Scratches.ttf */; };
 		E328E22D299D96F800B7B764 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328E22C299D96F800B7B764 /* Extensions.swift */; };
+		E334A9A2299EBAE90077EB2F /* PhrasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334A9A1299EBAE90077EB2F /* PhrasesView.swift */; };
+		E334A9A4299EBC740077EB2F /* PhraseCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334A9A3299EBC740077EB2F /* PhraseCategoryView.swift */; };
 		E396F9AB299E321D00E6425D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E396F9AA299E321D00E6425D /* Realm */; };
 		E396F9AD299E321D00E6425D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E396F9AC299E321D00E6425D /* RealmSwift */; };
 		E396F9AF299E331500E6425D /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396F9AE299E331500E6425D /* CategoryModel.swift */; };
@@ -33,6 +35,8 @@
 		E328E227299D954800B7B764 /* Alvifont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alvifont.ttf; sourceTree = "<group>"; };
 		E328E229299D955900B7B764 /* White Scratches.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "White Scratches.ttf"; sourceTree = "<group>"; };
 		E328E22C299D96F800B7B764 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E334A9A1299EBAE90077EB2F /* PhrasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhrasesView.swift; sourceTree = "<group>"; };
+		E334A9A3299EBC740077EB2F /* PhraseCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseCategoryView.swift; sourceTree = "<group>"; };
 		E3744CE6299D9CAA00896E8D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E396F9AE299E331500E6425D /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		E396F9B0299E332600E6425D /* AngelicPhraseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngelicPhraseModel.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				E328E221299D94F200B7B764 /* HomeView.swift */,
+				E334A9A1299EBAE90077EB2F /* PhrasesView.swift */,
+				E334A9A3299EBC740077EB2F /* PhraseCategoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -218,10 +224,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E396F9B1299E332600E6425D /* AngelicPhraseModel.swift in Sources */,
+				E334A9A4299EBC740077EB2F /* PhraseCategoryView.swift in Sources */,
 				E328E22D299D96F800B7B764 /* Extensions.swift in Sources */,
 				E396F9AF299E331500E6425D /* CategoryModel.swift in Sources */,
 				E328E222299D94F200B7B764 /* HomeView.swift in Sources */,
 				E328E212299D942500B7B764 /* ContentView.swift in Sources */,
+				E334A9A2299EBAE90077EB2F /* PhrasesView.swift in Sources */,
 				E328E210299D942500B7B764 /* AngelApp.swift in Sources */,
 				E396F9E9299E73E300E6425D /* PhrasesRealmManager.swift in Sources */,
 			);
