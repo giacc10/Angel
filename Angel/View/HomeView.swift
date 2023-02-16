@@ -10,8 +10,10 @@ import SwiftUI
 struct HomeView: View {
     
     // MARK: - PROPERTIES
+    @EnvironmentObject var phrasesRealmManager: PhrasesRealmManager
+    
     @State private var currentPhrase = ""
-    @State private var phrasesArray: [DataTest] = []
+    @State private var phrasesArray: [AngelicPhrase] = []
 //    @State private var phrasesIndexs: [Int] = []
     @State private var loadedPhraseIds = Set<Int>()
     
@@ -27,7 +29,7 @@ struct HomeView: View {
                     TabView(selection: $currentPhrase) {
                         ForEach(phrasesArray) { phrase in
                             VStack {
-                                Text(phrase.text)
+                                Text(phrase.key)
                                     .customFont(size: 60)
                                     .multilineTextAlignment(.center)
                             }
@@ -92,24 +94,25 @@ struct HomeView: View {
                     }
                 }
             }
-        } //: NAAVIGATIONVIEW
+        } //: NAVIGATIONVIEW
         
     }
     
     // MARK: - FUNCTIONS
     private func loadPhrase() {
-        if phrases.count > loadedPhraseIds.count {
+        print("Called")
+        if phrasesRealmManager.angelicPhrases.count > loadedPhraseIds.count {
             // Choose a random phrase from the phrases array that has not already been loaded
-            var randomPhrase = phrases.randomElement()!
-            print("try \(randomPhrase.idKey)")
-            while loadedPhraseIds.contains(randomPhrase.idKey) {
-                randomPhrase = phrases.randomElement()!
+            var randomPhrase = phrasesRealmManager.angelicPhrases.randomElement()!
+            print("try \(randomPhrase.idProgressive)")
+            while loadedPhraseIds.contains(randomPhrase.idProgressive) {
+                randomPhrase = phrasesRealmManager.angelicPhrases.randomElement()!
                 print("Already present, retry")
             }
             // Append the random phrase to the phrases array and mark its id as loaded
             phrasesArray.append(randomPhrase)
-            loadedPhraseIds.insert(randomPhrase.idKey)
-            print("insert \(randomPhrase.idKey)")
+            loadedPhraseIds.insert(randomPhrase.idProgressive)
+            print("insert \(randomPhrase.idProgressive)")
             print(phrasesArray.count)
         }
 //        if phrasesArray.count < phrases.count {

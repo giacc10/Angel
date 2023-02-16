@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    // MARK: - PROPERTIES
+    @StateObject var phrasesRealmManager = PhrasesRealmManager()
+    
+    // MARK: - PROPERTY
     var body: some View {
         
         TabView {
             HomeView()
+                .environmentObject(phrasesRealmManager)
                 .tabItem {
                     Image(systemName: "doc.append")
                     Text("Feed")
