@@ -24,4 +24,10 @@ extension View {
     func customFont(size: CGFloat) -> some View {
         modifier(CustomFont(size: size))
     }
+    
+    #if canImport(UIKit)
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    #endif
 }

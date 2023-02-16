@@ -10,31 +10,36 @@ import SwiftUI
 struct ContentView: View {
     
     // MARK: - PROPERTIES
+    @StateObject var appRealmManager = AppRealmManager()
     
     // MARK: - BODY
     var body: some View {
-        
-        TabView {
-            HomeView()
-                .tabItem {
-                    Image(systemName: "doc.append")
-                    Text("Feed")
-                }
-            PhrasesView()
-                .tabItem {
-                    Image(systemName: "quote.opening")
-                    Text("Phrases")
-                }
-            Text("View 3")
-                .tabItem {
-                    Image(systemName: "person.and.background.dotted")
-                    Text("Meditation")
-                }
-            Text("View 4")
-                .tabItem {
-                    Image(systemName: "person.circle")
-                    Text("Profile")
-                }
+        if appRealmManager.user != nil {
+            TabView {
+                HomeView()
+                    .tabItem {
+                        Image(systemName: "doc.append")
+                        Text("Feed")
+                    }
+                PhrasesView()
+                    .tabItem {
+                        Image(systemName: "quote.opening")
+                        Text("Phrases")
+                    }
+                Text("View 3")
+                    .tabItem {
+                        Image(systemName: "person.and.background.dotted")
+                        Text("Meditation")
+                    }
+                Text("View 4")
+                    .tabItem {
+                        Image(systemName: "person.circle")
+                        Text("Profile")
+                    }
+            }
+        } else {
+            CreateUserView()
+                .environmentObject(appRealmManager)
         }
     }
 }
