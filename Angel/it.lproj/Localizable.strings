@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Angel
+
+  Created by Thomas Giacinto on 16/02/23.
+  
+*/
+
+"Hello" = "Ciao";
+"Tell-Me-Something" = "Dimmi qualcosa di te";
+"What-Is-Your-Name?" = "Qual è il tuo nome?";
+"Insert-Name" = "Scrivi il tuo nome";
+"Create-Profile" = "Crea il tuo profilo";
