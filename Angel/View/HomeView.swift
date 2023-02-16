@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     // MARK: - PROPERTIES
-    @EnvironmentObject var phrasesRealmManager: PhrasesRealmManager
+    @StateObject var phrasesRealmManager = PhrasesRealmManager()
     
     @State private var currentPhrase = ""
     @State private var phrasesArray: [AngelicPhrase] = []
@@ -29,9 +29,27 @@ struct HomeView: View {
                     TabView(selection: $currentPhrase) {
                         ForEach(phrasesArray) { phrase in
                             VStack {
+                                
+                                HStack {
+                                    ForEach(phrase.categories, id: \.self) { category in
+                                        Text(category.name)
+                                            .font(.caption)
+                                            .textCase(.uppercase)
+                                            .fontWeight(.medium)
+                                            .padding(.horizontal)
+                                            .padding(.vertical, 5)
+                                            .background(Capsule()
+                                                .fill(.primary).opacity(0.2)
+                                            )
+                                    }
+                                }
+                                
+                                Spacer()
                                 Text(phrase.key)
                                     .customFont(size: 60)
                                     .multilineTextAlignment(.center)
+                                
+                                Spacer()
                             }
                             .onAppear {
                                 loadPhrase()
@@ -100,20 +118,24 @@ struct HomeView: View {
     
     // MARK: - FUNCTIONS
     private func loadPhrase() {
-        print("Called")
+        print("##: Loading new phrase")
         if phrasesRealmManager.angelicPhrases.count > loadedPhraseIds.count {
+            
             // Choose a random phrase from the phrases array that has not already been loaded
             var randomPhrase = phrasesRealmManager.angelicPhrases.randomElement()!
-            print("try \(randomPhrase.idProgressive)")
+            
+            print("##: Try \(randomPhrase.idProgressive)")
             while loadedPhraseIds.contains(randomPhrase.idProgressive) {
                 randomPhrase = phrasesRealmManager.angelicPhrases.randomElement()!
-                print("Already present, retry")
+                print("##: Already present, retry")
             }
+            
             // Append the random phrase to the phrases array and mark its id as loaded
             phrasesArray.append(randomPhrase)
             loadedPhraseIds.insert(randomPhrase.idProgressive)
-            print("insert \(randomPhrase.idProgressive)")
-            print(phrasesArray.count)
+            
+            print("##: Insert \(randomPhrase.idProgressive)")
+            print("##: Loaded \(phrasesArray.count) phrases")
         }
 //        if phrasesArray.count < phrases.count {
 //            for _ in phrases {
