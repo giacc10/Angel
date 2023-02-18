@@ -27,6 +27,7 @@
 		E396F9B1299E332600E6425D /* AngelicPhraseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396F9B0299E332600E6425D /* AngelicPhraseModel.swift */; };
 		E396F9E9299E73E300E6425D /* PhrasesRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396F9E8299E73E300E6425D /* PhrasesRealmManager.swift */; };
 		E396F9EB299E819C00E6425D /* phrases.realm in Resources */ = {isa = PBXBuildFile; fileRef = E396F9EA299E819C00E6425D /* phrases.realm */; };
+		E3A6413F299EDBB0001E2A96 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = E3A6413E299EDBB0001E2A96 /* DynamicColor */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E396F9AD299E321D00E6425D /* RealmSwift in Frameworks */,
+				E3A6413F299EDBB0001E2A96 /* DynamicColor in Frameworks */,
 				E396F9AB299E321D00E6425D /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,6 +177,7 @@
 			packageProductDependencies = (
 				E396F9AA299E321D00E6425D /* Realm */,
 				E396F9AC299E321D00E6425D /* RealmSwift */,
+				E3A6413E299EDBB0001E2A96 /* DynamicColor */,
 			);
 			productName = Angel;
 			productReference = E328E20C299D942500B7B764 /* Angel.app */;
@@ -207,6 +210,7 @@
 			mainGroup = E328E203299D942500B7B764;
 			packageReferences = (
 				E396F9A9299E321D00E6425D /* XCRemoteSwiftPackageReference "realm-swift" */,
+				E3A6413D299EDBAF001E2A96 /* XCRemoteSwiftPackageReference "DynamicColor" */,
 			);
 			productRefGroup = E328E20D299D942500B7B764 /* Products */;
 			projectDirPath = "";
@@ -388,7 +392,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Angel/Preview Content\"";
 				DEVELOPMENT_TEAM = 4NNU2X6939;
 				ENABLE_PREVIEWS = YES;
@@ -419,7 +423,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Angel/Preview Content\"";
 				DEVELOPMENT_TEAM = 4NNU2X6939;
 				ENABLE_PREVIEWS = YES;
@@ -476,6 +480,14 @@
 				minimumVersion = 10.19.0;
 			};
 		};
+		E3A6413D299EDBAF001E2A96 /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yannickl/DynamicColor.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -488,6 +500,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E396F9A9299E321D00E6425D /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		E3A6413E299EDBB0001E2A96 /* DynamicColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E3A6413D299EDBAF001E2A96 /* XCRemoteSwiftPackageReference "DynamicColor" */;
+			productName = DynamicColor;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

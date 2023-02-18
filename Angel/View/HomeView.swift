@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DynamicColor
 
 struct HomeView: View {
     
@@ -38,8 +39,9 @@ struct HomeView: View {
                                             .fontWeight(.medium)
                                             .padding(.horizontal)
                                             .padding(.vertical, 5)
+                                            .foregroundColor(.black)
                                             .background(Capsule()
-                                                .fill(.primary).opacity(0.2)
+                                                .fill(Color(DynamicColor(hexString: category.color).tinted(amount: 0.2)))
                                             )
                                     }
                                 }
