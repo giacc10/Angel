@@ -29,47 +29,25 @@ struct HomeView: View {
                     
                     TabView(selection: $currentPhrase) {
                         ForEach(phrasesArray) { phrase in
-                            VStack {
-                                
-                                HStack {
-                                    ForEach(phrase.categories, id: \.self) { category in
-                                        Text(category.name)
-                                            .font(.caption)
-                                            .textCase(.uppercase)
-                                            .fontWeight(.medium)
-                                            .padding(.horizontal)
-                                            .padding(.vertical, 5)
-                                            .foregroundColor(.black)
-                                            .background(Capsule()
-                                                .fill(Color(DynamicColor(hexString: category.color).tinted(amount: 0.2)))
-                                            )
-                                    }
-                                }
-                                
-                                Spacer()
-                                Text(phrase.key)
-                                    .customFont(size: 60)
-                                    .multilineTextAlignment(.center)
-                                
-                                Spacer()
-                            }
+                            
+                            // MARK: - Phrase
+                            PhraseCard(phrase: phrase)
                             .onAppear {
                                 loadPhrase()
                             }
-                            .padding()
                             .frame(width: size.width)
                             .rotationEffect(.init(degrees: -90))
                             .ignoresSafeArea(.all)
                         }
+                    } //: TABVIEW
+                    .onAppear {
+                        loadPhrase()
                     }
                     .rotationEffect(.init(degrees: 90))
                     .frame(width: size.height) // Setting width as height since is rotated
                     .tabViewStyle(.page(indexDisplayMode: .never))
                     .frame(width: size.width) // Setting max width
-                    .onAppear {
-                        loadPhrase()
-                    }
-                }
+                } //: GEOMETRYREADER
                 .ignoresSafeArea(.all, edges: .trailing)
                 
                 // MARK: - Sidebar Actions
@@ -86,7 +64,7 @@ struct HomeView: View {
                                 Text("Like")
                                     .font(.caption2)
                             }
-                            .foregroundColor(.primary)
+                            .foregroundColor(.black)
                         }
                         Button {
                             
@@ -97,7 +75,7 @@ struct HomeView: View {
                                 Text("Share")
                                     .font(.caption2)
                             }
-                            .foregroundColor(.primary)
+                            .foregroundColor(.black)
                         }
                     } //: VSTACK
                     .padding(.bottom, 50)

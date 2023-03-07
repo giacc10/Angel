@@ -12,6 +12,8 @@ class Category: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var idProgressive: Int
     @Persisted var name: String
+    @Persisted var longName: String
+    @Persisted var headline: List<String>
     @Persisted var color: String
     @Persisted var icon: String
     

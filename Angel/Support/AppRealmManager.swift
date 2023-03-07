@@ -17,6 +17,7 @@ class AppRealmManager: ObservableObject {
     // Open Realm everytime the class is initialized
     init() {
         openRealm()
+        getUser()
     }
     
     private func openRealm() {
