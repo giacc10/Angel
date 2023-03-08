@@ -12,6 +12,7 @@ struct MeditationDetailView: View {
     
     // MARK: - PROPERTIES
     @Environment(\.dismiss) var dismiss
+    @StateObject var meditationViewModel: MeditationViewModel
     
     let category: Category
     let topUnitPoint: [UnitPoint] = [.top, .topLeading, .topTrailing]
@@ -33,11 +34,17 @@ struct MeditationDetailView: View {
                         .font(.headline)
                         .fontWeight(.semibold)
                         .foregroundColor(Color(DynamicColor(hexString: category.color).darkened(amount: 0.1)))
+                    Text(meditationViewModel.meditation.description)
+                        .fontWeight(.medium)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color(DynamicColor(hexString: category.color).darkened(amount: 0.1)))
+                        .padding(.top)
                     Spacer()
+                    
                     Button {
                         
                     } label: {
-                        NavigationLink(destination: MeditationView(category: category)) {
+                        NavigationLink(destination: MeditationView(meditationViewModel: meditationViewModel, category: category)) {
                             Text("Start \(category.name) Meditation")
                                 .textCase(.uppercase)
                                 .fontWeight(.bold)
@@ -75,7 +82,9 @@ struct MeditationDetailView: View {
 }
 
 struct MeditationRecapView_Previews: PreviewProvider {
+    static let meditationVM = MeditationViewModel (meditation: Meditation.data)
+    
     static var previews: some View {
-        MeditationDetailView(category: Category(value: ["name": "Peace", "longName": "Inner Peace and Calm", "color": "#7FB3D5", "icon": ""]))
+        MeditationDetailView(meditationViewModel: meditationVM, category: Category(value: ["name": "Peace", "longName": "Inner Peace and Calm", "color": "#7FB3D5", "icon": ""]))
     }
 }

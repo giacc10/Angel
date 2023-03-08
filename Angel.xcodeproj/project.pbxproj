@@ -24,8 +24,13 @@
 		E334A9AD299ECF320077EB2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E334A9AF299ECF320077EB2F /* Localizable.strings */; };
 		E337649D29B7E60E0047CFBE /* CategoryPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E337649C29B7E60E0047CFBE /* CategoryPill.swift */; };
 		E3471B5929B7E51800F8E7B0 /* phrases.realm in Resources */ = {isa = PBXBuildFile; fileRef = E3471B5829B7E51700F8E7B0 /* phrases.realm */; };
+		E3479C2429B8BF7A004D8337 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3479C2329B8BF7A004D8337 /* AudioManager.swift */; };
+		E3479C2729B8C1E5004D8337 /* angelic-soprano.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E3479C2629B8C1E5004D8337 /* angelic-soprano.mp3 */; };
 		E389693929B8820D00A632BC /* MeditationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693829B8820D00A632BC /* MeditationDetailView.swift */; };
 		E389693B29B89D2400A632BC /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693A29B89D2400A632BC /* MeditationView.swift */; };
+		E389693D29B8A44700A632BC /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693C29B8A44700A632BC /* ProgressBar.swift */; };
+		E389693F29B8A80700A632BC /* MeditationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693E29B8A80700A632BC /* MeditationModel.swift */; };
+		E389694129B8A87B00A632BC /* MeditationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389694029B8A87B00A632BC /* MeditationViewModel.swift */; };
 		E396F9AB299E321D00E6425D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E396F9AA299E321D00E6425D /* Realm */; };
 		E396F9AD299E321D00E6425D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E396F9AC299E321D00E6425D /* RealmSwift */; };
 		E396F9AF299E331500E6425D /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396F9AE299E331500E6425D /* CategoryModel.swift */; };
@@ -59,9 +64,14 @@
 		E334A9B0299ECF340077EB2F /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E337649C29B7E60E0047CFBE /* CategoryPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPill.swift; sourceTree = "<group>"; };
 		E3471B5829B7E51700F8E7B0 /* phrases.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = phrases.realm; sourceTree = "<group>"; };
+		E3479C2329B8BF7A004D8337 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		E3479C2629B8C1E5004D8337 /* angelic-soprano.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "angelic-soprano.mp3"; sourceTree = "<group>"; };
 		E3744CE6299D9CAA00896E8D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E389693829B8820D00A632BC /* MeditationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationDetailView.swift; sourceTree = "<group>"; };
 		E389693A29B89D2400A632BC /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
+		E389693C29B8A44700A632BC /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		E389693E29B8A80700A632BC /* MeditationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationModel.swift; sourceTree = "<group>"; };
+		E389694029B8A87B00A632BC /* MeditationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationViewModel.swift; sourceTree = "<group>"; };
 		E396F9AE299E331500E6425D /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		E396F9B0299E332600E6425D /* AngelicPhraseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngelicPhraseModel.swift; sourceTree = "<group>"; };
 		E396F9E8299E73E300E6425D /* PhrasesRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhrasesRealmManager.swift; sourceTree = "<group>"; };
@@ -115,6 +125,7 @@
 				E328E21F299D94CE00B7B764 /* Support */,
 				E396F9E5299E736200E6425D /* Database */,
 				E328E220299D94DD00B7B764 /* Fonts */,
+				E3479C2529B8C1CF004D8337 /* Resources */,
 				E328E213299D942600B7B764 /* Assets.xcassets */,
 				E328E215299D942600B7B764 /* Preview Content */,
 				E334A9AF299ECF320077EB2F /* Localizable.strings */,
@@ -151,6 +162,7 @@
 				E334A9A5299EC7C00077EB2F /* UserModel.swift */,
 				E396F9AE299E331500E6425D /* CategoryModel.swift */,
 				E396F9B0299E332600E6425D /* AngelicPhraseModel.swift */,
+				E389693E29B8A80700A632BC /* MeditationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -161,6 +173,7 @@
 				E328E22C299D96F800B7B764 /* Extensions.swift */,
 				E396F9E8299E73E300E6425D /* PhrasesRealmManager.swift */,
 				E334A9A7299EC96A0077EB2F /* AppRealmManager.swift */,
+				E3479C2329B8BF7A004D8337 /* AudioManager.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -181,8 +194,17 @@
 				E337649C29B7E60E0047CFBE /* CategoryPill.swift */,
 				E332795C29B788DD00D048F6 /* MeditationCategoryCard.swift */,
 				E3ACBE8229B800C800086EAB /* ParticleView.swift */,
+				E389693C29B8A44700A632BC /* ProgressBar.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E3479C2529B8C1CF004D8337 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E3479C2629B8C1E5004D8337 /* angelic-soprano.mp3 */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		E396F9E5299E736200E6425D /* Database */ = {
@@ -197,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				E3ACBE7E29B7F7ED00086EAB /* ParticleViewModel.swift */,
+				E389694029B8A87B00A632BC /* MeditationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -272,6 +295,7 @@
 				E328E22A299D955900B7B764 /* White Scratches.ttf in Resources */,
 				E334A9AD299ECF320077EB2F /* Localizable.strings in Resources */,
 				E3471B5929B7E51800F8E7B0 /* phrases.realm in Resources */,
+				E3479C2729B8C1E5004D8337 /* angelic-soprano.mp3 in Resources */,
 				E328E228299D954800B7B764 /* Alvifont.ttf in Resources */,
 				E328E217299D942600B7B764 /* Preview Assets.xcassets in Resources */,
 				E328E214299D942600B7B764 /* Assets.xcassets in Resources */,
@@ -288,6 +312,7 @@
 				E396F9B1299E332600E6425D /* AngelicPhraseModel.swift in Sources */,
 				E334A9AA299ECA860077EB2F /* CreateUserView.swift in Sources */,
 				E334A9A4299EBC740077EB2F /* PhraseCategoryView.swift in Sources */,
+				E389693F29B8A80700A632BC /* MeditationModel.swift in Sources */,
 				E328E22D299D96F800B7B764 /* Extensions.swift in Sources */,
 				E396F9AF299E331500E6425D /* CategoryModel.swift in Sources */,
 				E328E222299D94F200B7B764 /* HomeView.swift in Sources */,
@@ -297,14 +322,17 @@
 				E334A9A8299EC96A0077EB2F /* AppRealmManager.swift in Sources */,
 				E328E212299D942500B7B764 /* ContentView.swift in Sources */,
 				E332795D29B788DD00D048F6 /* MeditationCategoryCard.swift in Sources */,
+				E389693D29B8A44700A632BC /* ProgressBar.swift in Sources */,
 				E334A9A2299EBAE90077EB2F /* PhrasesView.swift in Sources */,
 				E3ACBE7F29B7F7ED00086EAB /* ParticleViewModel.swift in Sources */,
 				E3ACBE8129B7F80400086EAB /* Particle.swift in Sources */,
 				E337649D29B7E60E0047CFBE /* CategoryPill.swift in Sources */,
+				E3479C2429B8BF7A004D8337 /* AudioManager.swift in Sources */,
 				E389693B29B89D2400A632BC /* MeditationView.swift in Sources */,
 				E3ACBE8329B800C900086EAB /* ParticleView.swift in Sources */,
 				E328E210299D942500B7B764 /* AngelApp.swift in Sources */,
 				E334A9A6299EC7C00077EB2F /* UserModel.swift in Sources */,
+				E389694129B8A87B00A632BC /* MeditationViewModel.swift in Sources */,
 				E396F9E9299E73E300E6425D /* PhrasesRealmManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
