@@ -24,14 +24,19 @@
 		E334A9AD299ECF320077EB2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E334A9AF299ECF320077EB2F /* Localizable.strings */; };
 		E337649D29B7E60E0047CFBE /* CategoryPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E337649C29B7E60E0047CFBE /* CategoryPill.swift */; };
 		E3471B5929B7E51800F8E7B0 /* phrases.realm in Resources */ = {isa = PBXBuildFile; fileRef = E3471B5829B7E51700F8E7B0 /* phrases.realm */; };
+		E389693929B8820D00A632BC /* MeditationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693829B8820D00A632BC /* MeditationDetailView.swift */; };
+		E389693B29B89D2400A632BC /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693A29B89D2400A632BC /* MeditationView.swift */; };
 		E396F9AB299E321D00E6425D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E396F9AA299E321D00E6425D /* Realm */; };
 		E396F9AD299E321D00E6425D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E396F9AC299E321D00E6425D /* RealmSwift */; };
 		E396F9AF299E331500E6425D /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396F9AE299E331500E6425D /* CategoryModel.swift */; };
 		E396F9B1299E332600E6425D /* AngelicPhraseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396F9B0299E332600E6425D /* AngelicPhraseModel.swift */; };
 		E396F9E9299E73E300E6425D /* PhrasesRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396F9E8299E73E300E6425D /* PhrasesRealmManager.swift */; };
-		E39A5F2929A412F100F91320 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A5F2829A412F100F91320 /* MeditationView.swift */; };
+		E39A5F2929A412F100F91320 /* MeditationsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A5F2829A412F100F91320 /* MeditationsMainView.swift */; };
 		E3A580DA29B7A16D00329EF6 /* PhraseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A580D929B7A16D00329EF6 /* PhraseCard.swift */; };
 		E3A6413F299EDBB0001E2A96 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = E3A6413E299EDBB0001E2A96 /* DynamicColor */; };
+		E3ACBE7F29B7F7ED00086EAB /* ParticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ACBE7E29B7F7ED00086EAB /* ParticleViewModel.swift */; };
+		E3ACBE8129B7F80400086EAB /* Particle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ACBE8029B7F80400086EAB /* Particle.swift */; };
+		E3ACBE8329B800C900086EAB /* ParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ACBE8229B800C800086EAB /* ParticleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,11 +60,16 @@
 		E337649C29B7E60E0047CFBE /* CategoryPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPill.swift; sourceTree = "<group>"; };
 		E3471B5829B7E51700F8E7B0 /* phrases.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = phrases.realm; sourceTree = "<group>"; };
 		E3744CE6299D9CAA00896E8D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E389693829B8820D00A632BC /* MeditationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationDetailView.swift; sourceTree = "<group>"; };
+		E389693A29B89D2400A632BC /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
 		E396F9AE299E331500E6425D /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		E396F9B0299E332600E6425D /* AngelicPhraseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngelicPhraseModel.swift; sourceTree = "<group>"; };
 		E396F9E8299E73E300E6425D /* PhrasesRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhrasesRealmManager.swift; sourceTree = "<group>"; };
-		E39A5F2829A412F100F91320 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
+		E39A5F2829A412F100F91320 /* MeditationsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationsMainView.swift; sourceTree = "<group>"; };
 		E3A580D929B7A16D00329EF6 /* PhraseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseCard.swift; sourceTree = "<group>"; };
+		E3ACBE7E29B7F7ED00086EAB /* ParticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleViewModel.swift; sourceTree = "<group>"; };
+		E3ACBE8029B7F80400086EAB /* Particle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Particle.swift; sourceTree = "<group>"; };
+		E3ACBE8229B800C800086EAB /* ParticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +110,7 @@
 				E328E211299D942500B7B764 /* ContentView.swift */,
 				E328E21D299D94B000B7B764 /* App */,
 				E32F83C029A1217300D8C530 /* View */,
+				E3ACBE7D29B7F7D100086EAB /* ViewModel */,
 				E328E21E299D94BC00B7B764 /* Model */,
 				E328E21F299D94CE00B7B764 /* Support */,
 				E396F9E5299E736200E6425D /* Database */,
@@ -126,7 +137,9 @@
 				E328E221299D94F200B7B764 /* HomeView.swift */,
 				E334A9A1299EBAE90077EB2F /* PhrasesView.swift */,
 				E334A9A3299EBC740077EB2F /* PhraseCategoryView.swift */,
-				E39A5F2829A412F100F91320 /* MeditationView.swift */,
+				E39A5F2829A412F100F91320 /* MeditationsMainView.swift */,
+				E389693829B8820D00A632BC /* MeditationDetailView.swift */,
+				E389693A29B89D2400A632BC /* MeditationView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -134,6 +147,7 @@
 		E328E21E299D94BC00B7B764 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E3ACBE8029B7F80400086EAB /* Particle.swift */,
 				E334A9A5299EC7C00077EB2F /* UserModel.swift */,
 				E396F9AE299E331500E6425D /* CategoryModel.swift */,
 				E396F9B0299E332600E6425D /* AngelicPhraseModel.swift */,
@@ -166,6 +180,7 @@
 				E3A580D929B7A16D00329EF6 /* PhraseCard.swift */,
 				E337649C29B7E60E0047CFBE /* CategoryPill.swift */,
 				E332795C29B788DD00D048F6 /* MeditationCategoryCard.swift */,
+				E3ACBE8229B800C800086EAB /* ParticleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -176,6 +191,14 @@
 				E3471B5829B7E51700F8E7B0 /* phrases.realm */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		E3ACBE7D29B7F7D100086EAB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E3ACBE7E29B7F7ED00086EAB /* ParticleViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,12 +292,17 @@
 				E396F9AF299E331500E6425D /* CategoryModel.swift in Sources */,
 				E328E222299D94F200B7B764 /* HomeView.swift in Sources */,
 				E3A580DA29B7A16D00329EF6 /* PhraseCard.swift in Sources */,
-				E39A5F2929A412F100F91320 /* MeditationView.swift in Sources */,
+				E39A5F2929A412F100F91320 /* MeditationsMainView.swift in Sources */,
+				E389693929B8820D00A632BC /* MeditationDetailView.swift in Sources */,
 				E334A9A8299EC96A0077EB2F /* AppRealmManager.swift in Sources */,
 				E328E212299D942500B7B764 /* ContentView.swift in Sources */,
 				E332795D29B788DD00D048F6 /* MeditationCategoryCard.swift in Sources */,
 				E334A9A2299EBAE90077EB2F /* PhrasesView.swift in Sources */,
+				E3ACBE7F29B7F7ED00086EAB /* ParticleViewModel.swift in Sources */,
+				E3ACBE8129B7F80400086EAB /* Particle.swift in Sources */,
 				E337649D29B7E60E0047CFBE /* CategoryPill.swift in Sources */,
+				E389693B29B89D2400A632BC /* MeditationView.swift in Sources */,
+				E3ACBE8329B800C900086EAB /* ParticleView.swift in Sources */,
 				E328E210299D942500B7B764 /* AngelApp.swift in Sources */,
 				E334A9A6299EC7C00077EB2F /* UserModel.swift in Sources */,
 				E396F9E9299E73E300E6425D /* PhrasesRealmManager.swift in Sources */,

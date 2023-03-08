@@ -26,7 +26,7 @@ struct ContentView: View {
                         Image(systemName: "quote.opening")
                         Text("Phrases")
                     }
-                MeditationView()
+                MeditationsMainView()
                     .tabItem {
                         Image(systemName: "person.and.background.dotted")
                         Text("Meditation")

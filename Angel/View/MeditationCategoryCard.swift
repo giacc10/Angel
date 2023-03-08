@@ -42,8 +42,9 @@ struct MeditationCategoryCard: View {
                 .fill(
                     LinearGradient(gradient: Gradient(colors: [
                         Color(DynamicColor(hexString: category.color).lighter()),
-                        Color(DynamicColor(hexString: category.color).saturated(amount: 0.5))]
-                    ), startPoint: topUnitPoint.randomElement()!, endPoint: bottomUnitPoint.randomElement()!)
+                        Color(DynamicColor(hexString: category.color).saturated(amount: 0.5))
+                        ]), startPoint: topUnitPoint.randomElement()!, endPoint: bottomUnitPoint.randomElement()!
+                    )
                 )
             )
         )
