@@ -12,6 +12,7 @@ struct ProgressBar: View {
     
     // MARK: - PROPERTIES
     @EnvironmentObject var audioManager: AudioManager
+    @Binding var isPlaying: Bool // Need it to pause animation when timer stopped in parentView
     @State var value: CGFloat = 0.0
     var duration: TimeInterval
     var color: String
@@ -34,20 +35,20 @@ struct ProgressBar: View {
             } //: ZTACK
             .cornerRadius(10)
             
-            if let player = audioManager.player {
-                HStack {
-                    Text(DateComponentsFormatter.positional.string(from: player.currentTime) ?? "0.00")
-                    Spacer()
-                    Text(DateComponentsFormatter.positional.string(from: duration - player.currentTime) ?? "0:00")
-                }
-                .font(.caption)
-                .foregroundColor(.white)
+            HStack {
+                Text(DateComponentsFormatter.positional.string(from: value) ?? "0.00")
+                Spacer()
+                Text(DateComponentsFormatter.positional.string(from: duration - value) ?? "0:00")
             }
+            .font(.caption)
+            .foregroundColor(.white)
             
         } //: VSTACK
         .onReceive(timer, perform: { _ in
-            guard let player = audioManager.player else { return }
-            value = player.currentTime
+            guard audioManager.player != nil else { return }
+            if isPlaying { 
+                value += 0.05
+            }
         })
     }
 }
@@ -62,6 +63,6 @@ extension ProgressBar {
 
 struct ProgressBar_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressBar(value: 5.50, duration: 70, color: "#7FB3D5")
+        ProgressBar(isPlaying: .constant(true), value: 5.50, duration: 70, color: "#7FB3D5")
     }
 }

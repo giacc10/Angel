@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 import AVFoundation
 import DynamicColor
 
@@ -20,12 +21,16 @@ struct MeditationView: View {
     let category: Category
     @State var phraseIndex: Int = 0
     @State var isIntroduction: Bool = true
-    @State var buttonPlaying: Bool = true
+    @State var isPlaying: Bool = true
     let topUnitPoint: [UnitPoint] = [.top, .topLeading, .topTrailing]
     let bottomUnitPoint: [UnitPoint] = [.bottom, .bottomLeading, .bottomTrailing]
     
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State var timerPhrase = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
+    // Timer for the meditation
+    @State var secondElapsed: TimeInterval = 0
+    @State var meditationTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    // Timer for phrases
+    @State var phraseTimer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
     
     @State var isMeditationRecapInStack: Bool = false
     
@@ -46,27 +51,27 @@ struct MeditationView: View {
                     .onAppear {
                         playIntroduction()
                     }
-                    .onReceive(timerPhrase, perform: { _ in
+                    .onReceive(phraseTimer, perform: { _ in
                         loadAndSpeechPhrase()
                     })
                     .animation(.easeInOut)
                 
                 Spacer()
 
-                ProgressBar(duration: meditationViewModel.meditation.duration, color: category.color)
+                ProgressBar(isPlaying: $isPlaying, duration: meditationViewModel.meditation.duration, color: category.color)
                     .environmentObject(audioManager)
                 
                 if let player = audioManager.player {
                     Button {
                         if player.isPlaying {
-                            stopTimerPhrases()
+                            cancelTimer()
                         } else {
-                            startTimerPhrases()
+                            instantiateTimer()
                         }
                         audioManager.playPause()
-                        buttonPlaying.toggle() // Because player.isPlaying not working
+                        isPlaying.toggle() // Because player.isPlaying not working
                     } label: {
-                        Image(systemName: buttonPlaying ? "pause.fill" : "play.fill")
+                        Image(systemName: isPlaying ? "pause.fill" : "play.fill")
                             .font(.title2)
                             .foregroundColor(Color(DynamicColor(hexString: category.color).darkened(amount: 0.2)))
                     }
@@ -74,19 +79,19 @@ struct MeditationView: View {
                     .background(Circle().fill(Color(DynamicColor(hexString: category.color).lighter(amount: 0.3))))
                 }
                 
-                
             } //: VSTACK
             .padding()
         } //: ZSTACK
         .navigationDestination(isPresented: $isMeditationRecapInStack) {
             MeditationRecapView()
         }
-        .onReceive(timer, perform: { _ in
+        .onReceive(meditationTimer, perform: { _ in
             guard let player = audioManager.player else { return }
-            if player.currentTime >= meditationViewModel.meditation.duration {
+            
+            secondElapsed += 1
+            if secondElapsed >= meditationViewModel.meditation.duration {
                 player.stop()
-                timer.upstream.connect().cancel()
-                stopTimerPhrases()
+                cancelTimer()
                 isMeditationRecapInStack.toggle()
             }
         })
@@ -100,7 +105,7 @@ struct MeditationView: View {
         )
         .navigationBarItems(
             trailing: Button(action: {
-                stopTimerPhrases()
+                cancelTimer()
                 audioManager.stop()
                 UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
             }) {
@@ -113,6 +118,17 @@ struct MeditationView: View {
 }
 
 extension MeditationView {
+    
+    func instantiateTimer() {
+        self.meditationTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+        self.phraseTimer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
+    }
+    
+    func cancelTimer() {
+        self.meditationTimer.upstream.connect().cancel()
+        self.phraseTimer.upstream.connect().cancel()
+    }
+    
     func loadAndSpeechPhrase() {
         phraseIndex = Int.random(in: 0...category.angelicPhrases.count - 1)
         let utterance = AVSpeechUtterance(string: category.angelicPhrases[phraseIndex].key)
@@ -132,17 +148,10 @@ extension MeditationView {
         synthesizer.speak(utterance)
         DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
             isIntroduction = false
+            instantiateTimer()
             audioManager.startPlayer(track: meditationViewModel.meditation.track)
             audioManager.toggleLoop()
         }
-    }
-    
-    func stopTimerPhrases() {
-        self.timerPhrase.upstream.connect().cancel()
-    }
-    
-    func startTimerPhrases() {
-        self.timerPhrase = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
     }
 }
 
