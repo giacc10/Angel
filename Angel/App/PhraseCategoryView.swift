@@ -25,7 +25,7 @@ struct PhraseCategoryView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {
-                    Text(category.name)
+                    Text(category.name.localizedString())
                         .customFont(size: 40)
 //                            .textCase(.uppercase)
                 }

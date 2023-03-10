@@ -45,7 +45,7 @@ struct MeditationDetailView: View {
                         
                     } label: {
                         NavigationLink(destination: MeditationView(meditationViewModel: meditationViewModel, category: category)) {
-                            Text("Start \(category.name) Meditation")
+                            Text("Start \(category.name.localizedString()) Meditation")
                                 .textCase(.uppercase)
                                 .fontWeight(.bold)
                                 .foregroundColor(Color(DynamicColor(hexString: category.color).darkened(amount: 0.2)))

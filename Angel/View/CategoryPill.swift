@@ -15,7 +15,7 @@ struct CategoryPill: View {
     
     // MARK: - BODY
     var body: some View {
-        Text(category.name)
+        Text(category.name.localizedString())
             .font(.caption)
             .textCase(.uppercase)
             .fontWeight(.bold)

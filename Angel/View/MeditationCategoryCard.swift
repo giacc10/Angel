@@ -19,7 +19,7 @@ struct MeditationCategoryCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             Group {
-                Text(category.name)
+                Text(category.name.localizedString())
                     .font(.title3)
                     .textCase(.uppercase)
                     .fontWeight(.bold)

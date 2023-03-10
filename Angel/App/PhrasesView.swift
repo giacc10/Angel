@@ -19,7 +19,7 @@ struct PhrasesView: View {
                 List {
                     ForEach(phrasesRealmManager.categories, id: \.id) { category in
                         NavigationLink(destination: PhraseCategoryView(category: category)) {
-                            Text(category.name)
+                            Text(category.name.localizedString())
                         }
                     }
                 } //: LIST
