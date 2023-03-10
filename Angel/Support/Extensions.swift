@@ -50,3 +50,11 @@ extension DateComponentsFormatter {
         return formatter
     }()
 }
+
+extension TimeInterval {
+    func toMinutes() -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.minute]
+        return formatter.string(from: self) ?? ""
+    }
+}

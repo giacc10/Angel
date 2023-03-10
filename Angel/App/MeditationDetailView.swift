@@ -18,9 +18,12 @@ struct MeditationDetailView: View {
     let topUnitPoint: [UnitPoint] = [.top, .topLeading, .topTrailing]
     let bottomUnitPoint: [UnitPoint] = [.bottom, .bottomLeading, .bottomTrailing]
     
+    @State var timerSelected: Int = 0
+    @State var isMeditationViewInStack: Bool = false
+    
     // MARK: - BODY
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 ParticleView()
                 VStack {
@@ -39,17 +42,30 @@ struct MeditationDetailView: View {
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color(DynamicColor(hexString: category.color).darkened(amount: 0.1)))
                         .padding(.top)
+                    
                     Spacer()
                     
-                    Button {
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("Choose meditation minutes:")
+                            .font(.callout)
+                            .fontWeight(.medium)
+                            .foregroundColor(Color(DynamicColor(hexString: category.color).darkened(amount: 0.2)))
                         
+                        CustomSegmentedPicker(items: meditationViewModel.durations, selection: $timerSelected, color: category.color)
+                    }
+                    .padding()
+                    .background(Color(DynamicColor(hexString: category.color).lighter(amount: 0.3)))
+                    .cornerRadius(25)
+                    .padding(.bottom, 30)
+                    
+                    Button {
+                        meditationViewModel.createMeditation(duration: timerSelected)
+                        isMeditationViewInStack.toggle()
                     } label: {
-                        NavigationLink(destination: MeditationView(meditationViewModel: meditationViewModel, category: category)) {
-                            Text("Start \(category.name.localizedString()) Meditation")
-                                .textCase(.uppercase)
-                                .fontWeight(.bold)
-                                .foregroundColor(Color(DynamicColor(hexString: category.color).darkened(amount: 0.2)))
-                        }
+                        Text("Start \(category.name.localizedString()) Meditation")
+                            .textCase(.uppercase)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(DynamicColor(hexString: category.color).darkened(amount: 0.2)))
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -57,6 +73,9 @@ struct MeditationDetailView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color(DynamicColor(hexString: category.color).lighter(amount: 0.3)))
                     )
+                    .navigationDestination(isPresented: $isMeditationViewInStack) {
+                        MeditationView(meditationViewModel: meditationViewModel, category: category)
+                    }
                     
                 } //: VSTACK
                 .padding()
@@ -81,7 +100,7 @@ struct MeditationDetailView: View {
     }
 }
 
-struct MeditationRecapView_Previews: PreviewProvider {
+struct MeditationDetailView_Previews: PreviewProvider {
     static let meditationVM = MeditationViewModel (meditation: Meditation.data)
     
     static var previews: some View {

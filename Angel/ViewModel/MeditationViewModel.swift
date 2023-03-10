@@ -8,11 +8,16 @@
 import Foundation
 
 final class MeditationViewModel: ObservableObject {
-    @Published private(set) var value: CGFloat = 0.0
+    
+    let durations: [TimeInterval] = [300, 600, 900, 1800, 2700, 3600]
     
     private(set) var meditation: Meditation
     
     init (meditation: Meditation) {
         self.meditation = meditation
+    }
+    
+    func createMeditation(duration: Int) {
+        self.meditation = Meditation(title: "", description: "", categories: [], duration: durations[duration], track: "angelic-soprano")
     }
 }

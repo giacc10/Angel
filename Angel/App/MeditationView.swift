@@ -24,9 +24,10 @@ struct MeditationView: View {
     let topUnitPoint: [UnitPoint] = [.top, .topLeading, .topTrailing]
     let bottomUnitPoint: [UnitPoint] = [.bottom, .bottomLeading, .bottomTrailing]
     
-    let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var timerPhrase = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
-//    @State private var value: CGFloat = 0.0
+    
+    @State var isMeditationRecapInStack: Bool = false
     
     // MARK: - BODY
     var body: some View {
@@ -77,9 +78,17 @@ struct MeditationView: View {
             } //: VSTACK
             .padding()
         } //: ZSTACK
+        .navigationDestination(isPresented: $isMeditationRecapInStack) {
+            MeditationRecapView()
+        }
         .onReceive(timer, perform: { _ in
             guard let player = audioManager.player else { return }
-//            value = player.currentTime
+            if player.currentTime >= meditationViewModel.meditation.duration {
+                player.stop()
+                timer.upstream.connect().cancel()
+                stopTimerPhrases()
+                isMeditationRecapInStack.toggle()
+            }
         })
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(

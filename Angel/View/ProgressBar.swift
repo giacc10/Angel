@@ -38,7 +38,7 @@ struct ProgressBar: View {
                 HStack {
                     Text(DateComponentsFormatter.positional.string(from: player.currentTime) ?? "0.00")
                     Spacer()
-                    Text(DateComponentsFormatter.positional.string(from: player.duration - player.currentTime) ?? "0:00")
+                    Text(DateComponentsFormatter.positional.string(from: duration - player.currentTime) ?? "0:00")
                 }
                 .font(.caption)
                 .foregroundColor(.white)
