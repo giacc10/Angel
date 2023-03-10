@@ -20,6 +20,7 @@ struct MeditationView: View {
     let category: Category
     @State var phraseIndex: Int = 0
     @State var isIntroduction: Bool = true
+    @State var buttonPlaying: Bool = true
     let topUnitPoint: [UnitPoint] = [.top, .topLeading, .topTrailing]
     let bottomUnitPoint: [UnitPoint] = [.bottom, .bottomLeading, .bottomTrailing]
     
@@ -35,7 +36,7 @@ struct MeditationView: View {
                 
                 Spacer()
                 
-                Text(isIntroduction ? "Let's start this \(category.name) meditation, close your eyes, relax and flow whitin" : category.angelicPhrases[phraseIndex].key)
+                Text(isIntroduction ? "Let's start this \(category.name) meditation, close your eyes, relax and flow within" : category.angelicPhrases[phraseIndex].key)
                     .customFont(size: 60)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
@@ -62,8 +63,9 @@ struct MeditationView: View {
                             startTimerPhrases()
                         }
                         audioManager.playPause()
+                        buttonPlaying.toggle() // Because player.isPlaying not working
                     } label: {
-                        Image(systemName: player.isPlaying ? "pause.fill" : "play.fill")
+                        Image(systemName: buttonPlaying ? "pause.fill" : "play.fill")
                             .font(.title2)
                             .foregroundColor(Color(DynamicColor(hexString: category.color).darkened(amount: 0.2)))
                     }
@@ -97,6 +99,7 @@ struct MeditationView: View {
                     .foregroundColor(Color(DynamicColor(hexString: category.color).darkened(amount: 0.2)))
             }
         )
+        .navigationBarBackButtonHidden(true)
     }
 }
 
@@ -112,7 +115,7 @@ extension MeditationView {
     }
     
     func playIntroduction() {
-        let utterance = AVSpeechUtterance(string: "Let's start this \(category.name) meditation, close your eyes, relax and flow whitin")
+        let utterance = AVSpeechUtterance(string: "Let's start this \(category.name) meditation, close your eyes, relax and flow within")
         //                utterance.voice = AVSpeechSynthesisVoice(language: Locale.preferredLanguages.first)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         utterance.pitchMultiplier = 1.2
