@@ -83,7 +83,7 @@ struct MeditationView: View {
             .padding()
         } //: ZSTACK
         .navigationDestination(isPresented: $isMeditationRecapInStack) {
-            MeditationRecapView()
+            MeditationRecapView(meditation: meditationViewModel.meditation)
         }
         .onReceive(meditationTimer, perform: { _ in
             guard let player = audioManager.player else { return }

@@ -19,8 +19,8 @@ struct MeditationDetailView: View {
     let topUnitPoint: [UnitPoint] = [.top, .topLeading, .topTrailing]
     let bottomUnitPoint: [UnitPoint] = [.bottom, .bottomLeading, .bottomTrailing]
     
-    @State var timerSelected: Int = 0
-    @State var soundtrackSelected: String? = nil
+    @State var selectedTimer: Int = 0
+    @State var selectedSoundtrack: String? = nil
     @State var isMeditationViewInStack: Bool = false
     
     // MARK: - BODY
@@ -60,11 +60,11 @@ struct MeditationDetailView: View {
                                         SoundtrackRow(color: mainCategory().color, title: track)
                                             .environmentObject(audioPreviewManager)
                                             .onTapGesture {
-                                                soundtrackSelected = track
+                                                selectedSoundtrack = track
                                             }
                                             .background(
                                                 RoundedRectangle(cornerRadius: 16)
-                                                    .fill(soundtrackSelected == track ?
+                                                    .fill(selectedSoundtrack == track ?
                                                           Color(DynamicColor(hexString: mainCategory().color).saturated(amount: 0.2)) :
                                                             Color(DynamicColor(hexString: mainCategory().color).tinted(amount: 0.7))
                                                          )
@@ -72,9 +72,9 @@ struct MeditationDetailView: View {
                                             .padding(.horizontal, 7)
                                             .padding(.bottom, 2)
                                     }
-                                }
+                                } //: VSTACK
                                 .padding(.vertical, 7)
-                            }
+                            } //: SCROLLVIEW
                             .clipShape(RoundedRectangle(cornerRadius: 18))
                             .background(
                                 RoundedRectangle(cornerRadius: 18)
@@ -82,7 +82,7 @@ struct MeditationDetailView: View {
                             )
                             .frame(maxHeight: 170)
                             
-                        }
+                        } //: VSTACK
                         
                         VStack(alignment: .leading, spacing: 5) {
                             Text("Choose meditation minutes:")
@@ -90,30 +90,20 @@ struct MeditationDetailView: View {
                                 .fontWeight(.medium)
                                 .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
                             
-                            CustomSegmentedPicker(items: meditationViewModel.durations, selection: $timerSelected, color: mainCategory().color)
-                        }
-                    }
+                            CustomSegmentedPicker(items: meditationViewModel.durations, selection: $selectedTimer, color: mainCategory().color)
+                        } //: VSTACK
+                    } //: VSTACK
                     .padding()
                     .background(Color(DynamicColor(hexString: mainCategory().color).lighter(amount: 0.3)))
                     .cornerRadius(25)
                     .padding(.bottom, 50)
                     
-                    Button {
+                    ButtonCTA(text: "Start \(mainCategory().name.localizedString()) Meditation",
+                              color: mainCategory().color) {
                         audioPreviewManager.stop()
-                        meditationViewModel.createMeditation(title: "", caption: "", categories: categories, duration: timerSelected, track: soundtrackSelected ?? "Angelic Soprano", type: .standard)
+                        meditationViewModel.createMeditation(title: "", caption: "", categories: categories, duration: selectedTimer, track: selectedSoundtrack ?? "Angelic Soprano", type: .standard)
                         isMeditationViewInStack.toggle()
-                    } label: {
-                        Text("Start \(mainCategory().name.localizedString()) Meditation")
-                            .textCase(.uppercase)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
                     }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(Color(DynamicColor(hexString: mainCategory().color).lighter(amount: 0.3)))
-                    )
                     .navigationDestination(isPresented: $isMeditationViewInStack) {
                         MeditationView(meditationViewModel: meditationViewModel)
                     }

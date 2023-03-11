@@ -33,6 +33,7 @@
 		E3479C2429B8BF7A004D8337 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3479C2329B8BF7A004D8337 /* AudioManager.swift */; };
 		E3479C2729B8C1E5004D8337 /* Angelic Soprano.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E3479C2629B8C1E5004D8337 /* Angelic Soprano.mp3 */; };
 		E350359A29BB574C006B3C8C /* MeditationRecapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350359929BB574C006B3C8C /* MeditationRecapView.swift */; };
+		E356D9AA29BCA0AF001BAD06 /* ButtonCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = E356D9A929BCA0AF001BAD06 /* ButtonCTA.swift */; };
 		E389693929B8820D00A632BC /* MeditationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693829B8820D00A632BC /* MeditationDetailView.swift */; };
 		E389693B29B89D2400A632BC /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693A29B89D2400A632BC /* MeditationView.swift */; };
 		E389693D29B8A44700A632BC /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693C29B8A44700A632BC /* ProgressBar.swift */; };
@@ -50,6 +51,7 @@
 		E3ACBE8129B7F80400086EAB /* Particle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ACBE8029B7F80400086EAB /* Particle.swift */; };
 		E3ACBE8329B800C900086EAB /* ParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ACBE8229B800C800086EAB /* ParticleView.swift */; };
 		E3C17CEC29BA24E30077CD21 /* phrases.realm in Resources */ = {isa = PBXBuildFile; fileRef = E3C17CEB29BA24E30077CD21 /* phrases.realm */; };
+		E3C22E9129BCB4FF00113C04 /* MoodFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C22E9029BCB4FF00113C04 /* MoodFace.swift */; };
 		E3FEE4E829BB3A76001CAF0F /* CustomSegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FEE4E729BB3A76001CAF0F /* CustomSegmentedPicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +84,7 @@
 		E3479C2329B8BF7A004D8337 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		E3479C2629B8C1E5004D8337 /* Angelic Soprano.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Angelic Soprano.mp3"; sourceTree = "<group>"; };
 		E350359929BB574C006B3C8C /* MeditationRecapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationRecapView.swift; sourceTree = "<group>"; };
+		E356D9A929BCA0AF001BAD06 /* ButtonCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCTA.swift; sourceTree = "<group>"; };
 		E3744CE6299D9CAA00896E8D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E389693829B8820D00A632BC /* MeditationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationDetailView.swift; sourceTree = "<group>"; };
 		E389693A29B89D2400A632BC /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
@@ -97,6 +100,7 @@
 		E3ACBE8029B7F80400086EAB /* Particle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Particle.swift; sourceTree = "<group>"; };
 		E3ACBE8229B800C800086EAB /* ParticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleView.swift; sourceTree = "<group>"; };
 		E3C17CEB29BA24E30077CD21 /* phrases.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = phrases.realm; sourceTree = "<group>"; };
+		E3C22E9029BCB4FF00113C04 /* MoodFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodFace.swift; sourceTree = "<group>"; };
 		E3FEE4E729BB3A76001CAF0F /* CustomSegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,6 +213,7 @@
 		E32F83C029A1217300D8C530 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E356D9A929BCA0AF001BAD06 /* ButtonCTA.swift */,
 				E3A580D929B7A16D00329EF6 /* PhraseCard.swift */,
 				E337649C29B7E60E0047CFBE /* CategoryPill.swift */,
 				E332795C29B788DD00D048F6 /* MeditationCategoryCard.swift */,
@@ -216,6 +221,7 @@
 				E389693C29B8A44700A632BC /* ProgressBar.swift */,
 				E3FEE4E729BB3A76001CAF0F /* CustomSegmentedPicker.swift */,
 				E337897329BB65480065F137 /* SoundtrackRow.swift */,
+				E3C22E9029BCB4FF00113C04 /* MoodFace.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -359,6 +365,7 @@
 				E389693D29B8A44700A632BC /* ProgressBar.swift in Sources */,
 				E334A9A2299EBAE90077EB2F /* PhrasesView.swift in Sources */,
 				E3ACBE7F29B7F7ED00086EAB /* ParticleViewModel.swift in Sources */,
+				E3C22E9129BCB4FF00113C04 /* MoodFace.swift in Sources */,
 				E3ACBE8129B7F80400086EAB /* Particle.swift in Sources */,
 				E337649D29B7E60E0047CFBE /* CategoryPill.swift in Sources */,
 				E3479C2429B8BF7A004D8337 /* AudioManager.swift in Sources */,
@@ -367,6 +374,7 @@
 				E328E210299D942500B7B764 /* AngelApp.swift in Sources */,
 				E334A9A6299EC7C00077EB2F /* UserModel.swift in Sources */,
 				E337897429BB65480065F137 /* SoundtrackRow.swift in Sources */,
+				E356D9AA29BCA0AF001BAD06 /* ButtonCTA.swift in Sources */,
 				E350359A29BB574C006B3C8C /* MeditationRecapView.swift in Sources */,
 				E389694129B8A87B00A632BC /* MeditationViewModel.swift in Sources */,
 				E396F9E9299E73E300E6425D /* PhrasesRealmManager.swift in Sources */,

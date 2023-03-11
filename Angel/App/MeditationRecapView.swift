@@ -6,25 +6,140 @@
 //
 
 import SwiftUI
+import RealmSwift
+import DynamicColor
 
 struct MeditationRecapView: View {
+    
+    // MARK: - PROPERTIES
+    @ObservedRealmObject var meditation: Meditation
+    
+    let topUnitPoint: [UnitPoint] = [.top, .topLeading, .topTrailing]
+    let bottomUnitPoint: [UnitPoint] = [.bottom, .bottomLeading, .bottomTrailing]
+    
+    let moods: [Mood] = [.same, .better, .good, .great, .blessed]
+    @State var selectedMood: Mood? = nil
+    
+    // MARK: - BODY
     var body: some View {
-        VStack {
-            Text("Metitation Ended")
+        ZStack {
+            ParticleView()
+            VStack {
+                Text("Thank you")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .textCase(.uppercase)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
+                Text("Metitation Ended")
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.1)))
+                    .padding(.bottom)
+                Text("Say thank you to yourself for this moment you dedicated to your health and take a moment to apprecciate you and be grateful")
+                    .fontWeight(.medium)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.1)))
+                    .padding(.top)
+                
+                Spacer()
+                
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("How do you feel?")
+                        .font(.callout)
+                        .fontWeight(.medium)
+                        .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
+                    HStack {
+                        
+                        ForEach(moods, id: \.self) { mood in
+                            MoodFace(emoji: emojiForMood(mood), mood: mood, color: mainCategory().color, selectedMood: $selectedMood)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(self.selectedMood == mood ? Color(DynamicColor(hexString: mainCategory().color).saturated(amount: 0.2)) : Color(DynamicColor(hexString: mainCategory().color).lighter(amount: 0.3))
+                                        )
+                                )
+                                .onTapGesture {
+                                    selectedMood = mood
+                                }
+                            if mood != .blessed {
+                                Spacer()
+                            }
+                        }
+                        
+                    } //: HSTACK
+                } //: VSTACK
+                .padding()
+                .background(Color(DynamicColor(hexString: mainCategory().color).lighter(amount: 0.3)))
+                .cornerRadius(25)
+                .padding(.bottom, 50)
+                
+                ButtonCTA(text: "Close meditation",
+                          color: mainCategory().color) {
+                    // TODO: Update meditation if mood selected
+                    UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
+                }
+                
+            } //: VSTACK
+            .padding()
+        } //: ZSTACK
+        .onAppear {
+            // TODO: Append meditation to user
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            LinearGradient(gradient: Gradient(colors: [
+                Color(DynamicColor(hexString: mainCategory().color).lighter()),
+                Color(DynamicColor(hexString: mainCategory().color).saturated(amount: 0.5))
+                ]), startPoint: topUnitPoint.randomElement()!, endPoint: bottomUnitPoint.randomElement()!
+            ).ignoresSafeArea()
+        )
         .navigationBarItems(
             trailing: Button(action: {
                 UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
             }) {
                 Image(systemName: "xmark")
+                    .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
             }
         )
         .navigationBarBackButtonHidden(true)
     }
 }
 
+extension MeditationRecapView {
+    func mainCategory() -> Category {
+        if let mainCategory = meditation.categories.first {
+            return mainCategory
+        } else {
+            return Category()
+        }
+    }
+    
+    func emojiForMood(_ mood: Mood) -> String {
+        switch mood {
+        case .same:
+            return "😕"
+        case .better:
+            return "🙂"
+        case .good:
+            return "😌"
+        case .great:
+            return "😁"
+        case .blessed:
+            return "🤩"
+        }
+    }
+    
+}
+
 struct MeditationRecapView_Previews: PreviewProvider {
     static var previews: some View {
-        MeditationRecapView()
+        MeditationRecapView(meditation:
+                                Meditation(value: ["title": "Lorem ipsum",
+                                                   "caption": "Dolor sit amet magnecuis sitness",
+                                                   "categories": [Category(value: ["name": "Peace", "longName": "Inner Peace and Calm", "color": "#7FB3D5", "icon": ""])],
+                                                   "duration": 300,
+                                                   "track": "Angelic Soprano",
+                                                   "type": Typology.standard])
+                            )
     }
 }

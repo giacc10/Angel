@@ -24,3 +24,15 @@ enum Typology: String, PersistableEnum, CaseIterable {
     case featured = "Featured"
     case ofTheDay = "Of The Day"
 }
+
+enum Mood: String, PersistableEnum, CaseIterable {
+    case same    = "Same"
+    case better  = "Better"
+    case good    = "Good"
+    case great   = "Great"
+    case blessed = "Blessed"
+    
+    func localizedString() -> String {
+        return NSLocalizedString(self.rawValue, comment: "")
+    }
+}
