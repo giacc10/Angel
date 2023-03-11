@@ -17,8 +17,8 @@ struct MeditationView: View {
     var meditationViewModel: MeditationViewModel
     
     let synthesizer = AVSpeechSynthesizer()
-
-    let category: Category
+    
+    @State var loadedCategories: [Category] = []
     @State var phraseIndex: Int = 0
     @State var isIntroduction: Bool = true
     @State var isPlaying: Bool = true
@@ -42,11 +42,11 @@ struct MeditationView: View {
                 
                 Spacer()
                 
-                Text(isIntroduction ? "Let's start this \(category.name) meditation, close your eyes, relax and flow within" : category.angelicPhrases[phraseIndex].key)
+                Text(isIntroduction ? "Let's start this \(mainCategory().name.localizedString()) meditation, close your eyes, relax and flow within" : mainCategory().angelicPhrases[phraseIndex].key)
                     .customFont(size: 60)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(Color(DynamicColor(hexString: category.color).darkened(amount: 0.2)))
+                    .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
                     .padding()
                     .onAppear {
                         playIntroduction()
@@ -58,7 +58,7 @@ struct MeditationView: View {
                 
                 Spacer()
 
-                ProgressBar(isPlaying: $isPlaying, duration: meditationViewModel.meditation.duration, color: category.color)
+                ProgressBar(isPlaying: $isPlaying, duration: meditationViewModel.meditation.duration, color: mainCategory().color)
                     .environmentObject(audioManager)
                 
                 if let player = audioManager.player {
@@ -73,10 +73,10 @@ struct MeditationView: View {
                     } label: {
                         Image(systemName: isPlaying ? "pause.fill" : "play.fill")
                             .font(.title2)
-                            .foregroundColor(Color(DynamicColor(hexString: category.color).darkened(amount: 0.2)))
+                            .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
                     }
                     .padding(20)
-                    .background(Circle().fill(Color(DynamicColor(hexString: category.color).lighter(amount: 0.3))))
+                    .background(Circle().fill(Color(DynamicColor(hexString: mainCategory().color).lighter(amount: 0.3))))
                 }
                 
             } //: VSTACK
@@ -98,8 +98,8 @@ struct MeditationView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             LinearGradient(gradient: Gradient(colors: [
-                Color(DynamicColor(hexString: category.color).lighter()),
-                Color(DynamicColor(hexString: category.color).saturated(amount: 0.5))
+                Color(DynamicColor(hexString: mainCategory().color).lighter()),
+                Color(DynamicColor(hexString: mainCategory().color).saturated(amount: 0.5))
                 ]), startPoint: topUnitPoint.randomElement()!, endPoint: bottomUnitPoint.randomElement()!
             ).ignoresSafeArea()
         )
@@ -110,7 +110,7 @@ struct MeditationView: View {
                 UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
             }) {
                 Image(systemName: "xmark")
-                    .foregroundColor(Color(DynamicColor(hexString: category.color).darkened(amount: 0.2)))
+                    .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
             }
         )
         .navigationBarBackButtonHidden(true)
@@ -118,6 +118,14 @@ struct MeditationView: View {
 }
 
 extension MeditationView {
+    
+    func mainCategory() -> Category {
+        if let mainCategory = meditationViewModel.meditation.categories.first {
+            return mainCategory
+        } else {
+            return Category()
+        }
+    }
     
     func instantiateTimer() {
         self.meditationTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -130,8 +138,8 @@ extension MeditationView {
     }
     
     func loadAndSpeechPhrase() {
-        phraseIndex = Int.random(in: 0...category.angelicPhrases.count - 1)
-        let utterance = AVSpeechUtterance(string: category.angelicPhrases[phraseIndex].key)
+        phraseIndex = Int.random(in: 0...mainCategory().angelicPhrases.count - 1)
+        let utterance = AVSpeechUtterance(string: mainCategory().angelicPhrases[phraseIndex].key)
         //                utterance.voice = AVSpeechSynthesisVoice(language: Locale.preferredLanguages.first)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         utterance.pitchMultiplier = 1.2
@@ -140,7 +148,7 @@ extension MeditationView {
     }
     
     func playIntroduction() {
-        let utterance = AVSpeechUtterance(string: "Let's start this \(category.name) meditation, close your eyes, relax and flow within")
+        let utterance = AVSpeechUtterance(string: "Let's start this \(mainCategory().name) meditation, close your eyes, relax and flow within")
         //                utterance.voice = AVSpeechSynthesisVoice(language: Locale.preferredLanguages.first)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         utterance.pitchMultiplier = 1.2
@@ -155,10 +163,10 @@ extension MeditationView {
     }
 }
 
-struct MeditationView_Previews: PreviewProvider {
-    static let meditationVM = MeditationViewModel (meditation: Meditation.data)
-    
-    static var previews: some View {
-        MeditationView(meditationViewModel: meditationVM, category: Category(value: ["name": "Peace", "longName": "Inner Peace and Calm", "color": "#7FB3D5", "icon": ""]))
-    }
-}
+//struct MeditationView_Previews: PreviewProvider {
+//    static let meditationVM = MeditationViewModel (meditation: Meditation.data)
+//    
+//    static var previews: some View {
+//        MeditationView(meditationViewModel: meditationVM, category: Category(value: ["name": "Peace", "longName": "Inner Peace and Calm", "color": "#7FB3D5", "icon": ""]))
+//    }
+//}

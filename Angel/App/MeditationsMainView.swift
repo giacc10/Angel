@@ -144,7 +144,7 @@ struct MeditationsMainView: View {
                             }
                         } //: HSTACK
                         .fullScreenCover(item: $selectedCategoryCard, content: { category in
-                            MeditationDetailView(meditationViewModel: MeditationViewModel(meditation: Meditation.data), category: category)
+                            MeditationDetailView(meditationViewModel: MeditationViewModel(meditation: Meditation()), categories: [category])
                         })
                         .padding(.horizontal)
                     }

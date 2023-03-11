@@ -18,7 +18,7 @@ final class MeditationViewModel: ObservableObject {
         self.meditation = meditation
     }
     
-    func createMeditation(duration: Int, track: String) {
-        self.meditation = Meditation(title: "", description: "", categories: [], duration: durations[duration], track: track)
+    func createMeditation(title: String, caption: String, categories: [Category], duration: Int, track: String, type: Typology) {
+        self.meditation = Meditation(value: ["date": Date(), "title": title, "caption": caption, "categories": categories, "duration": durations[duration], "track": track, "type": type])
     }
 }

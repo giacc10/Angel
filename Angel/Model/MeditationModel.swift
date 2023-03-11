@@ -6,14 +6,21 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Meditation {
-    let id = UUID()
-    let title: String
-    let description: String
-    let categories: [Category]
-    let duration: TimeInterval
-    let track: String
-    
-    static let data = Meditation(title: "1 Minute Relaxing Meditation", description: "Clear your mind and slumber into nothingness. Allocate only a few moments for a quick breather.", categories: [Category(value: ["name": "Peace", "longName": "Inner Peace and Calm", "color": "#7FB3D5", "icon": ""])], duration: 204, track: "angelic-soprano")
+class Meditation: Object, ObjectKeyIdentifiable {
+    @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted var date: Date
+    @Persisted var title: String
+    @Persisted var caption: String
+    @Persisted var categories: List<Category>
+    @Persisted var duration: TimeInterval
+    @Persisted var track: String
+    @Persisted var type: Typology
+}
+
+enum Typology: String, PersistableEnum, CaseIterable {
+    case standard = "Standard"
+    case featured = "Featured"
+    case ofTheDay = "Of The Day"
 }
