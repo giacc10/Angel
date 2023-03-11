@@ -93,10 +93,12 @@ struct MeditationView: View {
                 player.stop()
                 cancelTimer()
                 isMeditationRecapInStack.toggle()
+                sayThankYou()
             }
             // Stop reading phrases little bit before ending
-            if meditationViewModel.meditation.duration - secondElapsed < 20 {
+            if meditationViewModel.meditation.duration - secondElapsed == 20 {
                 phraseTimer.upstream.connect().cancel()
+                player.setVolume(0, fadeDuration: 15)
             }
         })
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -164,6 +166,15 @@ extension MeditationView {
             audioManager.startPlayer(track: meditationViewModel.meditation.track)
             audioManager.toggleLoop()
         }
+    }
+    
+    func sayThankYou() {
+        let utterance = AVSpeechUtterance(string: "Thank you to have followed this meditation, i hope you feel better")
+        //                utterance.voice = AVSpeechSynthesisVoice(language: Locale.preferredLanguages.first)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.pitchMultiplier = 1.2
+        utterance.rate = 0.4
+        synthesizer.speak(utterance)
     }
 }
 
