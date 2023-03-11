@@ -57,7 +57,7 @@ struct MeditationDetailView: View {
                             ScrollView(showsIndicators: false) {
                                 VStack(spacing: 0) {
                                     ForEach(meditationViewModel.tracks, id: \.self) { track in
-                                        SoundtrackRow(color: mainCategory().color, title: track)
+                                        SoundtrackRow(color: mainCategory().color, title: track, selectedSoundtrack: $selectedSoundtrack)
                                             .environmentObject(audioPreviewManager)
                                             .onTapGesture {
                                                 selectedSoundtrack = track
