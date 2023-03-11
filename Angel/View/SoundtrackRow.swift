@@ -15,6 +15,7 @@ struct SoundtrackRow: View {
     var color: String
     var title: String
     @State var buttonPlaying: Bool = false
+    @Binding var selectedSoundtrack: String?
     
     // MARK: - BODY
     var body: some View {
@@ -37,7 +38,7 @@ struct SoundtrackRow: View {
             
             Text(title)
                 .fontWeight(.medium)
-                .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
+                .foregroundColor(selectedSoundtrack == title ? Color(DynamicColor(hexString: color).lighter(amount: 0.3)) :  Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
             Spacer()
         } //: HSTACK
         .contentShape(Rectangle())
@@ -47,7 +48,7 @@ struct SoundtrackRow: View {
 
 struct SoundtrackRow_Previews: PreviewProvider {
     static var previews: some View {
-        SoundtrackRow(color: "#7FB3D5", title: "Angelic Song")
+        SoundtrackRow(color: "#7FB3D5", title: "Angelic Song", selectedSoundtrack: .constant("Angelic Song"))
             .previewLayout(.sizeThatFits)
     }
 }

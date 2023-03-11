@@ -94,6 +94,10 @@ struct MeditationView: View {
                 cancelTimer()
                 isMeditationRecapInStack.toggle()
             }
+            // Stop reading phrases little bit before ending
+            if meditationViewModel.meditation.duration - secondElapsed < 20 {
+                phraseTimer.upstream.connect().cancel()
+            }
         })
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
