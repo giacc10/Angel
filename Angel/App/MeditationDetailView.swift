@@ -12,8 +12,8 @@ struct MeditationDetailView: View {
     
     // MARK: - PROPERTIES
     @Environment(\.dismiss) var dismiss
-    @StateObject var meditationViewModel: MeditationViewModel
     @StateObject var audioPreviewManager = AudioManager()
+    var meditationViewModel: MeditationViewModel
     
     let categories: [Category]
     let topUnitPoint: [UnitPoint] = [.top, .topLeading, .topTrailing]

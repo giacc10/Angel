@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E30FDAEB29BFAEFF00298DE5 /* MeditationOfTheDayCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30FDAEA29BFAEFF00298DE5 /* MeditationOfTheDayCard.swift */; };
 		E328E210299D942500B7B764 /* AngelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328E20F299D942500B7B764 /* AngelApp.swift */; };
 		E328E212299D942500B7B764 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328E211299D942500B7B764 /* ContentView.swift */; };
 		E328E214299D942600B7B764 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E328E213299D942600B7B764 /* Assets.xcassets */; };
@@ -51,10 +52,12 @@
 		E3ACBE8329B800C900086EAB /* ParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ACBE8229B800C800086EAB /* ParticleView.swift */; };
 		E3C17CEC29BA24E30077CD21 /* phrases.realm in Resources */ = {isa = PBXBuildFile; fileRef = E3C17CEB29BA24E30077CD21 /* phrases.realm */; };
 		E3C22E9129BCB4FF00113C04 /* MoodFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C22E9029BCB4FF00113C04 /* MoodFace.swift */; };
+		E3CA593329BF962100C55CB6 /* MeditationsStorageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CA593229BF962100C55CB6 /* MeditationsStorageModel.swift */; };
 		E3FEE4E829BB3A76001CAF0F /* CustomSegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FEE4E729BB3A76001CAF0F /* CustomSegmentedPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E30FDAEA29BFAEFF00298DE5 /* MeditationOfTheDayCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationOfTheDayCard.swift; sourceTree = "<group>"; };
 		E328E20C299D942500B7B764 /* Angel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Angel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E328E20F299D942500B7B764 /* AngelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngelApp.swift; sourceTree = "<group>"; };
 		E328E211299D942500B7B764 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +102,7 @@
 		E3ACBE8229B800C800086EAB /* ParticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleView.swift; sourceTree = "<group>"; };
 		E3C17CEB29BA24E30077CD21 /* phrases.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = phrases.realm; sourceTree = "<group>"; };
 		E3C22E9029BCB4FF00113C04 /* MoodFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodFace.swift; sourceTree = "<group>"; };
+		E3CA593229BF962100C55CB6 /* MeditationsStorageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationsStorageModel.swift; sourceTree = "<group>"; };
 		E3FEE4E729BB3A76001CAF0F /* CustomSegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +188,7 @@
 				E396F9AE299E331500E6425D /* CategoryModel.swift */,
 				E396F9B0299E332600E6425D /* AngelicPhraseModel.swift */,
 				E389693E29B8A80700A632BC /* MeditationModel.swift */,
+				E3CA593229BF962100C55CB6 /* MeditationsStorageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 				E356D9A929BCA0AF001BAD06 /* ButtonCTA.swift */,
 				E3A580D929B7A16D00329EF6 /* PhraseCard.swift */,
 				E337649C29B7E60E0047CFBE /* CategoryPill.swift */,
+				E30FDAEA29BFAEFF00298DE5 /* MeditationOfTheDayCard.swift */,
 				E332795C29B788DD00D048F6 /* MeditationCategoryCard.swift */,
 				E3ACBE8229B800C800086EAB /* ParticleView.swift */,
 				E389693C29B8A44700A632BC /* ProgressBar.swift */,
@@ -361,6 +367,7 @@
 				E389693D29B8A44700A632BC /* ProgressBar.swift in Sources */,
 				E334A9A2299EBAE90077EB2F /* PhrasesView.swift in Sources */,
 				E3ACBE7F29B7F7ED00086EAB /* ParticleViewModel.swift in Sources */,
+				E30FDAEB29BFAEFF00298DE5 /* MeditationOfTheDayCard.swift in Sources */,
 				E3C22E9129BCB4FF00113C04 /* MoodFace.swift in Sources */,
 				E3ACBE8129B7F80400086EAB /* Particle.swift in Sources */,
 				E337649D29B7E60E0047CFBE /* CategoryPill.swift in Sources */,
@@ -374,6 +381,7 @@
 				E350359A29BB574C006B3C8C /* MeditationRecapView.swift in Sources */,
 				E389694129B8A87B00A632BC /* MeditationViewModel.swift in Sources */,
 				E396F9E9299E73E300E6425D /* PhrasesRealmManager.swift in Sources */,
+				E3CA593329BF962100C55CB6 /* MeditationsStorageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

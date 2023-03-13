@@ -13,6 +13,7 @@ struct MeditationsMainView: View {
     
     // MARK: - PROPERTIES
     @StateObject var phrasesRealmManager = PhrasesRealmManager()
+    @StateObject var meditationViewModel = MeditationViewModel()
     
     @ObservedResults(User.self) var users
     
@@ -105,32 +106,12 @@ struct MeditationsMainView: View {
                     } //: VSTACK
                     
                     VStack(alignment: .leading) {
-                        Text("Recommended")
+                        Text("Of The Day")
                             .font(.footnote)
                             .fontWeight(.bold)
-                        HStack {
-                            VStack(alignment: .leading, spacing: 5) {
-                                Text("Find Peace")
-                                    .font(.title3)
-                                    .fontWeight(.bold)
-                                Text("Open your mind with a meditation for your mind")
-                                    .font(.footnote)
-                            } //: VSTACK
-                            .padding(5)
-                            Spacer()
-                            Button {
-                                
-                            } label: {
-                                Image(systemName: "play.fill")
-                                    .foregroundColor(.white)
-                            }
-                            .padding()
-                            .background(Circle().fill(Color.cyan))
-                        } //: HSTACK
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 12)
-                            .fill(.ultraThinMaterial)
-                        )
+                        
+                        MeditationOfTheDayCard(meditation: meditationViewModel.meditationOfTheDay)
+                        
                     } //: VSTACK
                     .padding(.horizontal)
                     
@@ -164,7 +145,7 @@ struct MeditationsMainView: View {
                                 }
                             } //: HSTACK
                             .fullScreenCover(item: $selectedCategoryCard, content: { category in
-                                MeditationDetailView(meditationViewModel: MeditationViewModel(meditation: Meditation()), categories: [category])
+                                MeditationDetailView(meditationViewModel: meditationViewModel, categories: [category])
                             })
                             .padding(.horizontal)
                         }
@@ -186,8 +167,8 @@ struct MeditationsMainView: View {
     }
 }
 
-struct MeditationsMainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MeditationsMainView()
-    }
-}
+//struct MeditationsMainView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MeditationsMainView()
+//    }
+//}

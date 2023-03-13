@@ -13,6 +13,7 @@ struct CreateUserView: View {
     // MARK: - PROPERTIES
     @State private var name = ""
     @ObservedResults(User.self) var users
+    @ObservedResults(MeditationsStorage.self) var meditationsStorage
     
     // MARK: - BODY
     var body: some View {
@@ -47,6 +48,10 @@ struct CreateUserView: View {
                         let user = User()
                         user.name = name.trimWhiteSpace()
                         $users.append(user)
+                        
+                        let meditationsStorage = MeditationsStorage()
+                        $meditationsStorage.append(meditationsStorage)
+                        
                     }
                     
                 } label: {
