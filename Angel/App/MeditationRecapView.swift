@@ -12,6 +12,8 @@ import DynamicColor
 struct MeditationRecapView: View {
     
     // MARK: - PROPERTIES
+    @Environment(\.realm) var realm
+    
     @ObservedRealmObject var meditation: Meditation
     
     let topUnitPoint: [UnitPoint] = [.top, .topLeading, .topTrailing]
@@ -60,6 +62,8 @@ struct MeditationRecapView: View {
                                 )
                                 .onTapGesture {
                                     selectedMood = mood
+//                                    $meditation.mood.wrappedValue = selectedMood
+//                                    updateMood(to: meditation, with: selectedMood)
                                 }
                             if mood != .blessed {
                                 Spacer()
@@ -75,7 +79,6 @@ struct MeditationRecapView: View {
                 
                 ButtonCTA(text: "Close meditation",
                           color: mainCategory().color) {
-                    // TODO: Update meditation if mood selected
                     UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
                 }
                 
@@ -83,7 +86,7 @@ struct MeditationRecapView: View {
             .padding()
         } //: ZSTACK
         .onAppear {
-            // TODO: Append meditation to user
+            appendMeditation()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
@@ -129,6 +132,34 @@ extension MeditationRecapView {
         }
     }
     
+    func appendMeditation() {
+        guard let user = realm.objects(User.self).where({ $0.id == 0 }).first else { return }
+        
+        let thawedUserRealm = user.thaw()!.realm!
+        try! thawedUserRealm.write {
+            // Use the .create method with `update: .modified` to copy the existing object into the realm
+            let meditationToAppend = thawedUserRealm.create(Meditation.self, value:
+                                                                ["date": meditation.date,
+                                                                 "title": meditation.title,
+                                                                 "caption": meditation.caption,
+                                                                 "categories": meditation.categories,
+                                                                 "duration": meditation.duration,
+                                                                 "track": meditation.track,
+                                                                 "type": meditation.type],
+                                               update: .modified)
+            user.meditations.append(meditationToAppend)
+        }
+        
+    }
+    
+    func updateMood(to meditation: Meditation, with mood: Mood?) {
+//        guard let meditationToEdit = realm.objects(Meditation.self).where({ $0.id == meditation.id }).first else { return }
+
+        try! realm.write {
+            meditation.setValue(mood, forKey: "mood")
+        }
+        
+    }
 }
 
 struct MeditationRecapView_Previews: PreviewProvider {

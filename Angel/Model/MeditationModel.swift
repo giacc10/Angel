@@ -17,6 +17,7 @@ class Meditation: Object, ObjectKeyIdentifiable {
     @Persisted var duration: TimeInterval
     @Persisted var track: String
     @Persisted var type: Typology
+    @Persisted var mood: Mood?
 }
 
 enum Typology: String, PersistableEnum, CaseIterable {

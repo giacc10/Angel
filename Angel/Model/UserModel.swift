@@ -12,4 +12,6 @@ class User: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var id = 0
     @Persisted var name: String
     @Persisted var image: Data?
+    
+    @Persisted var meditations: List<Meditation>
 }

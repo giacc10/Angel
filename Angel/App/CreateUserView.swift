@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct CreateUserView: View {
     
     // MARK: - PROPERTIES
     @State private var name = ""
-    @EnvironmentObject var appRealmManager: AppRealmManager
+    @ObservedResults(User.self) var users
     
     // MARK: - BODY
     var body: some View {
@@ -43,7 +44,9 @@ struct CreateUserView: View {
                     
                     if name != "" {
                         hideKeyboard()
-                        appRealmManager.createUser(name: name)
+                        let user = User()
+                        user.name = name.trimWhiteSpace()
+                        $users.append(user)
                     }
                     
                 } label: {

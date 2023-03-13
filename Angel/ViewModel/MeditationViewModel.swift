@@ -9,7 +9,7 @@ import Foundation
 
 final class MeditationViewModel: ObservableObject {
     
-    let durations: [TimeInterval] = [60, 600, 900, 1800, 2700, 3600]
+    let durations: [TimeInterval] = [300, 600, 900, 1800, 2700, 3600]
     let tracks: [String] = ["Angelic Soprano", "Did You Know Angels Play Guitar?", "Solo Path", "For When It Rains", "Epic Era", "Calling Emotional Angelic Melodic", "Angelic Interlude"]
     
     private(set) var meditation: Meditation

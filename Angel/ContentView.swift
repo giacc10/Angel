@@ -6,15 +6,16 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct ContentView: View {
     
     // MARK: - PROPERTIES
-    @StateObject var appRealmManager = AppRealmManager()
+    @ObservedResults(User.self) var users
     
     // MARK: - BODY
     var body: some View {
-        if appRealmManager.user != nil {
+        if !users.isEmpty {
             TabView {
                 HomeView()
                     .tabItem {
@@ -39,7 +40,6 @@ struct ContentView: View {
             }
         } else {
             CreateUserView()
-                .environmentObject(appRealmManager)
         }
     }
 }

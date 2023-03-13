@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 @main
-struct AngelApp: App {
+struct AngelApp: SwiftUI.App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.realmConfiguration, Realm.Configuration(schemaVersion: 1))
+                .onAppear {
+                    print("##: Realm path: \(Realm.Configuration.defaultConfiguration.fileURL!)")
+                }
         }
     }
 }

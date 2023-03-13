@@ -58,3 +58,14 @@ extension TimeInterval {
         return formatter.string(from: self) ?? ""
     }
 }
+
+extension String {
+    // Remove the last character if is a space
+    func trimWhiteSpace() -> String {
+        var newString = self
+        while newString.last?.isWhitespace == true {
+            newString = String(newString.dropLast())
+        }
+        return newString
+    }
+}
