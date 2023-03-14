@@ -13,7 +13,7 @@ struct MeditationView: View {
     
     // MARK: - PROPERTIES
     @StateObject var audioManager = AudioManager()
-    var meditationViewModel: MeditationViewModel
+    var meditation: Meditation
     
     let synthesizer = AVSpeechSynthesizer()
     
@@ -57,7 +57,7 @@ struct MeditationView: View {
                 
                 Spacer()
 
-                ProgressBar(isPlaying: $isPlaying, duration: meditationViewModel.meditation.duration, color: mainCategory().color)
+                ProgressBar(isPlaying: $isPlaying, duration: meditation.duration, color: mainCategory().color)
                     .environmentObject(audioManager)
                 
                 if let player = audioManager.player {
@@ -82,20 +82,20 @@ struct MeditationView: View {
             .padding()
         } //: ZSTACK
         .navigationDestination(isPresented: $isMeditationRecapInStack) {
-            MeditationRecapView(meditation: meditationViewModel.meditation)
+            MeditationRecapView(meditation: meditation)
         }
         .onReceive(meditationTimer, perform: { _ in
             guard let player = audioManager.player else { return }
             
             secondElapsed += 1
-            if secondElapsed >= meditationViewModel.meditation.duration {
+            if secondElapsed >= meditation.duration {
                 player.stop()
                 cancelTimer()
                 isMeditationRecapInStack.toggle()
                 sayThankYou()
             }
             // Stop reading phrases little bit before ending
-            if meditationViewModel.meditation.duration - secondElapsed == 20 {
+            if meditation.duration - secondElapsed == 20 {
                 phraseTimer.upstream.connect().cancel()
                 player.setVolume(0, fadeDuration: 15)
             }
@@ -125,7 +125,7 @@ struct MeditationView: View {
 extension MeditationView {
     
     func mainCategory() -> Category {
-        if let mainCategory = meditationViewModel.meditation.categories.first {
+        if let mainCategory = meditation.categories.first {
             return mainCategory
         } else {
             return Category()
@@ -162,7 +162,7 @@ extension MeditationView {
         DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
             isIntroduction = false
             instantiateTimer()
-            audioManager.startPlayer(track: meditationViewModel.meditation.track)
+            audioManager.startPlayer(track: meditation.track)
             audioManager.toggleLoop()
         }
     }

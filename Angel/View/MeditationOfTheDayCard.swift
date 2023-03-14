@@ -25,6 +25,7 @@ struct MeditationOfTheDayCard: View {
                     Text(meditation.title)
                         .font(.title3)
                         .fontWeight(.bold)
+                        .textCase(.uppercase)
                         .foregroundColor(Color(DynamicColor(hexString: meditation.categories.first!.color).darkened(amount: 0.2)))
                     HStack(alignment: .center) {
                         Text("\(meditation.duration.toMinutes()) minutes")
@@ -45,7 +46,7 @@ struct MeditationOfTheDayCard: View {
             .padding(5)
             Spacer()
             Button {
-//                isMeditationViewInStack.toggle()
+                isMeditationViewInStack.toggle()
             } label: {
                 Image(systemName: "play.fill")
                     .foregroundColor(Color(DynamicColor(hexString: meditation.categories.first!.color).lighter(amount: 0.3)))
@@ -53,7 +54,7 @@ struct MeditationOfTheDayCard: View {
             .padding()
             .background(Circle().fill(Color(DynamicColor(hexString: meditation.categories.first!.color).darkened(amount: 0.2))))
             .fullScreenCover(isPresented: $isMeditationViewInStack) {
-//                MeditationView(meditation: meditation)
+                MeditationView(meditation: meditation)
             }
         } //: HSTACK
         .padding()

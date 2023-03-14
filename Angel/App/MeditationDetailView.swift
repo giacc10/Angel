@@ -16,6 +16,8 @@ struct MeditationDetailView: View {
     var meditationViewModel: MeditationViewModel
     
     let categories: [Category]
+    @State var meditation = Meditation()
+    
     let topUnitPoint: [UnitPoint] = [.top, .topLeading, .topTrailing]
     let bottomUnitPoint: [UnitPoint] = [.bottom, .bottomLeading, .bottomTrailing]
     
@@ -39,7 +41,7 @@ struct MeditationDetailView: View {
                         .font(.headline)
                         .fontWeight(.semibold)
                         .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.1)))
-                    Text(meditationViewModel.meditation.caption)
+                    Text(meditation.caption)
                         .fontWeight(.medium)
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.1)))
@@ -101,11 +103,12 @@ struct MeditationDetailView: View {
                     ButtonCTA(text: "Start \(mainCategory().name.localizedString()) Meditation",
                               color: mainCategory().color) {
                         audioPreviewManager.stop()
-                        meditationViewModel.createMeditation(title: "", caption: "", categories: categories, duration: selectedTimer, track: selectedSoundtrack ?? "Angelic Soprano", type: .standard)
+//                        meditationViewModel.createMeditation(title: "", caption: "", categories: categories, duration: selectedTimer, track: selectedSoundtrack ?? "Angelic Soprano", type: .standard)
+                        meditation = meditationViewModel.createMeditation(title: "", caption: "", categories: categories, duration: selectedTimer, track: selectedSoundtrack ?? "Angelic Soprano", type: .standard)
                         isMeditationViewInStack.toggle()
                     }
                     .navigationDestination(isPresented: $isMeditationViewInStack) {
-                        MeditationView(meditationViewModel: meditationViewModel)
+                        MeditationView(meditation: meditation)
                     }
                     
                 } //: VSTACK

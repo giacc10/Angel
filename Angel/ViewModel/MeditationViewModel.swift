@@ -13,10 +13,10 @@ final class MeditationViewModel: ObservableObject {
     @ObservedResults(MeditationsStorage.self) var meditationsStorages
     
     let phrasesRealmManager = PhrasesRealmManager()
-    let durations: [TimeInterval] = [300, 600, 900, 1800, 2700, 3600]
+    let durations: [TimeInterval] = [10, 600, 900, 1800, 2700, 3600]
     let tracks: [String] = ["Angelic Soprano", "Did You Know Angels Play Guitar?", "Solo Path", "For When It Rains", "Epic Era", "Calling Emotional Angelic Melodic", "Angelic Interlude"]
     
-    private(set) var meditation = Meditation()
+//    private(set) var meditation = Meditation()
     private(set) var meditationOfTheDay = Meditation()
     
     init() {
@@ -24,8 +24,12 @@ final class MeditationViewModel: ObservableObject {
         self.meditationOfTheDay = getTodaysMeditation() ?? Meditation()
     }
     
-    func createMeditation(title: String, caption: String, categories: [Category], duration: Int, track: String, type: Typology) {
-        self.meditation = Meditation(value: ["date": Date(), "title": title, "caption": caption, "categories": categories, "duration": durations[duration], "track": track, "type": type])
+//    func createMeditation(title: String, caption: String, categories: [Category], duration: Int, track: String, type: Typology) {
+//        self.meditation = Meditation(value: ["date": Date(), "title": title, "caption": caption, "categories": categories, "duration": durations[duration], "track": track, "type": type])
+//    }
+    
+    func createMeditation(title: String, caption: String, categories: [Category], duration: Int, track: String, type: Typology) -> Meditation {
+        return Meditation(value: ["date": Date(), "title": title, "caption": caption, "categories": categories, "duration": durations[duration], "track": track, "type": type])
     }
     
     private func getTodaysMeditation() -> Meditation? {
