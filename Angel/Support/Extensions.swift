@@ -59,6 +59,16 @@ extension TimeInterval {
     }
 }
 
+extension LocalizedStringKey {
+    var stringKey: String? {
+        Mirror(reflecting: self).children.first(where: { $0.label == "key" })?.value as? String
+    }
+    
+    func stringValue(locale: Locale = .current) -> String {
+        return .localizedString(for: self.stringKey ?? "", locale: locale)
+    }
+}
+
 extension String {
     // Remove the last character if is a space
     func trimWhiteSpace() -> String {
@@ -67,6 +77,17 @@ extension String {
             newString = String(newString.dropLast())
         }
         return newString
+    }
+    
+    static func localizedString(for key: String,
+                                locale: Locale = .current) -> String {
+        
+        let language = locale.languageCode
+        let path = Bundle.main.path(forResource: language, ofType: "lproj")!
+        let bundle = Bundle(path: path)!
+        let localizedString = NSLocalizedString(key, bundle: bundle, comment: "")
+        
+        return localizedString
     }
 }
 

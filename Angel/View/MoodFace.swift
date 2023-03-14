@@ -22,7 +22,7 @@ struct MoodFace: View {
             Text(emoji)
                 .font(.system(size: 45))
             Text(mood.localizedString())
-                .font(.caption2)
+                .font(.system(size: 9))
                 .fontWeight(.medium)
                 .foregroundColor(selectedMood == mood ? Color(DynamicColor(hexString: color).lighter(amount: 0.3)) : Color(DynamicColor(hexString: color).darkened(amount: 0.1)))
         } //: VSTACK

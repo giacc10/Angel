@@ -61,7 +61,7 @@ struct HomeView: View {
                             VStack(spacing: 7) {
                                 Image(systemName: "heart.fill")
                                     .font(.title)
-                                Text("Like")
+                                Text(String(localized: "Like"))
                                     .font(.caption2)
                             }
                             .foregroundColor(.black)
@@ -72,7 +72,7 @@ struct HomeView: View {
                             VStack(spacing: 7) {
                                 Image(systemName: "arrowshape.turn.up.right.fill")
                                     .font(.title)
-                                Text("Share")
+                                Text(String(localized: "Share"))
                                     .font(.caption2)
                             }
                             .foregroundColor(.black)

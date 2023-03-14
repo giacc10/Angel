@@ -51,7 +51,7 @@ struct MeditationDetailView: View {
                     
                     VStack {
                         VStack(alignment: .leading, spacing: 5) {
-                            Text("Choose meditation soundtrack:")
+                            Text(String(localized: "Choose-Meditation-Soundtrack"))
                                 .font(.callout)
                                 .fontWeight(.medium)
                                 .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
@@ -87,7 +87,7 @@ struct MeditationDetailView: View {
                         } //: VSTACK
                         
                         VStack(alignment: .leading, spacing: 5) {
-                            Text("Choose meditation minutes:")
+                            Text(String(localized: "Choose-Meditation-Minutes"))
                                 .font(.callout)
                                 .fontWeight(.medium)
                                 .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
@@ -100,7 +100,7 @@ struct MeditationDetailView: View {
                     .cornerRadius(25)
                     .padding(.bottom, 50)
                     
-                    ButtonCTA(text: "Start \(mainCategory().name.localizedString()) Meditation",
+                    ButtonCTA(text: String(localized: "Start-Meditation \(mainCategory().name.localizedString())"),
                               color: mainCategory().color) {
                         audioPreviewManager.stop()
 //                        meditationViewModel.createMeditation(title: "", caption: "", categories: categories, duration: selectedTimer, track: selectedSoundtrack ?? "Angelic Soprano", type: .standard)

@@ -50,9 +50,9 @@
 		E3ACBE7F29B7F7ED00086EAB /* ParticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ACBE7E29B7F7ED00086EAB /* ParticleViewModel.swift */; };
 		E3ACBE8129B7F80400086EAB /* Particle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ACBE8029B7F80400086EAB /* Particle.swift */; };
 		E3ACBE8329B800C900086EAB /* ParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ACBE8229B800C800086EAB /* ParticleView.swift */; };
-		E3C17CEC29BA24E30077CD21 /* phrases.realm in Resources */ = {isa = PBXBuildFile; fileRef = E3C17CEB29BA24E30077CD21 /* phrases.realm */; };
 		E3C22E9129BCB4FF00113C04 /* MoodFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C22E9029BCB4FF00113C04 /* MoodFace.swift */; };
 		E3CA593329BF962100C55CB6 /* MeditationsStorageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CA593229BF962100C55CB6 /* MeditationsStorageModel.swift */; };
+		E3DF262629C10A6400A0FD24 /* phrases.realm in Resources */ = {isa = PBXBuildFile; fileRef = E3DF262529C10A6400A0FD24 /* phrases.realm */; };
 		E3FEE4E829BB3A76001CAF0F /* CustomSegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FEE4E729BB3A76001CAF0F /* CustomSegmentedPicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -100,9 +100,9 @@
 		E3ACBE7E29B7F7ED00086EAB /* ParticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleViewModel.swift; sourceTree = "<group>"; };
 		E3ACBE8029B7F80400086EAB /* Particle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Particle.swift; sourceTree = "<group>"; };
 		E3ACBE8229B800C800086EAB /* ParticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleView.swift; sourceTree = "<group>"; };
-		E3C17CEB29BA24E30077CD21 /* phrases.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = phrases.realm; sourceTree = "<group>"; };
 		E3C22E9029BCB4FF00113C04 /* MoodFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodFace.swift; sourceTree = "<group>"; };
 		E3CA593229BF962100C55CB6 /* MeditationsStorageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationsStorageModel.swift; sourceTree = "<group>"; };
+		E3DF262529C10A6400A0FD24 /* phrases.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = phrases.realm; sourceTree = "<group>"; };
 		E3FEE4E729BB3A76001CAF0F /* CustomSegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,7 +246,7 @@
 		E396F9E5299E736200E6425D /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				E3C17CEB29BA24E30077CD21 /* phrases.realm */,
+				E3DF262529C10A6400A0FD24 /* phrases.realm */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -328,12 +328,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3C17CEC29BA24E30077CD21 /* phrases.realm in Resources */,
 				E328E22A299D955900B7B764 /* White Scratches.ttf in Resources */,
 				E334A9AD299ECF320077EB2F /* Localizable.strings in Resources */,
 				E3479C2729B8C1E5004D8337 /* Angelic Soprano.mp3 in Resources */,
 				E328E228299D954800B7B764 /* Alvifont.ttf in Resources */,
 				E337897E29BB7E740065F137 /* Solo Path.mp3 in Resources */,
+				E3DF262629C10A6400A0FD24 /* phrases.realm in Resources */,
 				E328E217299D942600B7B764 /* Preview Assets.xcassets in Resources */,
 				E337897F29BB7E740065F137 /* Calling Emotional Angelic Melodic.mp3 in Resources */,
 				E337897829BB76450065F137 /* Did You Know Angels Play Guitar?.mp3 in Resources */,

@@ -40,11 +40,11 @@ struct MeditationsMainView: View {
                     
                     HStack {
                         Image(systemName: "person.fill")
-                        Text(users.first?.name ?? "Buddy")
+                        Text(users.first?.name ?? String(localized: "Buddy"))
                             .font(.subheadline)
                             .fontWeight(.bold)
                         Spacer()
-                        Text("\(users.first?.meditations.count ?? 0) meditations")
+                        Text(String(localized: "Meditation-Number \(users.first?.meditations.count ?? 0)"))
                             .font(.subheadline)
                             .fontWeight(.medium)
                     } //: HSTACK
@@ -55,7 +55,7 @@ struct MeditationsMainView: View {
                     .padding(.horizontal)
                     
                     VStack(alignment: .leading) {
-                        Text("Featured")
+                        Text(String(localized: "Featured"))
                             .font(.footnote)
                             .fontWeight(.bold)
                             .padding(.leading)
@@ -106,7 +106,7 @@ struct MeditationsMainView: View {
                     } //: VSTACK
                     
                     VStack(alignment: .leading) {
-                        Text("Of The Day")
+                        Text(String(localized: "Of-The-Day"))
                             .font(.footnote)
                             .fontWeight(.bold)
                         
@@ -117,7 +117,7 @@ struct MeditationsMainView: View {
                     
                     VStack(alignment: .leading) {
                         HStack {
-                            Text("All Meditations")
+                            Text(String(localized: "All-Meditations"))
                                 .font(.footnote)
                                 .fontWeight(.bold)
                             Spacer()
@@ -125,7 +125,7 @@ struct MeditationsMainView: View {
                                 
                             } label: {
                                 HStack(spacing: 5) {
-                                    Text("See all")
+                                    Text(String(localized: "See-All"))
                                         .font(.footnote)
                                         .fontWeight(.bold)
                                     Image(systemName: "chevron.right")
@@ -157,7 +157,7 @@ struct MeditationsMainView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     VStack {
-                        Text("Meditation")
+                        Text(String(localized: "Meditation"))
                             .customFont(size: 40)
 //                            .textCase(.uppercase)
                     }

@@ -27,18 +27,18 @@ struct MeditationRecapView: View {
         ZStack {
             ParticleView()
             VStack {
-                Text("Thank you")
+                Text(String(localized: "Thank-You"))
                     .font(.title)
                     .fontWeight(.bold)
                     .textCase(.uppercase)
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
-                Text("Metitation Ended")
+                Text(String(localized: "Meditation-Ended"))
                     .font(.headline)
                     .fontWeight(.semibold)
                     .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.1)))
                     .padding(.bottom)
-                Text("Say thank you to yourself for this moment you dedicated to your health and take a moment to apprecciate you and be grateful")
+                Text(String(localized: "Say-Thank-You"))
                     .fontWeight(.medium)
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.1)))
@@ -47,7 +47,7 @@ struct MeditationRecapView: View {
                 Spacer()
                 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("How do you feel?")
+                    Text(String(localized: "How-Do-You-Feel"))
                         .font(.callout)
                         .fontWeight(.medium)
                         .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
@@ -77,7 +77,7 @@ struct MeditationRecapView: View {
                 .cornerRadius(25)
                 .padding(.bottom, 50)
                 
-                ButtonCTA(text: "Close meditation",
+                ButtonCTA(text: String(localized: "Close-Meditation"),
                           color: mainCategory().color) {
                     UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
                 }

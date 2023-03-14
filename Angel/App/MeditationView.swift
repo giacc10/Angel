@@ -41,7 +41,7 @@ struct MeditationView: View {
                 
                 Spacer()
                 
-                Text(isIntroduction ? "Let's start this \(mainCategory().name.localizedString()) meditation, close your eyes, relax and flow within" : mainCategory().angelicPhrases[phraseIndex].key)
+                Text(isIntroduction ?  LocalizedStringKey("Start-Meditation-Speech") : LocalizedStringKey(mainCategory().angelicPhrases[phraseIndex].key))
                     .customFont(size: 60)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
@@ -123,7 +123,6 @@ struct MeditationView: View {
 }
 
 extension MeditationView {
-    
     func mainCategory() -> Category {
         if let mainCategory = meditation.categories.first {
             return mainCategory
@@ -142,20 +141,29 @@ extension MeditationView {
         self.phraseTimer.upstream.connect().cancel()
     }
     
+    func getLanguageCode() -> String {
+        switch Locale.preferredLanguages.first {
+        case "it":
+            return "it-IT"
+        default:
+            return "en-US"
+        }
+    }
+    
     func loadAndSpeechPhrase() {
         phraseIndex = Int.random(in: 0...mainCategory().angelicPhrases.count - 1)
-        let utterance = AVSpeechUtterance(string: mainCategory().angelicPhrases[phraseIndex].key)
+        let utterance = AVSpeechUtterance(string: LocalizedStringKey(mainCategory().angelicPhrases[phraseIndex].key).stringValue())
         //                utterance.voice = AVSpeechSynthesisVoice(language: Locale.preferredLanguages.first)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.voice = AVSpeechSynthesisVoice(language: getLanguageCode())
         utterance.pitchMultiplier = 1.2
         utterance.rate = 0.4
         synthesizer.speak(utterance)
     }
     
     func playIntroduction() {
-        let utterance = AVSpeechUtterance(string: "Let's start this \(mainCategory().name) meditation, close your eyes, relax and flow within")
+        let utterance = AVSpeechUtterance(string: LocalizedStringKey("Start-Meditation-Speech").stringValue())
         //                utterance.voice = AVSpeechSynthesisVoice(language: Locale.preferredLanguages.first)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.voice = AVSpeechSynthesisVoice(language: getLanguageCode())
         utterance.pitchMultiplier = 1.2
         utterance.rate = 0.4
         synthesizer.speak(utterance)
@@ -168,9 +176,9 @@ extension MeditationView {
     }
     
     func sayThankYou() {
-        let utterance = AVSpeechUtterance(string: "Thank you to have followed this meditation, i hope you feel better")
+        let utterance = AVSpeechUtterance(string: LocalizedStringKey("Thank-You-Meditation-Speech").stringValue())
         //                utterance.voice = AVSpeechSynthesisVoice(language: Locale.preferredLanguages.first)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.voice = AVSpeechSynthesisVoice(language: getLanguageCode())
         utterance.pitchMultiplier = 1.2
         utterance.rate = 0.4
         synthesizer.speak(utterance)

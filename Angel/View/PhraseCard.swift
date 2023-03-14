@@ -29,7 +29,7 @@ struct PhraseCard: View {
             .padding()
             
             Spacer()
-            Text(phrase.key)
+            Text(LocalizedStringKey(phrase.key))
                 .customFont(size: 60)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity)
@@ -39,12 +39,7 @@ struct PhraseCard: View {
             Spacer()
             
             Button {
-                let utterance = AVSpeechUtterance(string: phrase.key)
-//                utterance.voice = AVSpeechSynthesisVoice(language: Locale.preferredLanguages.first)
-                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-                utterance.pitchMultiplier = 1.2
-                utterance.rate = 0.4
-                synthesizer.speak(utterance)
+                speakPhrase()
             } label: {
                 Image(systemName: "speaker.wave.2.fill")
                     .foregroundColor(Color(DynamicColor(hexString: phrase.categories.first!.color).darkened(amount: 0.6)))
@@ -74,6 +69,26 @@ struct PhraseCard: View {
             )
         )
         .padding(10)
+    }
+}
+
+extension PhraseCard {
+    func getLanguageCode() -> String {
+        switch Locale.preferredLanguages.first {
+        case "it":
+            return "it-IT"
+        default:
+            return "en-US"
+        }
+    }
+    
+    func speakPhrase() {
+        let utterance = AVSpeechUtterance(string: LocalizedStringKey(phrase.key).stringValue())
+//        utterance.voice = AVSpeechSynthesisVoice(language: Locale.preferredLanguages.first)
+        utterance.voice = AVSpeechSynthesisVoice(language: getLanguageCode())
+        utterance.pitchMultiplier = 1.2
+        utterance.rate = 0.4
+        synthesizer.speak(utterance)
     }
 }
 
