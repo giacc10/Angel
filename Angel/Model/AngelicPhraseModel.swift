@@ -10,7 +10,7 @@ import RealmSwift
 
 class AngelicPhrase: Object, Identifiable {
     @Persisted(primaryKey: true) var id = UUID().uuidString
-    @Persisted var idProgressive: Int
+    @Persisted var idProgressive: String
     @Persisted var key: String
     @Persisted var premium: Bool
     

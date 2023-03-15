@@ -39,6 +39,7 @@
 		E389693D29B8A44700A632BC /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693C29B8A44700A632BC /* ProgressBar.swift */; };
 		E389693F29B8A80700A632BC /* MeditationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693E29B8A80700A632BC /* MeditationModel.swift */; };
 		E389694129B8A87B00A632BC /* MeditationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389694029B8A87B00A632BC /* MeditationViewModel.swift */; };
+		E38F021529C2713600C470D8 /* phrases.realm in Resources */ = {isa = PBXBuildFile; fileRef = E38F021429C2713600C470D8 /* phrases.realm */; };
 		E396F9AB299E321D00E6425D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E396F9AA299E321D00E6425D /* Realm */; };
 		E396F9AD299E321D00E6425D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E396F9AC299E321D00E6425D /* RealmSwift */; };
 		E396F9AF299E331500E6425D /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396F9AE299E331500E6425D /* CategoryModel.swift */; };
@@ -52,7 +53,6 @@
 		E3ACBE8329B800C900086EAB /* ParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ACBE8229B800C800086EAB /* ParticleView.swift */; };
 		E3C22E9129BCB4FF00113C04 /* MoodFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C22E9029BCB4FF00113C04 /* MoodFace.swift */; };
 		E3CA593329BF962100C55CB6 /* MeditationsStorageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CA593229BF962100C55CB6 /* MeditationsStorageModel.swift */; };
-		E3DF262629C10A6400A0FD24 /* phrases.realm in Resources */ = {isa = PBXBuildFile; fileRef = E3DF262529C10A6400A0FD24 /* phrases.realm */; };
 		E3FEE4E829BB3A76001CAF0F /* CustomSegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FEE4E729BB3A76001CAF0F /* CustomSegmentedPicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +92,7 @@
 		E389693C29B8A44700A632BC /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		E389693E29B8A80700A632BC /* MeditationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationModel.swift; sourceTree = "<group>"; };
 		E389694029B8A87B00A632BC /* MeditationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationViewModel.swift; sourceTree = "<group>"; };
+		E38F021429C2713600C470D8 /* phrases.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = phrases.realm; sourceTree = "<group>"; };
 		E396F9AE299E331500E6425D /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		E396F9B0299E332600E6425D /* AngelicPhraseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngelicPhraseModel.swift; sourceTree = "<group>"; };
 		E396F9E8299E73E300E6425D /* PhrasesRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhrasesRealmManager.swift; sourceTree = "<group>"; };
@@ -102,7 +103,6 @@
 		E3ACBE8229B800C800086EAB /* ParticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleView.swift; sourceTree = "<group>"; };
 		E3C22E9029BCB4FF00113C04 /* MoodFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodFace.swift; sourceTree = "<group>"; };
 		E3CA593229BF962100C55CB6 /* MeditationsStorageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationsStorageModel.swift; sourceTree = "<group>"; };
-		E3DF262529C10A6400A0FD24 /* phrases.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = phrases.realm; sourceTree = "<group>"; };
 		E3FEE4E729BB3A76001CAF0F /* CustomSegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,7 +246,7 @@
 		E396F9E5299E736200E6425D /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				E3DF262529C10A6400A0FD24 /* phrases.realm */,
+				E38F021429C2713600C470D8 /* phrases.realm */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -333,7 +333,7 @@
 				E3479C2729B8C1E5004D8337 /* Angelic Soprano.mp3 in Resources */,
 				E328E228299D954800B7B764 /* Alvifont.ttf in Resources */,
 				E337897E29BB7E740065F137 /* Solo Path.mp3 in Resources */,
-				E3DF262629C10A6400A0FD24 /* phrases.realm in Resources */,
+				E38F021529C2713600C470D8 /* phrases.realm in Resources */,
 				E328E217299D942600B7B764 /* Preview Assets.xcassets in Resources */,
 				E337897F29BB7E740065F137 /* Calling Emotional Angelic Melodic.mp3 in Resources */,
 				E337897829BB76450065F137 /* Did You Know Angels Play Guitar?.mp3 in Resources */,
@@ -520,7 +520,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "\"Angel/Preview Content\"";
 				DEVELOPMENT_TEAM = 4NNU2X6939;
 				ENABLE_PREVIEWS = YES;
@@ -551,7 +551,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "\"Angel/Preview Content\"";
 				DEVELOPMENT_TEAM = 4NNU2X6939;
 				ENABLE_PREVIEWS = YES;

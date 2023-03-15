@@ -16,7 +16,7 @@ struct HomeView: View {
     @State private var currentPhrase = ""
     @State private var phrasesArray: [AngelicPhrase] = []
 //    @State private var phrasesIndexs: [Int] = []
-    @State private var loadedPhraseIds = Set<Int>()
+    @State private var loadedPhraseIds = Set<String>()
     
     // MARK: - BODY
     var body: some View {

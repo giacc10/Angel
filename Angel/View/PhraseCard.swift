@@ -74,7 +74,7 @@ struct PhraseCard: View {
 
 extension PhraseCard {
     func getLanguageCode() -> String {
-        switch Locale.preferredLanguages.first {
+        switch Locale.current.language.languageCode?.identifier {
         case "it":
             return "it-IT"
         default:

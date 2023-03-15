@@ -79,8 +79,7 @@ extension String {
         return newString
     }
     
-    static func localizedString(for key: String,
-                                locale: Locale = .current) -> String {
+    static func localizedString(for key: String, locale: Locale = .current) -> String {
         
         let language = locale.languageCode
         let path = Bundle.main.path(forResource: language, ofType: "lproj")!
