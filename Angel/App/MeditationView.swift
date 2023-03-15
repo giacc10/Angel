@@ -42,7 +42,9 @@ struct MeditationView: View {
                 Spacer()
                 
                 Text(isIntroduction ?  LocalizedStringKey("Start-Meditation-Speech") : LocalizedStringKey(mainCategory().angelicPhrases[phraseIndex].key))
-                    .customFont(size: 60)
+//                    .customFont(size: 40)
+                    .font(.system(size: 35))
+                    .fontWeight(.bold)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
                     .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))

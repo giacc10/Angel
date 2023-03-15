@@ -32,8 +32,10 @@ struct PhrasesView: View {
                 ToolbarItem(placement: .principal) {
                     VStack {
                         Text("Phrases")
-                            .customFont(size: 40)
-//                            .textCase(.uppercase)
+//                            .customFont(size: 40)
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .textCase(.uppercase)
                     }
                 }
             }

@@ -158,8 +158,10 @@ struct MeditationsMainView: View {
                 ToolbarItem(placement: .principal) {
                     VStack {
                         Text(String(localized: "Meditation"))
-                            .customFont(size: 40)
-//                            .textCase(.uppercase)
+//                            .customFont(size: 40)
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .textCase(.uppercase)
                     }
                 }
             }

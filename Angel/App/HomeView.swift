@@ -87,8 +87,10 @@ struct HomeView: View {
                 ToolbarItem(placement: .principal) {
                     VStack {
                         Text("Angel")
-                            .customFont(size: 40)
-//                            .textCase(.uppercase)
+//                            .customFont(size: 40)
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .textCase(.uppercase)
                     }
                 }
             }

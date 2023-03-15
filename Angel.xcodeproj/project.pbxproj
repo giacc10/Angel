@@ -40,6 +40,7 @@
 		E389693F29B8A80700A632BC /* MeditationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693E29B8A80700A632BC /* MeditationModel.swift */; };
 		E389694129B8A87B00A632BC /* MeditationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389694029B8A87B00A632BC /* MeditationViewModel.swift */; };
 		E38F021529C2713600C470D8 /* phrases.realm in Resources */ = {isa = PBXBuildFile; fileRef = E38F021429C2713600C470D8 /* phrases.realm */; };
+		E38F021B29C2869C00C470D8 /* HeyAugust.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E38F021A29C2869C00C470D8 /* HeyAugust.ttf */; };
 		E396F9AB299E321D00E6425D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E396F9AA299E321D00E6425D /* Realm */; };
 		E396F9AD299E321D00E6425D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E396F9AC299E321D00E6425D /* RealmSwift */; };
 		E396F9AF299E331500E6425D /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396F9AE299E331500E6425D /* CategoryModel.swift */; };
@@ -93,6 +94,7 @@
 		E389693E29B8A80700A632BC /* MeditationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationModel.swift; sourceTree = "<group>"; };
 		E389694029B8A87B00A632BC /* MeditationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationViewModel.swift; sourceTree = "<group>"; };
 		E38F021429C2713600C470D8 /* phrases.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = phrases.realm; sourceTree = "<group>"; };
+		E38F021A29C2869C00C470D8 /* HeyAugust.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HeyAugust.ttf; sourceTree = "<group>"; };
 		E396F9AE299E331500E6425D /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		E396F9B0299E332600E6425D /* AngelicPhraseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngelicPhraseModel.swift; sourceTree = "<group>"; };
 		E396F9E8299E73E300E6425D /* PhrasesRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhrasesRealmManager.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		E328E220299D94DD00B7B764 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				E38F021A29C2869C00C470D8 /* HeyAugust.ttf */,
 				E328E229299D955900B7B764 /* White Scratches.ttf */,
 				E328E227299D954800B7B764 /* Alvifont.ttf */,
 			);
@@ -328,6 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E38F021B29C2869C00C470D8 /* HeyAugust.ttf in Resources */,
 				E328E22A299D955900B7B764 /* White Scratches.ttf in Resources */,
 				E334A9AD299ECF320077EB2F /* Localizable.strings in Resources */,
 				E3479C2729B8C1E5004D8337 /* Angelic Soprano.mp3 in Resources */,

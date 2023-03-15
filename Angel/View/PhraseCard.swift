@@ -30,7 +30,9 @@ struct PhraseCard: View {
             
             Spacer()
             Text(LocalizedStringKey(phrase.key))
-                .customFont(size: 60)
+//                .customFont(size: 40)
+                .font(.system(size: 35))
+                .fontWeight(.bold)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity)
                 .foregroundColor(Color(DynamicColor(hexString: phrase.categories.first!.color).darkened(amount: 0.6)))
