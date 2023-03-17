@@ -16,6 +16,7 @@
 "Share" = "Condividi";
 "Buddy" = "Amico";
 "Meditation" = "Meditazione";
+"Meditations" = "Meditazioni";
 "Meditation-Number %lld" = "%lld meditazioni";
 "Featured" = "In primo piano";
 "Of-The-Day" = "Meditazione del giorno";
@@ -29,6 +30,18 @@
 "Say-Thank-You" = "Dì grazie a te stesso per questo momento che hai dedicato alla tua salute e prenditi un momento per apprezzarti ed essere grato";
 "How-Do-You-Feel" = "Come ti senti?";
 "Close-Meditation" = "Chiudi la meditazione";
+"Profile" = "Profilo";
+"Go-Premium" = "Passa a Premium";
+"Premium" = "Premium";
+"Free" = "Gratis";
+"Total" = "Totale";
+"Favorite" = "Preferita";
+"See-More" = "Vedi di più";
+"You-Havent-Made-Meditations" = "Non hai ancora fatto meditazioni";
+"Phrases" = "Frasi";
+"See-Favorites" = "Vedi preferite";
+"Settings" = "Impostazioni";
+"Go-To-Settings" = "Vai a impostazioni";
 
 "Start-Meditation-Speech" = "Iniziamo questa meditazione, chiudi gli occhi, rilassati e lasciati andare";
 "Thank-You-Meditation-Speech" = "Grazie per aver seguito questa meditazione, spero tu ti senta meglio";

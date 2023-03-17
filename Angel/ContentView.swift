@@ -25,17 +25,17 @@ struct ContentView: View {
                 PhrasesView()
                     .tabItem {
                         Image(systemName: "quote.opening")
-                        Text("Phrases")
+                        Text(String(localized: "Phrases"))
                     }
                 MeditationsMainView()
                     .tabItem {
                         Image(systemName: "person.and.background.dotted")
-                        Text("Meditation")
+                        Text(String(localized: "Meditation"))
                     }
-                Text("View 4")
+                ProfileView()
                     .tabItem {
                         Image(systemName: "person.circle")
-                        Text("Profile")
+                        Text(String(localized: "Profile"))
                     }
             }
         } else {

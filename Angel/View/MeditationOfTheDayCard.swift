@@ -75,10 +75,6 @@ struct MeditationOfTheDayCard: View {
     }
 }
 
-extension MeditationOfTheDayCard {
-    
-}
-
 //struct MeditationOfTheDayCard_Previews: PreviewProvider {
 //    static var previews: some View {
 //        MeditationOfTheDayCard(meditation: Meditation(value: ["title": "Find Peace", "caption": "Open your mind with a meditation for your mind", "categories": "Peace", "duration": 300, "track": "Calling Emotional Angelic Melodic", "type": Typology.ofTheDay]), categories: [Category(value: ["name": "Peace", "longName": "Inner Peace and Calm", "color": "#7FB3D5", "icon": ""])])

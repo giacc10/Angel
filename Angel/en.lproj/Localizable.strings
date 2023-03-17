@@ -15,6 +15,7 @@
 "Share" = "Share";
 "Buddy" = "Buddy";
 "Meditation" = "Meditation";
+"Meditations" = "Meditations";
 "Meditation-Number %lld" = "%lld meditations";
 "Featured" = "Featured";
 "Of-The-Day" = "Of The Day";
@@ -28,6 +29,18 @@
 "Say-Thank-You" = "Say thank you to yourself for this moment you dedicated to your health and take a moment to apprecciate you and be grateful";
 "How-Do-You-Feel" = "How do you feel?";
 "Close-Meditation" = "Close meditation";
+"Profile" = "Profile";
+"Go-Premium" = "Go Premium";
+"Premium" = "Premium";
+"Free" = "Free";
+"Total" = "Total";
+"Favorite" = "Favorite";
+"See-More" = "See more";
+"You-Havent-Made-Meditations" = "You haven't made any meditation yet";
+"Phrases" = "Phrases";
+"See-Favorites" = "See favorites";
+"Settings" = "Settings";
+"Go-To-Settings" = "Go to settings";
 
 "Start-Meditation-Speech" = "Let's start this meditation, close your eyes, relax and flow within";
 "Thank-You-Meditation-Speech" = "Thank you to have followed this meditation, i hope you feel better";
