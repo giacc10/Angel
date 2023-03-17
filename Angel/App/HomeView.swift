@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import RealmSwift
 import DynamicColor
 
 struct HomeView: View {
     
     // MARK: - PROPERTIES
     @StateObject var phrasesRealmManager = PhrasesRealmManager()
+    
+    @ObservedResults(User.self) var users
+    @ObservedResults(AngelicPhrase.self) var allPhrases
     
     @State private var currentPhrase = ""
     @State private var phrasesArray: [AngelicPhrase] = []
@@ -32,16 +36,18 @@ struct HomeView: View {
                             
                             // MARK: - Phrase
                             PhraseCard(phrase: phrase)
-                            .onAppear {
-                                loadPhrase()
-                            }
-                            .frame(width: size.width)
-                            .rotationEffect(.init(degrees: -90))
-                            .ignoresSafeArea(.all)
+                                .onAppear {
+                                    loadPhrase()
+                                }
+                                .frame(width: size.width)
+                                .rotationEffect(.init(degrees: -90))
+                                .ignoresSafeArea(.all)
                         }
                     } //: TABVIEW
                     .onAppear {
-                        loadPhrase()
+                        if loadedPhraseIds.isEmpty {
+                            loadPhrase()
+                        }
                     }
                     .rotationEffect(.init(degrees: 90))
                     .frame(width: size.height) // Setting width as height since is rotated
@@ -50,37 +56,6 @@ struct HomeView: View {
                 } //: GEOMETRYREADER
                 .ignoresSafeArea(.all, edges: .trailing)
                 
-                // MARK: - Sidebar Actions
-                HStack {
-                    Spacer()
-                    VStack(spacing: 25) {
-                        Spacer()
-                        Button {
-                            
-                        } label: {
-                            VStack(spacing: 7) {
-                                Image(systemName: "heart.fill")
-                                    .font(.title)
-                                Text(String(localized: "Like"))
-                                    .font(.caption2)
-                            }
-                            .foregroundColor(.black)
-                        }
-                        Button {
-                            
-                        } label: {
-                            VStack(spacing: 7) {
-                                Image(systemName: "arrowshape.turn.up.right.fill")
-                                    .font(.title)
-                                Text(String(localized: "Share"))
-                                    .font(.caption2)
-                            }
-                            .foregroundColor(.black)
-                        }
-                    } //: VSTACK
-                    .padding(.bottom, 50)
-                    .padding(.trailing, 30)
-                } //: HSTACK
             } //: ZSTACK
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -97,6 +72,9 @@ struct HomeView: View {
         } //: NAVIGATIONVIEW
         
     }
+}
+
+extension HomeView {
     
     // MARK: - FUNCTIONS
     private func loadPhrase() {

@@ -156,45 +156,48 @@ struct ProfileView: View {
                             .fontWeight(.bold)
                             .padding(.bottom, 7)
                         
-                        HStack {
-                            
-                            VStack(alignment: .center, spacing: 3) {
-                                Text("40")
-                                    .font(.title3)
-                                    .fontWeight(.medium)
-                                CategoryPill(category: Category())
-                            } //: VSTACK
-                            
-                            Spacer()
-                            
-                            VStack(alignment: .center, spacing: 3) {
-                                Text("40")
-                                    .font(.title3)
-                                    .fontWeight(.medium)
-                                CategoryPill(category: Category())
-                            } //: VSTACK
-                            
-                            Spacer()
-                            
-                            VStack(alignment: .center, spacing: 3) {
-                                Text("40")
-                                    .font(.title3)
-                                    .fontWeight(.medium)
-                                CategoryPill(category: Category())
-                            } //: VSTACK
-                        } //: HSTACK
-                        .padding(.bottom, 10)
-                        
-                        HStack {
-                            Spacer()
-                            Button {
+                        if !users.first!.favoritePhrases.isEmpty {
+                            HStack {
                                 
-                            } label: {
-                                Text(String(localized: "See-Favorites"))
-                                    .font(.footnote)
-                                    .fontWeight(.bold)
-                            }
-                        } //: HSTACK
+                                LazyVGrid(columns: [GridItem(.adaptive(minimum: 140))]) {
+                                    ForEach(topPhrasesCategories(phrases: Array(users.first!.favoritePhrases)), id: \.category) { category, count in
+                                        HStack(alignment: .center, spacing: 7) {
+                                            Text("\(count)")
+                                                .font(.title3)
+                                                .fontWeight(.medium)
+                                            Text(category.name.localizedString())
+                                                .font(.system(size: 10))
+                                                .textCase(.uppercase)
+                                                .fontWeight(.bold)
+                                                .padding(.horizontal)
+                                                .padding(.vertical, 5)
+                                                .foregroundColor(Color(DynamicColor(hexString: category.color).darkened(amount: 0.5)))
+                                                .background(Capsule()
+                                                    .fill(Color(DynamicColor(hexString: category.color).saturated(amount: 0.5)))
+                                                )
+                                        } //: HSTACK
+                                    }
+                                } //: LAZYVGRID
+                                
+                            } //: HSTACK
+                            .padding(.bottom, 10)
+                            
+                            HStack {
+                                Spacer()
+                                Button {
+                                    
+                                } label: {
+                                    Text(String(localized: "See-Favorites"))
+                                        .font(.footnote)
+                                        .fontWeight(.bold)
+                                }
+                            } //: HSTACK
+                        } else {
+                            Text(String(localized: "You-Havent-Favorite-Phrases"))
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
                         
                     } //: VSTACK
                     .padding()
@@ -265,7 +268,7 @@ extension ProfileView {
         return ""
     }
     
-    func topMeditationCategories(meditations: [Meditation]) -> [(category: Category, count: Int)] {
+    private func topMeditationCategories(meditations: [Meditation]) -> [(category: Category, count: Int)] {
         var categoryCounts: [String: Int] = [:]
         for meditation in meditations {
             for category in meditation.categories {
@@ -274,16 +277,74 @@ extension ProfileView {
         }
         
         // Sorting the categories
-//        let sortedCategories = categoryCounts.sorted { $0.value > $1.value }
-//        let topCategories = Array(sortedCategories.prefix(3))
-        
-        let topCategories = Array(categoryCounts.prefix(3))
+        let sortedCategories = categoryCounts.sorted { $0.value > $1.value }
+        // Getting first 3
+        let topCategories = Array(sortedCategories.prefix(3))
 
-        return topCategories.map { (category: getCategory(for: $0.key), count: $0.value) }
+        return topCategories.map{ (category: getCategory(for: $0.key), count: $0.value) }
     }
     
-    func getCategory(for meditationCategory: String) -> Category {
-        return phrasesRealmManager.categories.first(where: { $0.name.rawValue == meditationCategory })!
+    func getCategory(for category: String) -> Category {
+        return phrasesRealmManager.categories.first(where: { $0.name.rawValue == category })!
+    }
+    
+    private func topPhrasesCategories(phrases: [AngelicPhrase]) -> [(category: Category, count: Int)] {
+        var categoryCounts: [String: Int] = [:]
+        
+        for phrase in phrases {
+            switch phrase.idProgressive.prefix(3) {
+            case "pea":
+                categoryCounts["Peace", default: 0] += 1
+            case "hop":
+                categoryCounts["Hope", default: 0] += 1
+            case "ble":
+                categoryCounts["Blessing", default: 0] += 1
+            case "for":
+                categoryCounts["Forgiveness", default: 0] += 1
+            case "abu":
+                categoryCounts["Abundance", default: 0] += 1
+            case "cou":
+                categoryCounts["Courage", default: 0] += 1
+            case "joy":
+                categoryCounts["Joy", default: 0] += 1
+            case "pro":
+                categoryCounts["Protection", default: 0] += 1
+            case "tra":
+                categoryCounts["Transformation", default: 0] += 1
+            case "sel":
+                categoryCounts["Selfcare", default: 0] += 1
+            case "rel":
+                categoryCounts["Relationships", default: 0] += 1
+            case "suc":
+                categoryCounts["Success", default: 0] += 1
+            case "con":
+                categoryCounts["Confidence", default: 0] += 1
+            case "gra":
+                categoryCounts["Gratitude", default: 0] += 1
+            case "hea":
+                categoryCounts["Healing", default: 0] += 1
+            case "kin":
+                categoryCounts["Kindness", default: 0] += 1
+            case "fai":
+                categoryCounts["Faith", default: 0] += 1
+            case "ser":
+                categoryCounts["Serenity", default: 0] += 1
+            case "fea":
+                categoryCounts["Fear", default: 0] += 1
+            case "pat":
+                categoryCounts["Patience", default: 0] += 1
+            default:
+                print("Error getting phrase category")
+            }
+            
+        }
+        
+        // Sorting the categories
+        let sortedCategories = categoryCounts.sorted { $0.value > $1.value }
+        // Getting first 3
+        let topCategories = Array(sortedCategories.prefix(4))
+        
+        return topCategories.map{ (category: getCategory(for: $0.key), count: $0.value) }
     }
 }
 

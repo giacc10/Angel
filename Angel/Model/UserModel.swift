@@ -14,5 +14,6 @@ class User: Object, ObjectKeyIdentifiable {
     @Persisted var image: Data?
     @Persisted var isPremium: Bool = false
     
+    @Persisted var favoritePhrases: List<AngelicPhrase>
     @Persisted var meditations: List<Meditation>
 }
