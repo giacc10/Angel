@@ -17,7 +17,7 @@ struct PhraseCategoryView: View {
         ZStack{
             List {
                 ForEach(category.angelicPhrases, id: \.id) { phrase in
-                    Text(phrase.key)
+                    Text(LocalizedStringKey(phrase.key).stringValue())
                 }
             } //: LIST
         } //: ZSTACK
@@ -26,8 +26,10 @@ struct PhraseCategoryView: View {
             ToolbarItem(placement: .principal) {
                 VStack {
                     Text(category.name.localizedString())
-                        .customFont(size: 40)
-//                            .textCase(.uppercase)
+//                        .customFont(size: 40)
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .textCase(.uppercase)
                 }
             }
         }

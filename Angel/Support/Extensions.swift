@@ -14,7 +14,8 @@ struct CustomFont: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .font(.custom("whitescratches", size: size))
+            .font(.custom("Hey-August", size: size))
+//            .font(.custom("whitescratches", size: size))
 //            .font(.custom("Alvifont", size: size))
     }
 }

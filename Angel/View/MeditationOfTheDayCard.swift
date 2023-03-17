@@ -46,16 +46,16 @@ struct MeditationOfTheDayCard: View {
             .padding(5)
             Spacer()
             Button {
-                isMeditationViewInStack.toggle()
+//                isMeditationViewInStack.toggle()
             } label: {
                 Image(systemName: "play.fill")
                     .foregroundColor(Color(DynamicColor(hexString: meditation.categories.first!.color).lighter(amount: 0.3)))
             }
             .padding()
             .background(Circle().fill(Color(DynamicColor(hexString: meditation.categories.first!.color).darkened(amount: 0.2))))
-            .fullScreenCover(isPresented: $isMeditationViewInStack) {
-                MeditationView(meditation: meditation)
-            }
+//            .fullScreenCover(isPresented: $isMeditationViewInStack) {
+//                MeditationView(meditation: meditation)
+//            }
         } //: HSTACK
         .padding()
         .background(RoundedRectangle(cornerRadius: 12)
