@@ -108,7 +108,7 @@ struct MeditationDetailView: View {
                         isMeditationViewInStack.toggle()
                     }
                     .navigationDestination(isPresented: $isMeditationViewInStack) {
-                        MeditationView(meditationViewModel: meditationViewModel)
+                        MeditationView(meditationViewModel: meditationViewModel, categories: categories)
                     }
                     
                 } //: VSTACK

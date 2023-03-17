@@ -14,7 +14,7 @@ struct MeditationRecapView: View {
     // MARK: - PROPERTIES
     @Environment(\.realm) var realm
     
-    @ObservedRealmObject var meditation: Meditation
+    var meditationViewModel: MeditationViewModel
     
     let topUnitPoint: [UnitPoint] = [.top, .topLeading, .topTrailing]
     let bottomUnitPoint: [UnitPoint] = [.bottom, .bottomLeading, .bottomTrailing]
@@ -62,8 +62,7 @@ struct MeditationRecapView: View {
                                 )
                                 .onTapGesture {
                                     selectedMood = mood
-//                                    $meditation.mood.wrappedValue = selectedMood
-//                                    updateMood(to: meditation, with: selectedMood)
+                                    meditationViewModel.$meditation.mood.wrappedValue = selectedMood
                                 }
                             if mood != .blessed {
                                 Spacer()
@@ -110,7 +109,8 @@ struct MeditationRecapView: View {
 
 extension MeditationRecapView {
     func mainCategory() -> Category {
-        if let mainCategory = meditation.categories.first {
+        let categories = meditationViewModel.getCategories(for: meditationViewModel.meditation)
+        if let mainCategory = categories.first {
             return mainCategory
         } else {
             return Category()
@@ -134,43 +134,28 @@ extension MeditationRecapView {
     
     func appendMeditation() {
         guard let user = realm.objects(User.self).where({ $0.id == 0 }).first else { return }
-        
-        let thawedUserRealm = user.thaw()!.realm!
-        try! thawedUserRealm.write {
-            // Use the .create method with `update: .modified` to copy the existing object into the realm
-            let meditationToAppend = thawedUserRealm.create(Meditation.self, value:
-                                                                ["date": meditation.date,
-                                                                 "title": meditation.title,
-                                                                 "caption": meditation.caption,
-                                                                 "categories": meditation.categories,
-                                                                 "duration": meditation.duration,
-                                                                 "track": meditation.track,
-                                                                 "type": meditation.type],
-                                               update: .modified)
-            user.meditations.append(meditationToAppend)
+        try! realm.write {
+            user.meditations.append(meditationViewModel.meditation)
         }
         
     }
     
     func updateMood(to meditation: Meditation, with mood: Mood?) {
-//        guard let meditationToEdit = realm.objects(Meditation.self).where({ $0.id == meditation.id }).first else { return }
-
         try! realm.write {
             meditation.setValue(mood, forKey: "mood")
         }
-        
     }
 }
 
-struct MeditationRecapView_Previews: PreviewProvider {
-    static var previews: some View {
-        MeditationRecapView(meditation:
-                                Meditation(value: ["title": "Lorem ipsum",
-                                                   "caption": "Dolor sit amet magnecuis sitness",
-                                                   "categories": [Category(value: ["name": "Peace", "longName": "Inner Peace and Calm", "color": "#7FB3D5", "icon": ""])],
-                                                   "duration": 300,
-                                                   "track": "Angelic Soprano",
-                                                   "type": Typology.standard])
-                            )
-    }
-}
+//struct MeditationRecapView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MeditationRecapView(meditation:
+//                                Meditation(value: ["title": "Lorem ipsum",
+//                                                   "caption": "Dolor sit amet magnecuis sitness",
+//                                                   "categories": [Category(value: ["name": "Peace", "longName": "Inner Peace and Calm", "color": "#7FB3D5", "icon": ""])],
+//                                                   "duration": 300,
+//                                                   "track": "Angelic Soprano",
+//                                                   "type": Typology.standard])
+//                            )
+//    }
+//}

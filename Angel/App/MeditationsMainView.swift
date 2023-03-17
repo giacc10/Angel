@@ -110,7 +110,7 @@ struct MeditationsMainView: View {
                             .font(.footnote)
                             .fontWeight(.bold)
                         
-                        MeditationOfTheDayCard(meditation: meditationViewModel.meditationOfTheDay)
+                        MeditationOfTheDayCard(meditationViewModel: meditationViewModel, categories: meditationViewModel.getCategories(for: meditationViewModel.meditationOfTheDay))
                         
                     } //: VSTACK
                     .padding(.horizontal)

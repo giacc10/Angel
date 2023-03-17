@@ -17,7 +17,7 @@ struct MeditationView: View {
     
     let synthesizer = AVSpeechSynthesizer()
     
-    @State var loadedCategories: [Category] = []
+    let categories: [Category]
     @State var phraseIndex: Int = 0
     @State var isIntroduction: Bool = true
     @State var isPlaying: Bool = true
@@ -84,7 +84,7 @@ struct MeditationView: View {
             .padding()
         } //: ZSTACK
         .navigationDestination(isPresented: $isMeditationRecapInStack) {
-            MeditationRecapView(meditation: meditationViewModel.meditation)
+            MeditationRecapView(meditationViewModel: meditationViewModel)
         }
         .onReceive(meditationTimer, perform: { _ in
             guard let player = audioManager.player else { return }
@@ -99,7 +99,7 @@ struct MeditationView: View {
             // Stop reading phrases little bit before ending
             if meditationViewModel.meditation.duration - secondElapsed == 20 {
                 phraseTimer.upstream.connect().cancel()
-                player.setVolume(0, fadeDuration: 15)
+                player.setVolume(0, fadeDuration: 18)
             }
         })
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -126,7 +126,7 @@ struct MeditationView: View {
 
 extension MeditationView {
     func mainCategory() -> Category {
-        if let mainCategory = meditationViewModel.meditation.categories.first {
+        if let mainCategory = categories.first {
             return mainCategory
         } else {
             return Category()

@@ -13,7 +13,7 @@ class Meditation: Object, ObjectKeyIdentifiable {
     @Persisted var date: Date
     @Persisted var title: String
     @Persisted var caption: String
-    @Persisted var categories: List<Category>
+    @Persisted var categories: List<String>
     @Persisted var duration: TimeInterval
     @Persisted var track: String
     @Persisted var type: Typology

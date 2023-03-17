@@ -16,7 +16,7 @@ final class MeditationViewModel: ObservableObject {
     let durations: [TimeInterval] = [10, 600, 900, 1800, 2700, 3600]
     let tracks: [String] = ["Angelic Soprano", "Did You Know Angels Play Guitar?", "Solo Path", "For When It Rains", "Epic Era", "Calling Emotional Angelic Melodic", "Angelic Interlude"]
     
-    private(set) var meditation = Meditation()
+    @ObservedRealmObject private(set) var meditation: Meditation = Meditation()
     private(set) var meditationOfTheDay = Meditation()
     
     init() {
@@ -25,7 +25,17 @@ final class MeditationViewModel: ObservableObject {
     }
     
     func createMeditation(title: String, caption: String, categories: [Category], duration: Int, track: String, type: Typology) {
-        self.meditation = Meditation(value: ["date": Date(), "title": title, "caption": caption, "categories": categories, "duration": durations[duration], "track": track, "type": type])
+        self.meditation = Meditation(value: ["date": Date(), "title": title, "caption": caption, "categories": categories.map({ $0.name.rawValue }), "duration": durations[duration], "track": track, "type": type])
+    }
+    
+    func getCategories(for meditation: Meditation) -> [Category] {
+        var categories = [Category]()
+        
+        for category in meditation.categories {
+            categories.append(phrasesRealmManager.categories.first(where: { $0.name.rawValue == category })!)
+        }
+        
+        return categories
     }
     
 //    func createMeditation(title: String, caption: String, categories: [Category], duration: Int, track: String, type: Typology) -> Meditation {
@@ -56,7 +66,7 @@ final class MeditationViewModel: ObservableObject {
             newTodaysMeditation.date = today
             newTodaysMeditation.title = "Today \(randomCategory.name.localizedString())"
             newTodaysMeditation.caption = "Lorem ipsum dolor sit amet consecutor tes"
-            newTodaysMeditation.categories.append(randomCategory)
+            newTodaysMeditation.categories.append(randomCategory.name.rawValue)
             newTodaysMeditation.duration = durations[Int.random(in: 0...2)]
             newTodaysMeditation.track = tracks.randomElement()!
             newTodaysMeditation.type = .ofTheDay
