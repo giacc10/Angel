@@ -7,16 +7,18 @@
 
 import SwiftUI
 import AVFoundation
+import RealmSwift
 import DynamicColor
 
 struct MeditationView: View {
     
     // MARK: - PROPERTIES
     @StateObject var audioManager = AudioManager()
-    var meditationViewModel: MeditationViewModel
+//    var meditationViewModel: MeditationViewModel
     
     let synthesizer = AVSpeechSynthesizer()
     
+    var meditation: Meditation
     let categories: [Category]
     @State var phraseIndex: Int = 0
     @State var isIntroduction: Bool = true
@@ -35,92 +37,98 @@ struct MeditationView: View {
     
     // MARK: - BODY
     var body: some View {
-        ZStack {
-            ParticleView()
-            VStack(spacing: 10) {
-                
-                Spacer()
-                
-                Text(isIntroduction ?  LocalizedStringKey("Start-Meditation-Speech") : LocalizedStringKey(mainCategory().angelicPhrases[phraseIndex].key))
-//                    .customFont(size: 40)
-                    .font(.system(size: 35))
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
-                    .padding()
-                    .onAppear {
-                        playIntroduction()
-                    }
-                    .onReceive(phraseTimer, perform: { _ in
-                        loadAndSpeechPhrase()
-                    })
-                    .animation(.easeInOut)
-                
-                Spacer()
-
-                ProgressBar(isPlaying: $isPlaying, duration: meditationViewModel.meditation.duration, color: mainCategory().color)
-                    .environmentObject(audioManager)
-                
-                if let player = audioManager.player {
-                    Button {
-                        if player.isPlaying {
-                            cancelTimer()
-                        } else {
-                            instantiateTimer()
-                        }
-                        audioManager.playPause()
-                        isPlaying.toggle() // Because player.isPlaying not working
-                    } label: {
-                        Image(systemName: isPlaying ? "pause.fill" : "play.fill")
-                            .font(.title2)
-                            .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
-                    }
-                    .padding(20)
-                    .background(Circle().fill(Color(DynamicColor(hexString: mainCategory().color).lighter(amount: 0.3))))
-                }
-                
-            } //: VSTACK
-            .padding()
-        } //: ZSTACK
-        .navigationDestination(isPresented: $isMeditationRecapInStack) {
-            MeditationRecapView(meditationViewModel: meditationViewModel)
-        }
-        .onReceive(meditationTimer, perform: { _ in
-            guard let player = audioManager.player else { return }
+        NavigationStack {
             
-            secondElapsed += 1
-            if secondElapsed >= meditationViewModel.meditation.duration {
-                player.stop()
-                cancelTimer()
-                isMeditationRecapInStack.toggle()
-                sayThankYou()
+            ZStack {
+                ParticleView()
+                VStack(spacing: 10) {
+                    
+                    Spacer()
+                    
+                    Text(isIntroduction ?  LocalizedStringKey("Start-Meditation-Speech") : LocalizedStringKey(mainCategory().angelicPhrases[phraseIndex].key))
+                    //                    .customFont(size: 40)
+                        .font(.system(size: 35))
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
+                        .padding()
+                        .onAppear {
+                            playIntroduction()
+                        }
+                        .onReceive(phraseTimer, perform: { _ in
+                            loadAndSpeechPhrase()
+                        })
+                        .animation(.easeInOut)
+                    
+                    Spacer()
+                    
+                    ProgressBar(isPlaying: $isPlaying, duration: meditation.duration, color: mainCategory().color)
+                        .environmentObject(audioManager)
+                    
+                    if let player = audioManager.player {
+                        Button {
+                            if player.isPlaying {
+                                cancelTimer()
+                            } else {
+                                instantiateTimer()
+                            }
+                            audioManager.playPause()
+                            isPlaying.toggle() // Because player.isPlaying not working
+                        } label: {
+                            Image(systemName: isPlaying ? "pause.fill" : "play.fill")
+                                .font(.title2)
+                                .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
+                        }
+                        .padding(20)
+                        .background(Circle().fill(Color(DynamicColor(hexString: mainCategory().color).lighter(amount: 0.3))))
+                    }
+                    
+                } //: VSTACK
+                .padding()
+            } //: ZSTACK
+            .navigationDestination(isPresented: $isMeditationRecapInStack) {
+                MeditationRecapView(meditation: meditation, categories: categories)
             }
-            // Stop reading phrases little bit before ending
-            if meditationViewModel.meditation.duration - secondElapsed == 20 {
-                phraseTimer.upstream.connect().cancel()
-                player.setVolume(0, fadeDuration: 18)
-            }
-        })
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            LinearGradient(gradient: Gradient(colors: [
-                Color(DynamicColor(hexString: mainCategory().color).lighter()),
-                Color(DynamicColor(hexString: mainCategory().color).saturated(amount: 0.5))
+            .onReceive(meditationTimer, perform: { _ in
+                guard let player = audioManager.player else { return }
+                
+                secondElapsed += 1
+                if secondElapsed >= meditation.duration {
+                    player.stop()
+                    cancelTimer()
+                    isMeditationRecapInStack.toggle()
+                    sayThankYou()
+                }
+                // Stop reading phrases little bit before ending
+                if meditation.duration - secondElapsed == 20 {
+                    phraseTimer.upstream.connect().cancel()
+                    player.setVolume(0, fadeDuration: 18)
+                }
+            })
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(
+                LinearGradient(gradient: Gradient(colors: [
+                    Color(DynamicColor(hexString: mainCategory().color).lighter()),
+                    Color(DynamicColor(hexString: mainCategory().color).saturated(amount: 0.5))
                 ]), startPoint: topUnitPoint.randomElement()!, endPoint: bottomUnitPoint.randomElement()!
-            ).ignoresSafeArea()
-        )
-        .navigationBarItems(
-            trailing: Button(action: {
-                cancelTimer()
-                audioManager.stop()
-                UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
-            }) {
-                Image(systemName: "xmark")
-                    .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
-            }
-        )
-        .navigationBarBackButtonHidden(true)
+                ).ignoresSafeArea()
+            )
+            .navigationBarItems(
+                trailing: Button(action: {
+                    cancelTimer()
+                    audioManager.stop()
+                    UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
+                }) {
+                    Image(systemName: "xmark")
+                        .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
+                }
+            )
+            .navigationBarBackButtonHidden(true)
+        }
+        .onAppear {
+            print(meditation.id)
+        }
     }
 }
 
@@ -172,7 +180,7 @@ extension MeditationView {
         DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
             isIntroduction = false
             instantiateTimer()
-            audioManager.startPlayer(track: meditationViewModel.meditation.track)
+            audioManager.startPlayer(track: meditation.track)
             audioManager.toggleLoop()
         }
     }

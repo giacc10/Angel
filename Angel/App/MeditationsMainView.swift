@@ -19,6 +19,7 @@ struct MeditationsMainView: View {
     
     @State var isMeditationDetailPresented = false
     @State var selectedCategoryCard: Category? = nil
+    @State var selectedFeaturedMeditation: Meditation? = nil
     
     // MARK: - BODY
     var body: some View {
@@ -64,9 +65,15 @@ struct MeditationsMainView: View {
                                 
                                 ForEach(meditationViewModel.featuredMeditations, id: \.self) { meditation in
                                     MeditationFeaturedCard(featuredMeditation: meditation, categories: meditationViewModel.getCategories(for: meditation))
+                                        .onTapGesture {
+                                            selectedFeaturedMeditation = meditation
+                                        }
                                 }
                                 
                             } //: HSTACK
+                            .fullScreenCover(item: $selectedFeaturedMeditation, content: { meditation in
+                                MeditationView(meditation: meditationViewModel.createGeneratedMeditation(title: meditation.title, caption: meditation.caption, categories: meditationViewModel.getCategories(for: meditation), duration: meditation.duration, track: meditation.track, type: .featured), categories: meditationViewModel.getCategories(for: meditation))
+                            })
                             .padding(.horizontal)
                         } //: SCROLLVIEW
                     } //: VSTACK
@@ -76,7 +83,15 @@ struct MeditationsMainView: View {
                             .font(.footnote)
                             .fontWeight(.bold)
                         
-                        MeditationOfTheDayCard(meditationViewModel: meditationViewModel, categories: meditationViewModel.getCategories(for: meditationViewModel.meditationOfTheDay))
+                        MeditationOfTheDayCard(meditationOfTheDay:
+                                                meditationViewModel.createGeneratedMeditation(title:
+                                                                                              meditationViewModel.meditationOfTheDay.title,
+                                                                                              caption: meditationViewModel.meditationOfTheDay.caption,
+                                                                                              categories: meditationViewModel.getCategories(for: meditationViewModel.meditationOfTheDay),
+                                                                                              duration: meditationViewModel.meditationOfTheDay.duration,
+                                                                                              track: meditationViewModel.meditationOfTheDay.track,
+                                                                                              type: .ofTheDay),
+                                               categories: meditationViewModel.getCategories(for: meditationViewModel.meditationOfTheDay))
                         
                     } //: VSTACK
                     .padding(.horizontal)

@@ -11,7 +11,7 @@ import DynamicColor
 struct MeditationOfTheDayCard: View {
     
     // MARK: - PROPERTIES
-    var meditationViewModel: MeditationViewModel
+    var meditationOfTheDay: Meditation
     
     let categories: [Category]
     let topUnitPoint: [UnitPoint] = [.top, .topLeading, .topTrailing]
@@ -24,31 +24,31 @@ struct MeditationOfTheDayCard: View {
         HStack {
             VStack(alignment: .leading, spacing: 5) {
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(meditationViewModel.meditationOfTheDay.title)
+                    Text(meditationOfTheDay.title)
                         .font(.title3)
                         .fontWeight(.bold)
                         .textCase(.uppercase)
                         .foregroundColor(Color(DynamicColor(hexString: categories.first!.color).darkened(amount: 0.2)))
                     HStack(alignment: .center) {
-                        Text("\(meditationViewModel.meditationOfTheDay.duration.toMinutes()) minutes")
+                        Text("\(meditationOfTheDay.duration.toMinutes()) minutes")
                             .foregroundColor(Color(DynamicColor(hexString: categories.first!.color).darkened(amount: 0.4)))
                         Text("•")
                             .foregroundColor(Color(DynamicColor(hexString: categories.first!.color).darkened(amount: 0.5)))
-                        Text(meditationViewModel.meditationOfTheDay.track)
+                        Text(meditationOfTheDay.track)
                             .lineLimit(1)
                             .foregroundColor(Color(DynamicColor(hexString: categories.first!.color).darkened(amount: 0.4)))
                     } //: HSTACK
                     .font(.caption)
                     .fontWeight(.medium)
                 } //: VSTACK
-                Text(meditationViewModel.meditationOfTheDay.caption)
+                Text(meditationOfTheDay.caption)
                     .font(.footnote)
                     .foregroundColor(Color(DynamicColor(hexString: categories.first!.color).darkened(amount: 0.5)))
             } //: VSTACK
             .padding(5)
             Spacer()
             Button {
-//                isMeditationViewInStack.toggle()
+                isMeditationViewInStack.toggle()
             } label: {
                 Image(systemName: "play.fill")
                     .foregroundColor(Color(DynamicColor(hexString: categories.first!.color).lighter(amount: 0.3)))
@@ -56,7 +56,7 @@ struct MeditationOfTheDayCard: View {
             .padding()
             .background(Circle().fill(Color(DynamicColor(hexString: categories.first!.color).darkened(amount: 0.2))))
             .fullScreenCover(isPresented: $isMeditationViewInStack) {
-//                MeditationPreviewView(meditationViewModel: meditationViewModel, categories: categories)
+                MeditationView(meditation: meditationOfTheDay, categories: categories)
             }
         } //: HSTACK
         .padding()

@@ -102,12 +102,10 @@ struct MeditationDetailView: View {
                     ButtonCTA(text: String(localized: "Start-Meditation \(mainCategory().name.localizedString())"),
                               color: mainCategory().color) {
                         audioPreviewManager.stop()
-                        meditationViewModel.createMeditation(title: "", caption: "", categories: categories, duration: selectedTimer, track: selectedSoundtrack ?? "A Meditation", type: .standard)
-//                        meditation = meditationViewModel.createMeditation(title: "", caption: "", categories: categories, duration: selectedTimer, track: selectedSoundtrack ?? "Angelic Soprano", type: .standard)
                         isMeditationViewInStack.toggle()
                     }
                     .navigationDestination(isPresented: $isMeditationViewInStack) {
-                        MeditationView(meditationViewModel: meditationViewModel, categories: categories)
+                        MeditationView(meditation: meditationViewModel.createMeditation(title: "", caption: "", categories: categories, duration: selectedTimer, track: selectedSoundtrack ?? "A Meditation", type: .standard), categories: categories)
                     }
                     
                 } //: VSTACK

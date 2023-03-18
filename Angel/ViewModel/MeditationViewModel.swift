@@ -16,7 +16,7 @@ final class MeditationViewModel: ObservableObject {
     let durations: [TimeInterval] = [10, 600, 900, 1800, 2700, 3600]
     let tracks: [String] = ["Angelic Soprano", "Did You Know Angels Play Guitar?", "Solo Path", "For When It Rains", "Epic Era", "Calling Emotional Angelic Melodic", "Angelic Interlude"]
     
-    @ObservedRealmObject private(set) var meditation: Meditation = Meditation()
+//    @ObservedRealmObject private(set) var meditation: Meditation = Meditation()
     private(set) var meditationOfTheDay: Meditation = Meditation()
     private(set) var featuredMeditations: List<Meditation> = List<Meditation>()
     
@@ -26,8 +26,12 @@ final class MeditationViewModel: ObservableObject {
         self.featuredMeditations = getFeaturedMeditaion()
     }
     
-    func createMeditation(title: String, caption: String, categories: [Category], duration: Int, track: String, type: Typology) {
-        self.meditation = Meditation(value: ["date": Date(), "title": title, "caption": caption, "categories": categories.map({ $0.name.rawValue }), "duration": durations[duration], "track": track, "type": type])
+    func createMeditation(title: String, caption: String, categories: [Category], duration: Int, track: String, type: Typology) -> Meditation {
+        return Meditation(value: ["date": Date(), "title": title, "caption": caption, "categories": categories.map({ $0.name.rawValue }), "duration": durations[duration], "track": track, "type": type])
+    }
+    
+    func createGeneratedMeditation(title: String, caption: String, categories: [Category], duration: TimeInterval, track: String, type: Typology) -> Meditation {
+        return Meditation(value: ["date": Date(), "title": title, "caption": caption, "categories": categories.map({ $0.name.rawValue }), "duration": duration, "track": track, "type": type])
     }
     
     func getCategories(for meditation: Meditation) -> [Category] {

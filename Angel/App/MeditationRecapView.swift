@@ -14,7 +14,9 @@ struct MeditationRecapView: View {
     // MARK: - PROPERTIES
     @Environment(\.realm) var realm
     
-    var meditationViewModel: MeditationViewModel
+    @ObservedRealmObject var meditation: Meditation
+    @State var meditationID: ObjectId = ObjectId()
+    let categories: [Category]
     
     let topUnitPoint: [UnitPoint] = [.top, .topLeading, .topTrailing]
     let bottomUnitPoint: [UnitPoint] = [.bottom, .bottomLeading, .bottomTrailing]
@@ -62,7 +64,8 @@ struct MeditationRecapView: View {
                                 )
                                 .onTapGesture {
                                     selectedMood = mood
-                                    meditationViewModel.$meditation.mood.wrappedValue = selectedMood
+//                                    $meditation.mood.wrappedValue = selectedMood
+                                    updateMood(to: meditationID, with: selectedMood)
                                 }
                             if mood != .blessed {
                                 Spacer()
@@ -109,7 +112,6 @@ struct MeditationRecapView: View {
 
 extension MeditationRecapView {
     func mainCategory() -> Category {
-        let categories = meditationViewModel.getCategories(for: meditationViewModel.meditation)
         if let mainCategory = categories.first {
             return mainCategory
         } else {
@@ -135,14 +137,20 @@ extension MeditationRecapView {
     func appendMeditation() {
         guard let user = realm.objects(User.self).where({ $0.id == 0 }).first else { return }
         try! realm.write {
-            user.meditations.append(meditationViewModel.meditation)
+            user.meditations.append(meditation)
         }
-        
+        meditationID = meditation.id
     }
     
-    func updateMood(to meditation: Meditation, with mood: Mood?) {
-        try! realm.write {
-            meditation.setValue(mood, forKey: "mood")
+    func updateMood(to meditationID: ObjectId, with mood: Mood?) {
+//        try! realm.write {
+//            meditation.setValue(mood, forKey: "mood")
+//        }
+        guard let med = realm.objects(Meditation.self).where({ $0.id == meditationID }).first else { return }
+        let thawedMeditationRealm = med.thaw()!.realm!
+        try! thawedMeditationRealm.write {
+            med.mood = mood
+            thawedMeditationRealm.create(Meditation.self, value: med, update: .modified)
         }
     }
 }
