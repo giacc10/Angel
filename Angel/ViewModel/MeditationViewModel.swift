@@ -17,11 +17,13 @@ final class MeditationViewModel: ObservableObject {
     let tracks: [String] = ["Angelic Soprano", "Did You Know Angels Play Guitar?", "Solo Path", "For When It Rains", "Epic Era", "Calling Emotional Angelic Melodic", "Angelic Interlude"]
     
     @ObservedRealmObject private(set) var meditation: Meditation = Meditation()
-    private(set) var meditationOfTheDay = Meditation()
+    private(set) var meditationOfTheDay: Meditation = Meditation()
+    private(set) var featuredMeditations: List<Meditation> = List<Meditation>()
     
     init() {
         phrasesRealmManager.getCategories()
         self.meditationOfTheDay = getTodaysMeditation() ?? Meditation()
+        self.featuredMeditations = getFeaturedMeditaion()
     }
     
     func createMeditation(title: String, caption: String, categories: [Category], duration: Int, track: String, type: Typology) {
@@ -52,7 +54,7 @@ final class MeditationViewModel: ObservableObject {
                 // Check if the meditation is for the day
                 if todaysMeditation.date.startOfDay() == today {
                     return todaysMeditation
-                } else  {
+                } else {
                     // If the day is different deleting the Meditation of the day
                     let realm = try! Realm()
                     try! realm.write {
@@ -82,5 +84,56 @@ final class MeditationViewModel: ObservableObject {
             
         }
         return nil
+    }
+    
+    private func getFeaturedMeditaion() -> List<Meditation> {
+        let calendar = Calendar.current
+        
+        if let meditationsStorage = meditationsStorages.first {
+            
+            // Check if the meditation is of the current week
+            if let firstFeaturedMeditation = meditationsStorage.featuredMeditations.first {
+                
+                if calendar.isDayInCurrentWeek(date: firstFeaturedMeditation.date) ?? false {
+                    return meditationsStorage.featuredMeditations
+                } else {
+                    // If the day is different deleting the Meditation of the day
+                    let realm = try! Realm()
+                    try! realm.write {
+                        for meditation in meditationsStorage.featuredMeditations {
+                            realm.delete(meditation)
+                        }
+                    }
+                }
+            }
+            
+            for _ in 1...3 {
+                let randomCategories = phrasesRealmManager.categories[randomPick: 2]
+                let newFeaturedMeditation = Meditation()
+                newFeaturedMeditation.date = Date().startOfDay()
+                newFeaturedMeditation.title = "\(randomCategories[0].name.localizedString()) & \(randomCategories[1].name.localizedString())"
+                newFeaturedMeditation.caption = "Lorem ipsum dolor sit amet consecutor tes"
+                for category in randomCategories {
+                    newFeaturedMeditation.categories.append(category.name.rawValue)
+                }
+                newFeaturedMeditation.duration = durations[Int.random(in: 1...3)]
+                newFeaturedMeditation.track = tracks.randomElement()!
+                newFeaturedMeditation.type = .featured
+                
+                let thawedMeditationsStorage = meditationsStorage.thaw()!.realm!
+                try! thawedMeditationsStorage.write {
+                    let meditationToAppend = thawedMeditationsStorage.create(
+                        Meditation.self, value: newFeaturedMeditation, update: .modified
+                    )
+                    meditationsStorage.featuredMeditations.append(meditationToAppend)
+                }
+            }
+            
+            return meditationsStorage.featuredMeditations
+            
+        }
+        
+        return List<Meditation>()
+        
     }
 }

@@ -33,33 +33,6 @@ extension View {
     #endif
 }
 
-extension DateComponentsFormatter {
-    static let abbreviated: DateComponentsFormatter = {
-        print("Initializing DateComponentsFormatter.abbreviated" )
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.hour, .minute, .second]
-        formatter.unitsStyle = .abbreviated
-        return formatter
-    }()
-    
-    static let positional: DateComponentsFormatter = {
-        print("Initializing DateComponentsFormatter.positional")
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.minute, .second]
-        formatter.unitsStyle = .positional
-        formatter.zeroFormattingBehavior = .pad
-        return formatter
-    }()
-}
-
-extension TimeInterval {
-    func toMinutes() -> String {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.minute]
-        return formatter.string(from: self) ?? ""
-    }
-}
-
 extension LocalizedStringKey {
     var stringKey: String? {
         Mirror(reflecting: self).children.first(where: { $0.label == "key" })?.value as? String
@@ -91,10 +64,58 @@ extension String {
     }
 }
 
+extension Array {
+    /// Picks `n` random elements (straightforward approach)
+    subscript (randomPick n: Int) -> [Element] {
+        var indices = [Int](0..<count)
+        var randoms = [Int]()
+        for _ in 0..<n {
+            randoms.append(indices.remove(at: Int(arc4random_uniform(UInt32(indices.count)))))
+        }
+        return randoms.map { self[$0] }
+    }
+}
+
 extension Date {
     func startOfDay() -> Date {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day], from: self)
         return calendar.date(from: components)!
+    }
+}
+
+extension TimeInterval {
+    func toMinutes() -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.minute]
+        return formatter.string(from: self) ?? ""
+    }
+}
+
+extension DateComponentsFormatter {
+    static let abbreviated: DateComponentsFormatter = {
+        print("Initializing DateComponentsFormatter.abbreviated" )
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .abbreviated
+        return formatter
+    }()
+    
+    static let positional: DateComponentsFormatter = {
+        print("Initializing DateComponentsFormatter.positional")
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.minute, .second]
+        formatter.unitsStyle = .positional
+        formatter.zeroFormattingBehavior = .pad
+        return formatter
+    }()
+}
+
+extension Calendar {
+    func isDayInCurrentWeek(date: Date) -> Bool? {
+        let currentComponents = Calendar.current.dateComponents([.weekOfYear], from: Date())
+        let dateComponents = Calendar.current.dateComponents([.weekOfYear], from: date)
+        guard let currentWeekOfYear = currentComponents.weekOfYear, let dateWeekOfYear = dateComponents.weekOfYear else { return nil }
+        return currentWeekOfYear == dateWeekOfYear
     }
 }

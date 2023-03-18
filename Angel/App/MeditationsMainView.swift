@@ -61,45 +61,11 @@ struct MeditationsMainView: View {
                             .padding(.leading)
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 10) {
-                                VStack(alignment: .leading, spacing: 5) {
-                                    Group {
-                                        Text("FORGIVENESS")
-                                            .font(.title3)
-                                            .fontWeight(.bold)
-                                        Text("5 minute forgiveness")
-                                            .font(.callout)
-                                        Text("Forgive yourself and start a beautiful new day")
-                                            .font(.footnote)
-                                    }
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.horizontal, 5)
-                                } //: VSTACK
-                                .padding()
-                                .frame(width: 350)
-                                .frame(minHeight: 150)
-                                .background(RoundedRectangle(cornerRadius: 12)
-                                    .fill(.ultraThinMaterial)
-                                )
                                 
-                                VStack(alignment: .leading, spacing: 5) {
-                                    Group {
-                                        Text("BLESSING")
-                                            .font(.title3)
-                                            .fontWeight(.bold)
-                                        Text("7 minute to be blessed")
-                                            .font(.callout)
-                                        Text("Feel blessed and be grateful for today")
-                                            .font(.footnote)
-                                    }
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.horizontal, 5)
-                                } //: VSTACK
-                                .padding()
-                                .frame(width: 350)
-                                .frame(minHeight: 150)
-                                .background(RoundedRectangle(cornerRadius: 12)
-                                    .fill(.ultraThinMaterial)
-                                )
+                                ForEach(meditationViewModel.featuredMeditations, id: \.self) { meditation in
+                                    MeditationFeaturedCard(featuredMeditation: meditation, categories: meditationViewModel.getCategories(for: meditation))
+                                }
+                                
                             } //: HSTACK
                             .padding(.horizontal)
                         } //: SCROLLVIEW
