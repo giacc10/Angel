@@ -138,7 +138,7 @@ extension PhraseCard {
     func addToFavorites() {
         guard let user = realm.objects(User.self).where({ $0.id == 0 }).first else { return }
         
-        if !user.favoritePhrases.contains(phrase) {
+        if !user.favoritePhrases.contains(where: { $0.idProgressive == phrase.idProgressive }) {
             let thawedUserRealm = user.thaw()!.realm!
             try! thawedUserRealm.write {
                 let phraseToAppend = thawedUserRealm.create(AngelicPhrase.self, value: phrase, update: .modified)
