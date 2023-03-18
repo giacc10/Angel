@@ -114,6 +114,19 @@ struct MeditationView: View {
                 ]), startPoint: topUnitPoint.randomElement()!, endPoint: bottomUnitPoint.randomElement()!
                 ).ignoresSafeArea()
             )
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text(categories.count == 1 ? LocalizedStringKey(categories.first!.name.rawValue).stringValue() : String(meditation.title))
+//                            .customFont(size: 40)
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .textCase(.uppercase)
+                            .foregroundColor(Color(DynamicColor(hexString: returnCategory(index: 0).color).darkened(amount: 0.2)))
+                    }
+                }
+            }
             .navigationBarItems(
                 trailing: Button(action: {
                     cancelTimer()

@@ -271,8 +271,10 @@ extension ProfileView {
     private func topMeditationCategories(meditations: [Meditation]) -> [(category: Category, count: Int)] {
         var categoryCounts: [String: Int] = [:]
         for meditation in meditations {
-            for category in meditation.categories {
-                categoryCounts[category, default: 0] += 1
+            if meditation.type == .standard {            
+                for category in meditation.categories {
+                    categoryCounts[category, default: 0] += 1
+                }
             }
         }
         

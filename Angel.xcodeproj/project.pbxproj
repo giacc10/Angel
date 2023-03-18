@@ -27,7 +27,6 @@
 		E3479C2429B8BF7A004D8337 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3479C2329B8BF7A004D8337 /* AudioManager.swift */; };
 		E350359A29BB574C006B3C8C /* MeditationRecapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350359929BB574C006B3C8C /* MeditationRecapView.swift */; };
 		E356D9AA29BCA0AF001BAD06 /* ButtonCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = E356D9A929BCA0AF001BAD06 /* ButtonCTA.swift */; };
-		E35C5AE229C5C120003D0811 /* MeditationPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35C5AE129C5C120003D0811 /* MeditationPreviewView.swift */; };
 		E35C5AE429C5D8FE003D0811 /* MeditationFeaturedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35C5AE329C5D8FE003D0811 /* MeditationFeaturedCard.swift */; };
 		E389693929B8820D00A632BC /* MeditationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693829B8820D00A632BC /* MeditationDetailView.swift */; };
 		E389693B29B89D2400A632BC /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693A29B89D2400A632BC /* MeditationView.swift */; };
@@ -102,7 +101,6 @@
 		E3479C2329B8BF7A004D8337 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		E350359929BB574C006B3C8C /* MeditationRecapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationRecapView.swift; sourceTree = "<group>"; };
 		E356D9A929BCA0AF001BAD06 /* ButtonCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCTA.swift; sourceTree = "<group>"; };
-		E35C5AE129C5C120003D0811 /* MeditationPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationPreviewView.swift; sourceTree = "<group>"; };
 		E35C5AE329C5D8FE003D0811 /* MeditationFeaturedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationFeaturedCard.swift; sourceTree = "<group>"; };
 		E3744CE6299D9CAA00896E8D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E389693829B8820D00A632BC /* MeditationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationDetailView.swift; sourceTree = "<group>"; };
@@ -220,7 +218,6 @@
 				E334A9A3299EBC740077EB2F /* PhraseCategoryView.swift */,
 				E39A5F2829A412F100F91320 /* MeditationsMainView.swift */,
 				E389693829B8820D00A632BC /* MeditationDetailView.swift */,
-				E35C5AE129C5C120003D0811 /* MeditationPreviewView.swift */,
 				E389693A29B89D2400A632BC /* MeditationView.swift */,
 				E350359929BB574C006B3C8C /* MeditationRecapView.swift */,
 				E3C6BB1529C48044008D18EF /* ProfileView.swift */,
@@ -448,7 +445,6 @@
 				E3FEE4E829BB3A76001CAF0F /* CustomSegmentedPicker.swift in Sources */,
 				E396F9AF299E331500E6425D /* CategoryModel.swift in Sources */,
 				E328E222299D94F200B7B764 /* HomeView.swift in Sources */,
-				E35C5AE229C5C120003D0811 /* MeditationPreviewView.swift in Sources */,
 				E3A580DA29B7A16D00329EF6 /* PhraseCard.swift in Sources */,
 				E39A5F2929A412F100F91320 /* MeditationsMainView.swift in Sources */,
 				E389693929B8820D00A632BC /* MeditationDetailView.swift in Sources */,
@@ -612,7 +608,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"Angel/Preview Content\"";
 				DEVELOPMENT_TEAM = 4NNU2X6939;
 				ENABLE_PREVIEWS = YES;
@@ -643,7 +639,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"Angel/Preview Content\"";
 				DEVELOPMENT_TEAM = 4NNU2X6939;
 				ENABLE_PREVIEWS = YES;
