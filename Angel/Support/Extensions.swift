@@ -90,6 +90,16 @@ extension TimeInterval {
         formatter.allowedUnits = [.minute]
         return formatter.string(from: self) ?? ""
     }
+    
+    var hourMinute: String {
+        String(format:"%d h %02d m", hour, minute)
+    }
+    var hour: Int {
+        Int((self/3600).truncatingRemainder(dividingBy: 3600))
+    }
+    var minute: Int {
+        Int((self/60).truncatingRemainder(dividingBy: 60))
+    }
 }
 
 extension DateComponentsFormatter {

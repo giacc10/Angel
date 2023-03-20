@@ -16,6 +16,9 @@ struct ProfileView: View {
     @StateObject var phrasesRealmManager = PhrasesRealmManager()
     @ObservedResults(User.self) var users
     
+    @State var isProfileMeditationsInStack = false
+    @State var isProfilePhrasesInStack = false
+    
     // MARK: - BODY
     var body: some View {
         NavigationStack {
@@ -129,11 +132,14 @@ struct ProfileView: View {
                             HStack {
                                 Spacer()
                                 Button {
-                                    
+                                    isProfileMeditationsInStack.toggle()
                                 } label: {
                                     Text(String(localized: "See-More"))
                                         .font(.footnote)
                                         .fontWeight(.bold)
+                                }
+                                .navigationDestination(isPresented: $isProfileMeditationsInStack) {
+                                    ProfileMeditationsView()
                                 }
                             } //: HSTACK
                         } else {
@@ -185,11 +191,14 @@ struct ProfileView: View {
                             HStack {
                                 Spacer()
                                 Button {
-                                    
+                                    isProfilePhrasesInStack.toggle()
                                 } label: {
                                     Text(String(localized: "See-Favorites"))
                                         .font(.footnote)
                                         .fontWeight(.bold)
+                                }
+                                .navigationDestination(isPresented: $isProfilePhrasesInStack) {
+                                    ProfilePhrasesView()
                                 }
                             } //: HSTACK
                         } else {
@@ -314,7 +323,7 @@ extension ProfileView {
             case "tra":
                 categoryCounts["Transformation", default: 0] += 1
             case "sel":
-                categoryCounts["Selfcare", default: 0] += 1
+                categoryCounts["Self-Care", default: 0] += 1
             case "rel":
                 categoryCounts["Relationships", default: 0] += 1
             case "suc":
