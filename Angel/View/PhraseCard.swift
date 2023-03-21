@@ -19,8 +19,6 @@ struct PhraseCard: View {
     
     let phrase: AngelicPhrase
     @State var isFavorite: Bool = false
-    let topUnitPoint: [UnitPoint] = [.top, .topLeading, .topTrailing]
-    let bottomUnitPoint: [UnitPoint] = [.bottom, .bottomLeading, .bottomTrailing]
     
     let synthesizer = AVSpeechSynthesizer()
     
@@ -108,7 +106,7 @@ struct PhraseCard: View {
                     LinearGradient(gradient: Gradient(colors: [
                         Color(DynamicColor(hexString: phrase.categories.first!.color).tinted(amount: 0.7)),
                         Color(DynamicColor(hexString: phrase.categories.first!.color).saturated(amount: 0.7))]
-                    ), startPoint: topUnitPoint.randomElement()!, endPoint: bottomUnitPoint.randomElement()!)
+                    ), startPoint: .top, endPoint: .bottom)
                 )
             )
         )
