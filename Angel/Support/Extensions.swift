@@ -82,6 +82,12 @@ extension Date {
         let components = calendar.dateComponents([.year, .month, .day], from: self)
         return calendar.date(from: components)!
     }
+    
+    func toString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm E, d MMM y"
+        return dateFormatter.string(from: self)
+    }
 }
 
 extension TimeInterval {

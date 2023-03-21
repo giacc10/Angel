@@ -25,6 +25,7 @@
 "Choose-Meditation-Soundtrack" = "Scegli la colonna sonora della meditazione:";
 "Choose-Meditation-Minutes" = "Scegli i minuti di meditazione:";
 "Start-Meditation %@" = "Inizia meditazione di %@";
+"Minutes %@" = "%@ minuti";
 "Thank-You" = "Grazie";
 "Meditation-Ended" = "Meditazione conclusa";
 "Say-Thank-You" = "Dì grazie a te stesso per questo momento che hai dedicato alla tua salute e prenditi un momento per apprezzarti ed essere grato";
@@ -46,6 +47,8 @@
 "Collapse-Chart" = "Collassa grafico";
 "Expand-Chart" = "Espandi grafico";
 "Favorites" = "Preferiti";
+"You-Meditated" = "Hai meditato";
+"You-Felt" = "Ti sei sentito";
 
 "Start-Meditation-Speech" = "Iniziamo questa meditazione, chiudi gli occhi, rilassati e lasciati andare";
 "Thank-You-Meditation-Speech" = "Grazie per aver seguito questa meditazione, spero tu ti senta meglio";
@@ -76,6 +79,10 @@
 "Good" = "Bene";
 "Great" = "Benissimo";
 "Blessed" = "Benedetto";
+
+"Standard" = "Standard";
+"Featured" = "Primo Piano";
+"Of The Day" = "Del giorno";
 
 "Phrase−Peace−1" = "La pace sia con te. Lascia andare le tue preoccupazioni e abbi fiducia nel viaggio che ti aspetta.";
 "Phrase−Peace−2" =  "Ricorda, sei amato e protetto, sempre.";

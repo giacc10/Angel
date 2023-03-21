@@ -24,6 +24,7 @@
 "Choose-Meditation-Soundtrack" = "Choose meditation soundtrack:";
 "Choose-Meditation-Minutes" = "Choose meditation minutes:";
 "Start-Meditation %@" = "Start %@ Meditation";
+"Minutes %@" = "%@ minutes";
 "Thank-You" = "Thank you";
 "Meditation-Ended" = "Meditation Ended";
 "Say-Thank-You" = "Say thank you to yourself for this moment you dedicated to your health and take a moment to apprecciate you and be grateful";
@@ -45,6 +46,8 @@
 "Collapse-Chart" = "Collapse chart";
 "Expand-Chart" = "Expand chart";
 "Favorites" = "Favorites";
+"You-Meditated" = "You meditated";
+"You-Felt" = "You felt";
 
 "Start-Meditation-Speech" = "Let's start this meditation, close your eyes, relax and flow within";
 "Thank-You-Meditation-Speech" = "Thank you to have followed this meditation, i hope you feel better";
@@ -75,6 +78,10 @@
 "Good" = "Good";
 "Great" = "Great";
 "Blessed" = "Blessed";
+
+"Standard" = "Standard";
+"Featured" = "Featured";
+"Of The Day" = "Of The Day";
 
 "Phrase−Peace−1" = "Peace be with you. Let go of your worries and trust in the journey ahead.";
 "Phrase−Peace−2" = "Remember, you are loved and protected, always.";

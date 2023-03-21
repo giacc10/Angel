@@ -27,7 +27,7 @@ struct MeditationFeaturedCard: View {
                     .textCase(.uppercase)
                     .foregroundColor(Color(DynamicColor(hexString: categories[0].color).darkened(amount: 0.2)))
                 HStack(alignment: .center) {
-                    Text("\(featuredMeditation.duration.toMinutes()) minutes")
+                    Text(String(localized: "Minutes \(featuredMeditation.duration.toMinutes())"))
                         .foregroundColor(Color(DynamicColor(hexString: categories[0].color).darkened(amount: 0.4)))
                     Text("•")
                         .foregroundColor(Color(DynamicColor(hexString: categories[0].color).darkened(amount: 0.5)))

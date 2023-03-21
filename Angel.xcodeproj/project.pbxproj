@@ -28,6 +28,7 @@
 		E350359A29BB574C006B3C8C /* MeditationRecapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350359929BB574C006B3C8C /* MeditationRecapView.swift */; };
 		E356D9AA29BCA0AF001BAD06 /* ButtonCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = E356D9A929BCA0AF001BAD06 /* ButtonCTA.swift */; };
 		E35C5AE429C5D8FE003D0811 /* MeditationFeaturedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35C5AE329C5D8FE003D0811 /* MeditationFeaturedCard.swift */; };
+		E35DB00029CA45EE008DB41F /* MeditationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35DAFFF29CA45EE008DB41F /* MeditationRow.swift */; };
 		E389693929B8820D00A632BC /* MeditationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693829B8820D00A632BC /* MeditationDetailView.swift */; };
 		E389693B29B89D2400A632BC /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693A29B89D2400A632BC /* MeditationView.swift */; };
 		E389693D29B8A44700A632BC /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693C29B8A44700A632BC /* ProgressBar.swift */; };
@@ -105,6 +106,7 @@
 		E350359929BB574C006B3C8C /* MeditationRecapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationRecapView.swift; sourceTree = "<group>"; };
 		E356D9A929BCA0AF001BAD06 /* ButtonCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCTA.swift; sourceTree = "<group>"; };
 		E35C5AE329C5D8FE003D0811 /* MeditationFeaturedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationFeaturedCard.swift; sourceTree = "<group>"; };
+		E35DAFFF29CA45EE008DB41F /* MeditationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationRow.swift; sourceTree = "<group>"; };
 		E3744CE6299D9CAA00896E8D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E389693829B8820D00A632BC /* MeditationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationDetailView.swift; sourceTree = "<group>"; };
 		E389693A29B89D2400A632BC /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				E3FEE4E729BB3A76001CAF0F /* CustomSegmentedPicker.swift */,
 				E337897329BB65480065F137 /* SoundtrackRow.swift */,
 				E3C22E9029BCB4FF00113C04 /* MoodFace.swift */,
+				E35DAFFF29CA45EE008DB41F /* MeditationRow.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				E396F9B1299E332600E6425D /* AngelicPhraseModel.swift in Sources */,
 				E334A9AA299ECA860077EB2F /* CreateUserView.swift in Sources */,
 				E334A9A4299EBC740077EB2F /* PhraseCategoryView.swift in Sources */,
+				E35DB00029CA45EE008DB41F /* MeditationRow.swift in Sources */,
 				E389693F29B8A80700A632BC /* MeditationModel.swift in Sources */,
 				E328E22D299D96F800B7B764 /* Extensions.swift in Sources */,
 				E3FEE4E829BB3A76001CAF0F /* CustomSegmentedPicker.swift in Sources */,
@@ -620,7 +624,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_ASSET_PATHS = "\"Angel/Preview Content\"";
 				DEVELOPMENT_TEAM = 4NNU2X6939;
 				ENABLE_PREVIEWS = YES;
@@ -651,7 +655,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_ASSET_PATHS = "\"Angel/Preview Content\"";
 				DEVELOPMENT_TEAM = 4NNU2X6939;
 				ENABLE_PREVIEWS = YES;

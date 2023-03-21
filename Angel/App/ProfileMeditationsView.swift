@@ -26,7 +26,7 @@ struct ProfileMeditationsView: View {
             VStack {
                 VStack(alignment: .leading, spacing: 10) {
                     VStack(alignment: .leading) {
-                        Text("You meditated:")
+                        Text(String(localized: "You-Meditated") + ":")
                             .font(.footnote)
                             .fontWeight(.bold)
                         Text(totalTimeMeditation())
@@ -97,6 +97,30 @@ struct ProfileMeditationsView: View {
                 )
                 .padding(.horizontal)
                 
+                ForEach(groupMeditationsByMonth().sorted(by: { $0.value[0].date > $1.value[0].date }), id: \.key) { key, values in
+                    VStack {
+                        DisclosureGroup {
+//                            Spacer(minLength: 10)
+                            Text(String(localized: "Meditation-Number \(values.count)"))
+                                .font(.footnote)
+                                .fontWeight(.medium)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            ForEach(values.sorted(by: { $0.date > $1.date }), id: \.self) { meditation in
+                                MeditationRow(meditation: meditation, categories: getCategories(for: Array(meditation.categories)))
+                            }
+                        } label: {
+                            Text(key)
+                                .font(.title2)
+                                .fontWeight(.bold)
+                        }
+                    } //: VSTACK
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 12)
+                        .fill(.ultraThinMaterial)
+                    )
+                    .padding(.horizontal)
+                    
+                }
                 
             } //: VSTACK
             .onAppear {
@@ -162,6 +186,30 @@ extension ProfileMeditationsView {
     
     private func getCategory(for category: String) -> Category {
         return phrasesRealmManager.categories.first(where: { $0.name.rawValue == category })!
+    }
+    
+    private func getCategories(for categories: [String]) -> [Category] {
+        var categoriesToReturn: [Category] = []
+        for category in categories {
+            categoriesToReturn.append(getCategory(for: category))
+        }
+        return categoriesToReturn
+    }
+    
+    private func groupMeditationsByMonth() -> [String: [Meditation]] {
+        if let user = users.first {
+            let meditations = user.meditations
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMMM yyyy" // format for grouping by month and year
+                
+            let groupedMeditations = Dictionary(grouping: meditations) { meditation in
+                formatter.string(from: meditation.date)
+            }
+                
+            return groupedMeditations
+        }
+        return ["" : [Meditation()]]
     }
 }
 
