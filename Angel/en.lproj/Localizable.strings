@@ -10,6 +10,14 @@
 "Tell-Me-Something" = "Tell me something";
 "What-Is-Your-Name?" = "What is your name?";
 "Insert-Name" = "Write your name";
+"What-Is-Your-Email?" = "What is your email?";
+"Insert-Email" = "Write your email";
+"Repeat-Your-Email" = "Repeat your email";
+"Repeat-Email" = "Write again your email";
+"Insert-Valid-Email" = "We could use your email to restore your account and payments, be sure is correct";
+"Please-Insert-Your-Name" = "Please insert your name";
+"Please-Insert-Your-Email" = "Please insert your email";
+"Please-Insert-Same-Email" = "Please be sure the emails are the same";
 "Create-Profile" = "Create your profile";
 "Like" = "Like";
 "Share" = "Share";
@@ -73,6 +81,8 @@
 "Payment-Disclaimer" = "Payment will be charged to your iTunes account at confirmation of purchase. Subscriptions will automatically renew unless auto-renew is turned off at least 24 hours before the end of current period. Your account will be charged according to your plan for renewal whitin 24 hours prior to the end of the current period. You can manage or turn off auto renew in your Apple ID account settings at any time after purchase.";
 "Processing" = "Processing";
 "All-Set-Premium" = "All set, wait just a couple of seconds while activating your account";
+"Go-Premium-To-Hear-Phrases" = "Go premium to hear phrases";
+"Go-Premium-To-Meditate" = "Go premium to meditate";
 
 "Start-Meditation-Speech" = "Let's start this meditation, close your eyes, relax and flow within";
 "Thank-You-Meditation-Speech" = "Thank you to have followed this meditation, i hope you feel better";

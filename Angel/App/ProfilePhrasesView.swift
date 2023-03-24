@@ -16,6 +16,8 @@ struct ProfilePhrasesView: View {
     
     @ObservedResults(AngelicPhrase.self) var allPhrases
     
+    let isPremium: Bool
+    
     @State var selectedPhrase: AngelicPhrase? = nil
     @State var isProfilePhraseDetailPresented = false
     
@@ -35,9 +37,16 @@ struct ProfilePhrasesView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(Color(DynamicColor(hexString: getCategory(for: key).color).darkened(amount: 0.4)))
                                     .onTapGesture {
-                                        selectedPhrase = phrase
-                                        print(getCategory(for: key).color)
+                                        if !isPremium {
+                                            if !phrase.premium {
+                                                selectedPhrase = phrase
+                                            }
+                                        } else {
+                                            selectedPhrase = phrase
+                                        }
                                     }
+                                    .blur(radius: phrase.premium ? isPremium ? 0 : 10 : 0)
+                                    
                             }
                             .padding()
                             .background(Color(DynamicColor(hexString: getCategory(for: key).color).saturated(amount: 0.5)))
@@ -137,6 +146,6 @@ extension ProfilePhrasesView {
 
 struct ProfilePhrasesView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfilePhrasesView()
+        ProfilePhrasesView(isPremium: false)
     }
 }

@@ -7,11 +7,14 @@
 
 import SwiftUI
 import DynamicColor
+import RealmSwift
 
 struct MeditationDetailView: View {
     
     // MARK: - PROPERTIES
     @Environment(\.dismiss) var dismiss
+    @ObservedRealmObject var user: User
+    
     @StateObject var audioPreviewManager = AudioManager()
     var meditationViewModel: MeditationViewModel
     
@@ -23,6 +26,7 @@ struct MeditationDetailView: View {
     @State var selectedTimer: Int = 0
     @State var selectedSoundtrack: String? = nil
     @State var isMeditationViewInStack: Bool = false
+    @State var isPayWallpresented: Bool = false
     
     // MARK: - BODY
     var body: some View {
@@ -101,11 +105,18 @@ struct MeditationDetailView: View {
                     
                     ButtonCTA(text: String(localized: "Start-Meditation \(mainCategory().name.localizedString())"),
                               color: mainCategory().color) {
+                        if user.isSubscriptionActive {
+                            isMeditationViewInStack.toggle()
+                        } else {
+                            isPayWallpresented.toggle()
+                        }
                         audioPreviewManager.stop()
-                        isMeditationViewInStack.toggle()
                     }
-                    .navigationDestination(isPresented: $isMeditationViewInStack) {
+                    .navigationDestination(isPresented: $isMeditationViewInStack) { 
                         MeditationView(meditation: meditationViewModel.createMeditation(title: "", caption: "", categories: categories, duration: selectedTimer, track: selectedSoundtrack ?? "A Meditation", type: .standard), categories: categories)
+                    }
+                    .fullScreenCover(isPresented: $isPayWallpresented) {
+                        PayWallView(user: user, color: categories.first!.color)
                     }
                     
                 } //: VSTACK

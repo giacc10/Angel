@@ -6,18 +6,27 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct PhraseCategoryView: View {
     
     // MARK: - PROPERTIES
     private(set) var category: Category
+    @ObservedRealmObject var user: User
     
     // MARK: - BODY
     var body: some View {
         ZStack{
             List {
                 ForEach(category.angelicPhrases, id: \.id) { phrase in
-                    Text(LocalizedStringKey(phrase.key).stringValue())
+                    HStack {
+                        Text(phrase.idProgressive)
+                            .font(.footnote)
+                            .fontWeight(.bold)
+                        Text(" - ")
+                        Text(LocalizedStringKey(phrase.key).stringValue())
+                            .blur(radius: phrase.premium ? user.isSubscriptionActive ? 0 : 10 : 0)
+                    }
                 }
             } //: LIST
         } //: ZSTACK
@@ -36,8 +45,8 @@ struct PhraseCategoryView: View {
     }
 }
 
-struct PhraseCategoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        PhraseCategoryView(category: Category(value: []))
-    }
-}
+//struct PhraseCategoryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PhraseCategoryView(category: Category(value: []))
+//    }
+//}

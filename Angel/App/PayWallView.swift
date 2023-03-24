@@ -30,26 +30,36 @@ struct PayWallView: View {
         NavigationView {
             ScrollView(showsIndicators: false) {
                 VStack {
-                    VStack {
-                        Image("betty-icon")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 100)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(.white, lineWidth: 2)
-                            )
-                        Text(String(localized: "Go-Premium"))
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .textCase(.uppercase)
-                            .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
-                        Text(String(localized: "Get-Access-Features"))
-                            .fontWeight(.medium)
-                            .font(.callout)
-                            .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
-                    }
-                    .padding(.top, 30)
+                    ZStack(alignment: .topTrailing) {
+                        Button{
+                            dismiss()
+                        } label: {
+                            Image(systemName: "xmark")
+                                .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.4)))
+                        }
+                        VStack {
+                            Image("betty-icon")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 100)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(.white, lineWidth: 2)
+                                )
+                            Text(String(localized: "Go-Premium"))
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .textCase(.uppercase)
+                                .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
+                            Text(String(localized: "Get-Access-Features"))
+                                .fontWeight(.medium)
+                                .font(.callout)
+                                .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
+                        } //: VSTACK
+                        .frame(maxWidth: .infinity)
+                        .padding(.top)
+                    } //: ZSTACK
+                    .padding(.top)
                     VStack(alignment: .leading, spacing: 10) {
                         FeatureLabel(isDone: true, headline: String(localized: "Get-All-Phrases"), caption: String(localized: "Get-All-Phrases-Caption"))
                         FeatureLabel(isDone: true, headline: String(localized: "Speech-The-Phrases"), caption: String(localized: "Speech-The-Phrases-Caption"))

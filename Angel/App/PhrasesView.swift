@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct PhrasesView: View {
     
     // MARK: - PROPERTIES
     @StateObject var phrasesRealmManager = PhrasesRealmManager()
+    @ObservedResults(User.self) var users
     
     // MARK: - BODY
     var body: some View {
@@ -18,7 +20,7 @@ struct PhrasesView: View {
             ZStack{
                 List {
                     ForEach(phrasesRealmManager.categories, id: \.id) { category in
-                        NavigationLink(destination: PhraseCategoryView(category: category)) {
+                        NavigationLink(destination: PhraseCategoryView(category: category, user: users.first!)) {
                             Text(category.name.localizedString())
                         }
                     }

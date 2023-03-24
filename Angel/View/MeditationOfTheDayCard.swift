@@ -7,10 +7,12 @@
 
 import SwiftUI
 import DynamicColor
+import ProgressHUD
 
 struct MeditationOfTheDayCard: View {
     
     // MARK: - PROPERTIES
+    let isPremium: Bool
     var meditationOfTheDay: Meditation
     
     let categories: [Category]
@@ -48,7 +50,11 @@ struct MeditationOfTheDayCard: View {
             .padding(5)
             Spacer()
             Button {
-                isMeditationViewInStack.toggle()
+                if isPremium {
+                    isMeditationViewInStack.toggle()
+                } else {
+                    ProgressHUD.showFailed(String(localized: "Go-Premium-To-Meditate"))
+                }
             } label: {
                 Image(systemName: "play.fill")
                     .foregroundColor(Color(DynamicColor(hexString: categories.first!.color).lighter(amount: 0.3)))

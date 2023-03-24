@@ -72,7 +72,11 @@ struct MeditationsMainView: View {
                                 
                             } //: HSTACK
                             .fullScreenCover(item: $selectedFeaturedMeditation, content: { meditation in
-                                MeditationView(meditation: meditationViewModel.createGeneratedMeditation(title: meditation.title, caption: meditation.caption, categories: meditationViewModel.getCategories(for: meditation), duration: meditation.duration, track: meditation.track, type: .featured), categories: meditationViewModel.getCategories(for: meditation))
+                                if users.first!.isSubscriptionActive {
+                                    MeditationView(meditation: meditationViewModel.createGeneratedMeditation(title: meditation.title, caption: meditation.caption, categories: meditationViewModel.getCategories(for: meditation), duration: meditation.duration, track: meditation.track, type: .featured), categories: meditationViewModel.getCategories(for: meditation))
+                                } else {
+                                    PayWallView(user: users.first!, color: meditationViewModel.getCategories(for: meditation).first!.color)
+                                }
                             })
                             .padding(.horizontal)
                         } //: SCROLLVIEW
@@ -83,7 +87,7 @@ struct MeditationsMainView: View {
                             .font(.footnote)
                             .fontWeight(.bold)
                         
-                        MeditationOfTheDayCard(meditationOfTheDay:
+                        MeditationOfTheDayCard(isPremium: users.first!.isSubscriptionActive, meditationOfTheDay:
                                                 meditationViewModel.createGeneratedMeditation(title:
                                                                                               meditationViewModel.meditationOfTheDay.title,
                                                                                               caption: meditationViewModel.meditationOfTheDay.caption,
@@ -102,17 +106,17 @@ struct MeditationsMainView: View {
                                 .font(.footnote)
                                 .fontWeight(.bold)
                             Spacer()
-                            Button {
-                                
-                            } label: {
-                                HStack(spacing: 5) {
-                                    Text(String(localized: "See-All"))
-                                        .font(.footnote)
-                                        .fontWeight(.bold)
-                                    Image(systemName: "chevron.right")
-                                        .font(.caption)
-                                }
-                            }
+//                            Button {
+//
+//                            } label: {
+//                                HStack(spacing: 5) {
+//                                    Text(String(localized: "See-All"))
+//                                        .font(.footnote)
+//                                        .fontWeight(.bold)
+//                                    Image(systemName: "chevron.right")
+//                                        .font(.caption)
+//                                }
+//                            }
                         } //: HSTACK
                         .padding(.horizontal)
                         
@@ -126,7 +130,7 @@ struct MeditationsMainView: View {
                                 }
                             } //: HSTACK
                             .fullScreenCover(item: $selectedCategoryCard, content: { category in
-                                MeditationDetailView(meditationViewModel: meditationViewModel, categories: [category])
+                                MeditationDetailView(user: users.first!, meditationViewModel: meditationViewModel, categories: [category])
                             })
                             .padding(.horizontal)
                         }

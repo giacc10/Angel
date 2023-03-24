@@ -13,8 +13,8 @@ final class MeditationViewModel: ObservableObject {
     @ObservedResults(MeditationsStorage.self) var meditationsStorages
     
     let phrasesRealmManager = PhrasesRealmManager()
-    let durations: [TimeInterval] = [10, 600, 900, 1800, 2700, 3600]
-    let tracks: [String] = ["Angelic Soprano", "Did You Know Angels Play Guitar?", "Solo Path", "For When It Rains", "Epic Era", "Calling Emotional Angelic Melodic", "Angelic Interlude"]
+    let durations: [TimeInterval] = [1, 600, 900, 1800, 2700, 3600]
+    let tracks: [String] = ["A Meditation", "Angelic Interlude", "Asia Travel", "Battle Angel", "Believe In Miracle", "Blessed Meditation", "Calling Emotional Angelic Melodic", "Did You Know Angels Play Guitar?", "Documentary", "Dreamy Breathing", "Epic Era", "For Documentary", "For When It Rains", "Francisco Samuel Epic", "Inner Peace Meditation", "Inspirational Asia", "Inspiring Asia", "Love Meditation", "Mindfulness Relaxation", "Monumental Victory", "Open Angel", "Peaceful Garden Healing", "Pure", "Solo Path", "Tolworth", "Voice Of An Angel Three", "You Are Always With Me"]
     
 //    @ObservedRealmObject private(set) var meditation: Meditation = Meditation()
     private(set) var meditationOfTheDay: Meditation = Meditation()

@@ -19,7 +19,7 @@ struct ProfileView: View {
     @State var isProfileMeditationsInStack = false
     @State var isProfilePhrasesInStack = false
     
-    @State var presentPayWall = false /// DELETE
+    @State var isPayWallpresented = false
     
     // MARK: - BODY
     var body: some View {
@@ -30,7 +30,7 @@ struct ProfileView: View {
                         
                         if !users.first!.isSubscriptionActive {
                             Button {
-                                presentPayWall.toggle()
+                                isPayWallpresented.toggle()
                             } label: {
                                 HStack {
                                     Image(systemName: "star.square.on.square.fill")
@@ -40,7 +40,7 @@ struct ProfileView: View {
                                 .fontWeight(.bold)
                                 .foregroundColor(.green)
                             }
-                            .sheet(isPresented: $presentPayWall) {
+                            .sheet(isPresented: $isPayWallpresented) {
                                 PayWallView(user: users.first!, color: "#7FB3D5")
                             }
                         }
@@ -57,8 +57,9 @@ struct ProfileView: View {
                                         .fontWeight(.medium)
                                         .textCase(.uppercase)
                                     Text(users.first!.isSubscriptionActive ? String(localized: "Premium") : String(localized: "Free"))
-                                        .fontWeight(.medium)
+                                        .fontWeight(users.first!.isSubscriptionActive ? .bold : .medium)
                                         .font(.footnote)
+                                        .foregroundColor(users.first!.isSubscriptionActive ? .green : .primary)
                                     
                                 } //: VSTACK
                             }
@@ -203,7 +204,7 @@ struct ProfileView: View {
                                         .fontWeight(.bold)
                                 }
                                 .navigationDestination(isPresented: $isProfilePhrasesInStack) {
-                                    ProfilePhrasesView()
+                                    ProfilePhrasesView(isPremium: users.first!.isSubscriptionActive)
                                 }
                             } //: HSTACK
                         } else {

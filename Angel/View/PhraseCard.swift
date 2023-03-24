@@ -9,6 +9,7 @@ import SwiftUI
 import RealmSwift
 import AVFoundation
 import DynamicColor
+import ProgressHUD
 
 struct PhraseCard: View {
     
@@ -18,6 +19,7 @@ struct PhraseCard: View {
     
     
     let phrase: AngelicPhrase
+    let isPremium: Bool
     @State var isFavorite: Bool = false
     
     let synthesizer = AVSpeechSynthesizer()
@@ -42,7 +44,6 @@ struct PhraseCard: View {
                     .frame(maxWidth: .infinity)
                     .foregroundColor(Color(DynamicColor(hexString: phrase.categories.first!.color).darkened(amount: 0.6)))
                     .padding()
-                
                 Spacer()
                 
                 Button {
@@ -125,6 +126,10 @@ extension PhraseCard {
     }
     
     func speakPhrase() {
+        if !isPremium {
+            ProgressHUD.showFailed(String(localized: "Go-Premium-To-Hear-Phrases"))
+            return
+        }
         let utterance = AVSpeechUtterance(string: LocalizedStringKey(phrase.key).stringValue())
 //        utterance.voice = AVSpeechSynthesisVoice(language: Locale.preferredLanguages.first)
         utterance.voice = AVSpeechSynthesisVoice(language: getLanguageCode())

@@ -28,6 +28,7 @@
 		E33AF3F329CDBBA900F5200B /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = E33AF3F229CDBBA900F5200B /* RevenueCat */; };
 		E33AF3F629CDBBEB00F5200B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E33AF3F529CDBBEB00F5200B /* StoreKit.framework */; };
 		E33AF3F929CDC58A00F5200B /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = E33AF3F829CDC58A00F5200B /* ProgressHUD */; };
+		E33AF3FF29CDCE1C00F5200B /* phrases.realm in Resources */ = {isa = PBXBuildFile; fileRef = E33AF3FE29CDCE1C00F5200B /* phrases.realm */; };
 		E3479C2429B8BF7A004D8337 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3479C2329B8BF7A004D8337 /* AudioManager.swift */; };
 		E350359A29BB574C006B3C8C /* MeditationRecapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350359929BB574C006B3C8C /* MeditationRecapView.swift */; };
 		E356D9AA29BCA0AF001BAD06 /* ButtonCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = E356D9A929BCA0AF001BAD06 /* ButtonCTA.swift */; };
@@ -38,7 +39,6 @@
 		E389693D29B8A44700A632BC /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693C29B8A44700A632BC /* ProgressBar.swift */; };
 		E389693F29B8A80700A632BC /* MeditationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389693E29B8A80700A632BC /* MeditationModel.swift */; };
 		E389694129B8A87B00A632BC /* MeditationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389694029B8A87B00A632BC /* MeditationViewModel.swift */; };
-		E38F021529C2713600C470D8 /* phrases.realm in Resources */ = {isa = PBXBuildFile; fileRef = E38F021429C2713600C470D8 /* phrases.realm */; };
 		E396F9AB299E321D00E6425D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E396F9AA299E321D00E6425D /* Realm */; };
 		E396F9AD299E321D00E6425D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E396F9AC299E321D00E6425D /* RealmSwift */; };
 		E396F9AF299E331500E6425D /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396F9AE299E331500E6425D /* CategoryModel.swift */; };
@@ -109,6 +109,7 @@
 		E337649C29B7E60E0047CFBE /* CategoryPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPill.swift; sourceTree = "<group>"; };
 		E337897329BB65480065F137 /* SoundtrackRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundtrackRow.swift; sourceTree = "<group>"; };
 		E33AF3F529CDBBEB00F5200B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E33AF3FE29CDCE1C00F5200B /* phrases.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = phrases.realm; sourceTree = "<group>"; };
 		E3479C2329B8BF7A004D8337 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		E350359929BB574C006B3C8C /* MeditationRecapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationRecapView.swift; sourceTree = "<group>"; };
 		E356D9A929BCA0AF001BAD06 /* ButtonCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCTA.swift; sourceTree = "<group>"; };
@@ -120,7 +121,6 @@
 		E389693C29B8A44700A632BC /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		E389693E29B8A80700A632BC /* MeditationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationModel.swift; sourceTree = "<group>"; };
 		E389694029B8A87B00A632BC /* MeditationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationViewModel.swift; sourceTree = "<group>"; };
-		E38F021429C2713600C470D8 /* phrases.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = phrases.realm; sourceTree = "<group>"; };
 		E396F9AE299E331500E6425D /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		E396F9B0299E332600E6425D /* AngelicPhraseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngelicPhraseModel.swift; sourceTree = "<group>"; };
 		E396F9E8299E73E300E6425D /* PhrasesRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhrasesRealmManager.swift; sourceTree = "<group>"; };
@@ -348,7 +348,7 @@
 		E396F9E5299E736200E6425D /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				E38F021429C2713600C470D8 /* phrases.realm */,
+				E33AF3FE29CDCE1C00F5200B /* phrases.realm */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -437,6 +437,7 @@
 			files = (
 				E3A5844829C33D02002AD8BE /* Inner Peace Meditation.mp3 in Resources */,
 				E3A5844F29C33D02002AD8BE /* Battle Angel.mp3 in Resources */,
+				E33AF3FF29CDCE1C00F5200B /* phrases.realm in Resources */,
 				E3A5844929C33D02002AD8BE /* Love Meditation.mp3 in Resources */,
 				E3A5844C29C33D02002AD8BE /* Epic Era.mp3 in Resources */,
 				E328E22A299D955900B7B764 /* White Scratches.ttf in Resources */,
@@ -451,7 +452,6 @@
 				E3A5844329C33D02002AD8BE /* Pure.mp3 in Resources */,
 				E334A9AD299ECF320077EB2F /* Localizable.strings in Resources */,
 				E328E228299D954800B7B764 /* Alvifont.ttf in Resources */,
-				E38F021529C2713600C470D8 /* phrases.realm in Resources */,
 				E3A5843E29C33D02002AD8BE /* Blessed Meditation.mp3 in Resources */,
 				E3A5845129C33D02002AD8BE /* Mindfulness Relaxation.mp3 in Resources */,
 				E3A5843A29C33D02002AD8BE /* Inspiring Asia.mp3 in Resources */,

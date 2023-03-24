@@ -15,10 +15,10 @@ struct HomeView: View {
     @StateObject var phrasesRealmManager = PhrasesRealmManager()
     
     @ObservedResults(User.self) var users
-    @ObservedResults(AngelicPhrase.self) var allPhrases
     
     @State private var currentPhrase = ""
     @State private var phrasesArray: [AngelicPhrase] = []
+    @State private var freePhrasesArray: [AngelicPhrase] = []
 //    @State private var phrasesIndexs: [Int] = []
     @State private var loadedPhraseIds = Set<String>()
     
@@ -35,7 +35,7 @@ struct HomeView: View {
                         ForEach(phrasesArray) { phrase in
                             
                             // MARK: - Phrase
-                            PhraseCard(phrase: phrase)
+                            PhraseCard(phrase: phrase, isPremium: users.first!.isSubscriptionActive)
                                 .onAppear {
                                     loadPhrase()
                                 }
@@ -79,22 +79,24 @@ extension HomeView {
     // MARK: - FUNCTIONS
     private func loadPhrase() {
         print("##: Loading new phrase")
-        if phrasesRealmManager.angelicPhrases.count > loadedPhraseIds.count {
+        
+        let phrasesCount = !users.first!.isSubscriptionActive ? phrasesRealmManager.angelicPhrases.filter { !$0.premium }.count : phrasesRealmManager.angelicPhrases.count
+        
+        if phrasesCount > loadedPhraseIds.count {
             
-            // Choose a random phrase from the phrases array that has not already been loaded
-            var randomPhrase = phrasesRealmManager.angelicPhrases.randomElement()!
+            var randomPhraseToAppend = randomPhrase()
             
-            print("##: Try \(randomPhrase.idProgressive)")
-            while loadedPhraseIds.contains(randomPhrase.idProgressive) {
-                randomPhrase = phrasesRealmManager.angelicPhrases.randomElement()!
+            print("##: Try \(randomPhraseToAppend.idProgressive)")
+            while loadedPhraseIds.contains(randomPhraseToAppend.idProgressive) {
+                randomPhraseToAppend = randomPhrase()
                 print("##: Already present, retry")
             }
             
             // Append the random phrase to the phrases array and mark its id as loaded
-            phrasesArray.append(randomPhrase)
-            loadedPhraseIds.insert(randomPhrase.idProgressive)
+            phrasesArray.append(randomPhraseToAppend)
+            loadedPhraseIds.insert(randomPhraseToAppend.idProgressive)
             
-            print("##: Insert \(randomPhrase.idProgressive)")
+            print("##: Insert \(randomPhraseToAppend.idProgressive)")
             print("##: Loaded \(phrasesArray.count) phrases")
         }
 //        if phrasesArray.count < phrases.count {
@@ -113,6 +115,22 @@ extension HomeView {
 //                print("Already present, retry")
 //            }
 //        }
+    }
+    
+    private func randomPhrase() -> AngelicPhrase {
+        var randomPhrase = AngelicPhrase()
+        
+        if !users.first!.isSubscriptionActive {
+            let filteredPhrases = phrasesRealmManager.angelicPhrases.filter { phrase in
+                return !phrase.premium
+            }
+            randomPhrase = filteredPhrases.randomElement()!
+        } else {
+            // Choose a random phrase from the phrases array that has not already been loaded
+            randomPhrase = phrasesRealmManager.angelicPhrases.randomElement()!
+        }
+        
+        return randomPhrase
     }
 }
 
