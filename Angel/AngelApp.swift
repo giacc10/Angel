@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealmSwift
+import RevenueCat
 
 @main
 struct AngelApp: SwiftUI.App {
@@ -18,5 +19,12 @@ struct AngelApp: SwiftUI.App {
                     print("##: Realm path: \(Realm.Configuration.defaultConfiguration.fileURL!)")
                 }
         }
+    }
+    
+    init() {
+        
+        Purchases.logLevel = .debug
+        Purchases.configure(withAPIKey: "appl_PQNhYqBHIAhctWPcescscyZfoQY")
+        
     }
 }

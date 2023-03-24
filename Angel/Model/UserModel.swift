@@ -12,7 +12,7 @@ class User: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var id = 0
     @Persisted var name: String
     @Persisted var image: Data?
-    @Persisted var isPremium: Bool = false
+    @Persisted var isSubscriptionActive: Bool = false
     
     @Persisted var favoritePhrases: List<AngelicPhrase>
     @Persisted var meditations: List<Meditation>

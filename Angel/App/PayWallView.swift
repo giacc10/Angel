@@ -8,12 +8,20 @@
 import SwiftUI
 import RealmSwift
 import DynamicColor
+import RevenueCat
+import ProgressHUD
 
 struct PayWallView: View {
     
     //MARK: - PROPERTIES
     @Environment(\.dismiss) var dismiss
     @State private var barHidden = true
+    
+    @ObservedRealmObject var user: User
+    
+    @State var currentOffering: Offering?
+    @State var selectedPackage: Package? = nil
+    @State private var isPurchasing = false
     
     let color: String
     
@@ -74,49 +82,61 @@ struct PayWallView: View {
                             .textCase(.uppercase)
                             .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
                         
-//                        if currentOffering != nil {
+                        if currentOffering != nil {
                             
-                            VStack {
-                                Text("1")
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.4)))
-                                Text(String(localized: "Year"))
-                                    .font(.title2)
-                                    .fontWeight(.bold)
-                                    .textCase(.uppercase)
-                                    .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.4)))
-//                                Text(currentOffering!.availablePackages[0].storeProduct.localizedPriceString)
-                                Text("12.99€")
-                                    .fontWeight(.semibold)
-                                    .padding(.top, 0)
-                                    .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
-                            }
-                            .padding(.vertical, 25)
-                            .padding(.horizontal ,40)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color(DynamicColor(hexString: color).lighter(amount: 0.3)), lineWidth: 4)
-                            )
+                            HStack {
+                                ForEach(currentOffering!.availablePackages) { pkg in
+                                    VStack {
+                                        Text("\(pkg.storeProduct.subscriptionPeriod!.value)")
+                                            .font(.title)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.4)))
+                                        Text("\(pkg.storeProduct.subscriptionPeriod!.periodTitle)")
+                                            .font(.subheadline)
+                                            .fontWeight(.bold)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.4)))
+                                        Text(pkg.storeProduct.localizedPriceString)
+                                            .font(.callout)
+                                            .fontWeight(.semibold)
+                                            .padding(.top, 0)
+                                            .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
+                                    } //: VSTACK
+                                    .frame(width: 75)
+                                    .padding()
+                                    .onTapGesture {
+                                        selectedPackage = pkg
+                                    }
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .stroke(self.selectedPackage == pkg ? Color(DynamicColor(hexString: color).lighter(amount: 0.3)) :
+                                                Color(DynamicColor(hexString: color).darkened(amount: 0.2)), lineWidth: 4)
+                                    )
+                            } //: HSTACK
+                        }
+                            
                         ButtonCTA(text: String(localized: "Continue"), color: color) {
-//                                ProgressHUD.show(String(localized: "Processing"), interaction: false)
+                                ProgressHUD.show(String(localized: "Processing"), interaction: false)
 
-//                                Purchases.shared.purchase(package: currentOffering!.availablePackages[0]) { (transaction, customerInfo, error, userCancelled) in
-//
-//                                    isPurchasing = true
-//
-//                                    if customerInfo?.entitlements["premium"]?.isActive == true {
-//                                        // Unlock that great "pro" content
-//
-//                                        $user.isSubscriptionActive.wrappedValue = true
-//                                        isPurchasing = false
-//                                        ProgressHUD.dismiss()
-//                                        ProgressHUD.showSuccess(String(localized: "All-Set-Premium"))
-//                                        return
-//                                    }
-//                                    ProgressHUD.showFailed()
-//
-//                                }
+                            if let package = selectedPackage {
+                                
+                                Purchases.shared.purchase(package: package) { (transaction, customerInfo, error, userCancelled) in
+                                    
+                                    isPurchasing = true
+                                    
+                                    if customerInfo?.entitlements["premium"]?.isActive == true {
+                                        // Unlock that great "pro" content
+                                        
+                                        $user.isSubscriptionActive.wrappedValue = true
+                                        isPurchasing = false
+                                        ProgressHUD.dismiss()
+                                        ProgressHUD.showSuccess(String(localized: "All-Set-Premium"))
+                                        return
+                                    }
+                                    ProgressHUD.showFailed()
+                                    isPurchasing = false
+                                }
+                            }
                             }
                             .padding(.top)
                             Text(String(localized: "Support-Developer") + " 👨‍💻")
@@ -125,14 +145,14 @@ struct PayWallView: View {
                                 .padding(.bottom)
                                 .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
                             
-//                        }
+                        }
                         
                         
                         Button {
-                            //                            Purchases.shared.restorePurchases { customerInfo, error in
-                            //                                //... check customerInfo to see if entitlement is now active
-                            //                                $user.isSubscriptionActive.wrappedValue = customerInfo?.entitlements["premium"]?.isActive == true
-                            //                            }
+                            Purchases.shared.restorePurchases { customerInfo, error in
+                                //... check customerInfo to see if entitlement is now active
+                                $user.isSubscriptionActive.wrappedValue = customerInfo?.entitlements["premium"]?.isActive == true
+                            }
                         } label: {
                             Text(String(localized: "Restore-Purchase"))
                                 .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.4)))
@@ -160,19 +180,19 @@ struct PayWallView: View {
                     }
                 }
                 .onAppear {
-//                    Purchases.shared.getOfferings { offerings, error in
-//                        if let offer = offerings?.current, error == nil {
-//                            currentOffering = offer
-//                        }
-//                    }
+                    Purchases.shared.getOfferings { offerings, error in
+                        if let offer = offerings?.current, error == nil {
+                            currentOffering = offer
+                        }
+                    }
                 }
-//                .overlay {
+                .overlay {
                     // Display an overlay during purchases
-//                    Rectangle()
-//                        .foregroundColor(.black)
-//                        .opacity(isPurchasing ? 0.5 : 0.0)
-//                        .edgesIgnoringSafeArea(.all)
-//                }
+                    Rectangle()
+                        .foregroundColor(.black)
+                        .opacity(isPurchasing ? 0.5 : 0.0)
+                        .edgesIgnoringSafeArea(.all)
+                }
             } //: SCROLLVIEW
             .coordinateSpace(name: "scroll")
             .navigationBarHidden(barHidden)
@@ -211,8 +231,8 @@ struct PayWallView: View {
     }
 }
 
-struct PayWallView_Previews: PreviewProvider {
-    static var previews: some View {
-        PayWallView(color: "#C3F2E5")
-    }
-}
+//struct PayWallView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PayWallView(color: "#C3F2E5")
+//    }
+//}

@@ -28,7 +28,7 @@ struct ProfileView: View {
                 VStack(spacing: 10) {
                     ZStack(alignment: .bottomTrailing) {
                         
-                        if !users.first!.isPremium {
+                        if !users.first!.isSubscriptionActive {
                             Button {
                                 presentPayWall.toggle()
                             } label: {
@@ -41,7 +41,7 @@ struct ProfileView: View {
                                 .foregroundColor(.green)
                             }
                             .sheet(isPresented: $presentPayWall) {
-                                PayWallView(color: "#7FB3D5")
+                                PayWallView(user: users.first!, color: "#7FB3D5")
                             }
                         }
                         
@@ -56,7 +56,7 @@ struct ProfileView: View {
                                         .font(.headline)
                                         .fontWeight(.medium)
                                         .textCase(.uppercase)
-                                    Text(users.first!.isPremium ? String(localized: "Premium") : String(localized: "Free"))
+                                    Text(users.first!.isSubscriptionActive ? String(localized: "Premium") : String(localized: "Free"))
                                         .fontWeight(.medium)
                                         .font(.footnote)
                                     

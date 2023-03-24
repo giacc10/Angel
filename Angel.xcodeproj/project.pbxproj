@@ -24,6 +24,10 @@
 		E334A9AD299ECF320077EB2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E334A9AF299ECF320077EB2F /* Localizable.strings */; };
 		E337649D29B7E60E0047CFBE /* CategoryPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E337649C29B7E60E0047CFBE /* CategoryPill.swift */; };
 		E337897429BB65480065F137 /* SoundtrackRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E337897329BB65480065F137 /* SoundtrackRow.swift */; };
+		E33AF3F129CDBBA900F5200B /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = E33AF3F029CDBBA900F5200B /* ReceiptParser */; };
+		E33AF3F329CDBBA900F5200B /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = E33AF3F229CDBBA900F5200B /* RevenueCat */; };
+		E33AF3F629CDBBEB00F5200B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E33AF3F529CDBBEB00F5200B /* StoreKit.framework */; };
+		E33AF3F929CDC58A00F5200B /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = E33AF3F829CDC58A00F5200B /* ProgressHUD */; };
 		E3479C2429B8BF7A004D8337 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3479C2329B8BF7A004D8337 /* AudioManager.swift */; };
 		E350359A29BB574C006B3C8C /* MeditationRecapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350359929BB574C006B3C8C /* MeditationRecapView.swift */; };
 		E356D9AA29BCA0AF001BAD06 /* ButtonCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = E356D9A929BCA0AF001BAD06 /* ButtonCTA.swift */; };
@@ -104,6 +108,7 @@
 		E334A9B0299ECF340077EB2F /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E337649C29B7E60E0047CFBE /* CategoryPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPill.swift; sourceTree = "<group>"; };
 		E337897329BB65480065F137 /* SoundtrackRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundtrackRow.swift; sourceTree = "<group>"; };
+		E33AF3F529CDBBEB00F5200B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E3479C2329B8BF7A004D8337 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		E350359929BB574C006B3C8C /* MeditationRecapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationRecapView.swift; sourceTree = "<group>"; };
 		E356D9A929BCA0AF001BAD06 /* ButtonCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCTA.swift; sourceTree = "<group>"; };
@@ -168,7 +173,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E396F9AD299E321D00E6425D /* RealmSwift in Frameworks */,
+				E33AF3F929CDC58A00F5200B /* ProgressHUD in Frameworks */,
 				E3A6413F299EDBB0001E2A96 /* DynamicColor in Frameworks */,
+				E33AF3F329CDBBA900F5200B /* RevenueCat in Frameworks */,
+				E33AF3F629CDBBEB00F5200B /* StoreKit.framework in Frameworks */,
+				E33AF3F129CDBBA900F5200B /* ReceiptParser in Frameworks */,
 				E396F9AB299E321D00E6425D /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,6 +190,7 @@
 			children = (
 				E328E20E299D942500B7B764 /* Angel */,
 				E328E20D299D942500B7B764 /* Products */,
+				E33AF3F429CDBBEB00F5200B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -293,6 +303,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		E33AF3F429CDBBEB00F5200B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E33AF3F529CDBBEB00F5200B /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E3479C2529B8C1CF004D8337 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +382,9 @@
 				E396F9AA299E321D00E6425D /* Realm */,
 				E396F9AC299E321D00E6425D /* RealmSwift */,
 				E3A6413E299EDBB0001E2A96 /* DynamicColor */,
+				E33AF3F029CDBBA900F5200B /* ReceiptParser */,
+				E33AF3F229CDBBA900F5200B /* RevenueCat */,
+				E33AF3F829CDC58A00F5200B /* ProgressHUD */,
 			);
 			productName = Angel;
 			productReference = E328E20C299D942500B7B764 /* Angel.app */;
@@ -397,6 +418,8 @@
 			packageReferences = (
 				E396F9A9299E321D00E6425D /* XCRemoteSwiftPackageReference "realm-swift" */,
 				E3A6413D299EDBAF001E2A96 /* XCRemoteSwiftPackageReference "DynamicColor" */,
+				E33AF3EF29CDBBA900F5200B /* XCRemoteSwiftPackageReference "purchases-ios" */,
+				E33AF3F729CDC58A00F5200B /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 			);
 			productRefGroup = E328E20D299D942500B7B764 /* Products */;
 			projectDirPath = "";
@@ -712,6 +735,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E33AF3EF29CDBBA900F5200B /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		E33AF3F729CDC58A00F5200B /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.0.0;
+			};
+		};
 		E396F9A9299E321D00E6425D /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -731,6 +770,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E33AF3F029CDBBA900F5200B /* ReceiptParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E33AF3EF29CDBBA900F5200B /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = ReceiptParser;
+		};
+		E33AF3F229CDBBA900F5200B /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E33AF3EF29CDBBA900F5200B /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
+		};
+		E33AF3F829CDC58A00F5200B /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E33AF3F729CDC58A00F5200B /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
+		};
 		E396F9AA299E321D00E6425D /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E396F9A9299E321D00E6425D /* XCRemoteSwiftPackageReference "realm-swift" */;
