@@ -19,6 +19,8 @@ struct ProfileView: View {
     @State var isProfileMeditationsInStack = false
     @State var isProfilePhrasesInStack = false
     
+    @State var presentPayWall = false /// DELETE
+    
     // MARK: - BODY
     var body: some View {
         NavigationStack {
@@ -28,7 +30,7 @@ struct ProfileView: View {
                         
                         if !users.first!.isPremium {
                             Button {
-                                
+                                presentPayWall.toggle()
                             } label: {
                                 HStack {
                                     Image(systemName: "star.square.on.square.fill")
@@ -37,6 +39,9 @@ struct ProfileView: View {
                                 .font(.footnote)
                                 .fontWeight(.bold)
                                 .foregroundColor(.green)
+                            }
+                            .sheet(isPresented: $presentPayWall) {
+                                PayWallView(color: "#7FB3D5")
                             }
                         }
                         
