@@ -7,7 +7,8 @@
 */
 
 "Hello" = "Ciao";
-"Tell-Me-Something" = "Dimmi qualcosa di te";
+"Hello-Create-Profile" = "Ciao, creiamo il tuo profilo";
+"Tell-Me-Something" = "Servono solo un paio di dati prima di iniziare";
 "What-Is-Your-Name?" = "Qual è il tuo nome?";
 "Insert-Name" = "Scrivi il tuo nome";
 "What-Is-Your-Email?" = "Qual è la tua mail?";

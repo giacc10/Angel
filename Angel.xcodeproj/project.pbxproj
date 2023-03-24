@@ -20,7 +20,7 @@
 		E334A9A2299EBAE90077EB2F /* PhrasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334A9A1299EBAE90077EB2F /* PhrasesView.swift */; };
 		E334A9A4299EBC740077EB2F /* PhraseCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334A9A3299EBC740077EB2F /* PhraseCategoryView.swift */; };
 		E334A9A6299EC7C00077EB2F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334A9A5299EC7C00077EB2F /* UserModel.swift */; };
-		E334A9AA299ECA860077EB2F /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334A9A9299ECA860077EB2F /* CreateUserView.swift */; };
+		E334A9AA299ECA860077EB2F /* UserFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334A9A9299ECA860077EB2F /* UserFormView.swift */; };
 		E334A9AD299ECF320077EB2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E334A9AF299ECF320077EB2F /* Localizable.strings */; };
 		E337649D29B7E60E0047CFBE /* CategoryPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E337649C29B7E60E0047CFBE /* CategoryPill.swift */; };
 		E337897429BB65480065F137 /* SoundtrackRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E337897329BB65480065F137 /* SoundtrackRow.swift */; };
@@ -103,7 +103,7 @@
 		E334A9A1299EBAE90077EB2F /* PhrasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhrasesView.swift; sourceTree = "<group>"; };
 		E334A9A3299EBC740077EB2F /* PhraseCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseCategoryView.swift; sourceTree = "<group>"; };
 		E334A9A5299EC7C00077EB2F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		E334A9A9299ECA860077EB2F /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
+		E334A9A9299ECA860077EB2F /* UserFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFormView.swift; sourceTree = "<group>"; };
 		E334A9AE299ECF320077EB2F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E334A9B0299ECF340077EB2F /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E337649C29B7E60E0047CFBE /* CategoryPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPill.swift; sourceTree = "<group>"; };
@@ -234,7 +234,7 @@
 		E328E21D299D94B000B7B764 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				E334A9A9299ECA860077EB2F /* CreateUserView.swift */,
+				E334A9A9299ECA860077EB2F /* UserFormView.swift */,
 				E328E221299D94F200B7B764 /* HomeView.swift */,
 				E334A9A1299EBAE90077EB2F /* PhrasesView.swift */,
 				E334A9A3299EBC740077EB2F /* PhraseCategoryView.swift */,
@@ -479,7 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E396F9B1299E332600E6425D /* AngelicPhraseModel.swift in Sources */,
-				E334A9AA299ECA860077EB2F /* CreateUserView.swift in Sources */,
+				E334A9AA299ECA860077EB2F /* UserFormView.swift in Sources */,
 				E334A9A4299EBC740077EB2F /* PhraseCategoryView.swift in Sources */,
 				E35DB00029CA45EE008DB41F /* MeditationRow.swift in Sources */,
 				E3973BE429CB80A2000D03E9 /* FeatureLabel.swift in Sources */,
