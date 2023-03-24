@@ -6,6 +6,18 @@
   
 */
 
+"Back" = "Indietro";
+"Skip" = "Salta";
+"Next" = "Avanti";
+"Create-Profile" = "Crea profilo";
+"Terms-Of-Service" = "Termini del servizio";
+"Privacy-Policy" = "Politica Privacy";
+"Onboarding-Title-1" = "Più di 2000 frasi angeliche";
+"Onboarding-Title-2" = "20 categorie tra cui scegliere";
+"Onboarding-Title-3" = "Esperienza di meditazione Angelica";
+"Onboarding-Subtitle-1" = "Leggi e ascolta più di 2000 frasi e guarisci la tua anima, salva le tue frasi preferite per averle sempre con te.";
+"Onboarding-Subtitle-2" = "Con così tante categorie tra cui scegliere, sei sicuro di trovare ispirazione e guida per ogni situazione.";
+"Onboarding-Subtitle-3" = "Scegli una meditazione per ogni categoria, con frasi pronunciate, durata personalizzabile e musica di sottofondo.";
 "Hello" = "Ciao";
 "Hello-Create-Profile" = "Ciao, creiamo il tuo profilo";
 "Tell-Me-Something" = "Servono solo un paio di dati prima di iniziare";
@@ -19,7 +31,7 @@
 "Please-Insert-Your-Name" = "Perfavore inserisci il tuo nome";
 "Please-Insert-Your-Email" = "Perfavore inserisci la tua email";
 "Please-Insert-Same-Email" = "Controlla che le email combacino";
-"Create-Profile" = "Crea il tuo profilo";
+"Create-Your-Profile" = "Crea il tuo profilo";
 "Like" = "Mi Piace";
 "Share" = "Condividi";
 "Buddy" = "Amico";

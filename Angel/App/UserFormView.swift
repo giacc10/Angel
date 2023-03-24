@@ -40,81 +40,84 @@ struct UserFormView: View {
                         .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
                         .frame(maxWidth: .infinity, alignment: .leading)
                 } //: VSTACK
-                .padding(.horizontal)
-                .padding(.top)
+                .padding(.bottom)
                 
-                VStack(spacing: 20) {
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text(String(localized: "What-Is-Your-Name?") + " *")
-                            .fontWeight(.bold)
-                            .textCase(.uppercase)
-                            .padding(.leading)
-                            .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
-                        HStack {
-                            Image(systemName: "person.fill")
-                                .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
-                                .padding(.trailing, 10)
-                            TextField(String(localized: "Insert-Name"), text: $name)
-                                .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
-                                .multilineTextAlignment(.leading)
-                        } //: HSTACK
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(Color.primary).opacity(0.05))
-                    } //: VSTACK
-                    
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text(String(localized: "What-Is-Your-Email?") + " *")
-                            .fontWeight(.bold)
-                            .textCase(.uppercase)
-                            .padding(.leading)
-                            .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
-                        HStack {
-                            Image(systemName: "envelope.fill")
-                                .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
-                                .padding(.trailing, 10)
-                            TextField(String(localized: "Insert-Email"), text: $email)
-                                .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
-                                .textContentType(.emailAddress)
-                                .keyboardType(.emailAddress)
-                                .foregroundColor(.primary)
-                                .multilineTextAlignment(.leading)
-                        } //: HSTACK
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(Color.primary).opacity(0.05))
-                    } //: VSTACK
-                    
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text(String(localized: "Repeat-Your-Email") + " *")
-                            .fontWeight(.bold)
-                            .textCase(.uppercase)
-                            .padding(.leading)
-                            .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
-                        HStack {
-                            Image(systemName: "envelope.fill")
-                                .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
-                                .padding(.trailing, 10)
-                            TextField(String(localized: "Repeat-Email"), text: $repatedEmail)
-                                .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
-                                .textContentType(.emailAddress)
-                                .keyboardType(.emailAddress)
-                                .foregroundColor(.primary)
-                                .multilineTextAlignment(.leading)
-                        } //: HSTACK
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(Color.primary).opacity(0.05))
-                        HStack(alignment: .top) {
-                            Image(systemName: "exclamationmark.circle.fill")
-                                .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
-                                .opacity(0.3)
-                            Text(String(localized: "Insert-Valid-Email"))
-                                .font(.footnote)
+                VStack {
+                    VStack(spacing: 20) {
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text(String(localized: "What-Is-Your-Name?") + " *")
+                                .font(.callout)
                                 .fontWeight(.medium)
-                                .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
-                        } //: HSTACK
+                                .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
+                            HStack {
+                                Image(systemName: "person.fill")
+                                    .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
+                                    .padding(.trailing, 10)
+                                TextField(String(localized: "Insert-Name"), text: $name)
+                                    .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
+                                    .multilineTextAlignment(.leading)
+                            } //: HSTACK
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(Color(DynamicColor(hexString: color).tinted(amount: 0.7)).opacity(0.5)))
+                        } //: VSTACK
+                        
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text(String(localized: "What-Is-Your-Email?") + " *")
+                                .font(.callout)
+                                .fontWeight(.medium)
+                                .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
+                            HStack {
+                                Image(systemName: "envelope.fill")
+                                    .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
+                                    .padding(.trailing, 10)
+                                TextField(String(localized: "Insert-Email"), text: $email)
+                                    .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
+                                    .textContentType(.emailAddress)
+                                    .keyboardType(.emailAddress)
+                                    .foregroundColor(.primary)
+                                    .multilineTextAlignment(.leading)
+                            } //: HSTACK
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(Color(DynamicColor(hexString: color).tinted(amount: 0.7)).opacity(0.5)))
+                        } //: VSTACK
+                        
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text(String(localized: "Repeat-Your-Email") + " *")
+                                .font(.callout)
+                                .fontWeight(.medium)
+                                .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
+                            HStack {
+                                Image(systemName: "envelope.fill")
+                                    .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
+                                    .padding(.trailing, 10)
+                                TextField(String(localized: "Repeat-Email"), text: $repatedEmail)
+                                    .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
+                                    .textContentType(.emailAddress)
+                                    .keyboardType(.emailAddress)
+                                    .foregroundColor(.primary)
+                                    .multilineTextAlignment(.leading)
+                            } //: HSTACK
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(Color(DynamicColor(hexString: color).tinted(amount: 0.7)).opacity(0.5)))
+                            HStack(alignment: .top) {
+                                Image(systemName: "exclamationmark.circle.fill")
+                                    .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
+                                    .opacity(0.3)
+                                Text(String(localized: "Insert-Valid-Email"))
+                                    .font(.footnote)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
+                            } //: HSTACK
+                            .padding(.top, 7)
+                        } //: VSTACK
                     } //: VSTACK
+                    .padding()
+                    .background(Color(DynamicColor(hexString: color).lighter(amount: 0.3)))
+                    .cornerRadius(25)
                     
                     Spacer()
-                    ButtonCTA(text: String(localized: "Create-Profile"), color: "#7FB3D5") {
+                    
+                    ButtonCTA(text: String(localized: "Create-Your-Profile"), color: "#7FB3D5") {
                         if name == "" {
                             ProgressHUD.showFailed(String(localized: "Please-Insert-Your-Name"))
                             return
@@ -142,10 +145,9 @@ struct UserFormView: View {
                         Purchases.shared.attribution.setDisplayName(user.name)
                         Purchases.shared.attribution.setEmail(user.email)
                     }
-                    
                 } //: VSTACK
-                .padding()
             } //: VSTACK
+            .padding()
         } //: ZSTACK
         .background(
             LinearGradient(gradient: Gradient(colors: [

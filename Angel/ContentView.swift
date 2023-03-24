@@ -39,7 +39,7 @@ struct ContentView: View {
                     }
             }
         } else {
-            UserFormView()
+            OnBoardingView()
         }
     }
 }

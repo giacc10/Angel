@@ -6,6 +6,18 @@
   
 */
 
+"Back" = "Back";
+"Skip" = "Skip";
+"Next" = "Next";
+"Create-Profile" = "Create a profile";
+"Terms-Of-Service" = "Terms of service";
+"Privacy-Policy" = "Privacy Policy";
+"Onboarding-Title-1" = "More than 2000 Angelic phrases";
+"Onboarding-Title-2" = "20 categories to choose from";
+"Onboarding-Title-3" = "Fully customizable meditation expirence";
+"Onboarding-Subtitle-1" = "Read and hear to more than 2000 phrases and heal your soul, save your favorites phrases to have them always with you.";
+"Onboarding-Subtitle-2" = "With so many categories to choose from, you're sure to find inspiration and guidance for any situation.";
+"Onboarding-Subtitle-3" = "Choose a meditations for each category, with spoken phrases, customizable duration, and background music.";
 "Hello" = "Hello";
 "Hello-Create-Profile" = "Hello, let's create your profile";
 "Tell-Me-Something" = "We just need a couple of datas before we start";
@@ -19,7 +31,7 @@
 "Please-Insert-Your-Name" = "Please insert your name";
 "Please-Insert-Your-Email" = "Please insert your email";
 "Please-Insert-Same-Email" = "Please be sure the emails are the same";
-"Create-Profile" = "Create your profile";
+"Create-Your-Profile" = "Create your profile";
 "Like" = "Like";
 "Share" = "Share";
 "Buddy" = "Buddy";

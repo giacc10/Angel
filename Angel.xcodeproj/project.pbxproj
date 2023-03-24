@@ -29,6 +29,9 @@
 		E33AF3F629CDBBEB00F5200B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E33AF3F529CDBBEB00F5200B /* StoreKit.framework */; };
 		E33AF3F929CDC58A00F5200B /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = E33AF3F829CDC58A00F5200B /* ProgressHUD */; };
 		E33AF3FF29CDCE1C00F5200B /* phrases.realm in Resources */ = {isa = PBXBuildFile; fileRef = E33AF3FE29CDCE1C00F5200B /* phrases.realm */; };
+		E33AF40129CE08B700F5200B /* OnBoardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33AF40029CE08B700F5200B /* OnBoardingModel.swift */; };
+		E33AF40329CE08E500F5200B /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33AF40229CE08E500F5200B /* OnBoardingView.swift */; };
+		E33AF40529CE097A00F5200B /* AppDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33AF40429CE097A00F5200B /* AppDataModel.swift */; };
 		E3479C2429B8BF7A004D8337 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3479C2329B8BF7A004D8337 /* AudioManager.swift */; };
 		E350359A29BB574C006B3C8C /* MeditationRecapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350359929BB574C006B3C8C /* MeditationRecapView.swift */; };
 		E356D9AA29BCA0AF001BAD06 /* ButtonCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = E356D9A929BCA0AF001BAD06 /* ButtonCTA.swift */; };
@@ -110,6 +113,9 @@
 		E337897329BB65480065F137 /* SoundtrackRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundtrackRow.swift; sourceTree = "<group>"; };
 		E33AF3F529CDBBEB00F5200B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E33AF3FE29CDCE1C00F5200B /* phrases.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = phrases.realm; sourceTree = "<group>"; };
+		E33AF40029CE08B700F5200B /* OnBoardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingModel.swift; sourceTree = "<group>"; };
+		E33AF40229CE08E500F5200B /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		E33AF40429CE097A00F5200B /* AppDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataModel.swift; sourceTree = "<group>"; };
 		E3479C2329B8BF7A004D8337 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		E350359929BB574C006B3C8C /* MeditationRecapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationRecapView.swift; sourceTree = "<group>"; };
 		E356D9A929BCA0AF001BAD06 /* ButtonCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCTA.swift; sourceTree = "<group>"; };
@@ -234,6 +240,7 @@
 		E328E21D299D94B000B7B764 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				E33AF40229CE08E500F5200B /* OnBoardingView.swift */,
 				E334A9A9299ECA860077EB2F /* UserFormView.swift */,
 				E328E221299D94F200B7B764 /* HomeView.swift */,
 				E334A9A1299EBAE90077EB2F /* PhrasesView.swift */,
@@ -260,6 +267,8 @@
 				E396F9B0299E332600E6425D /* AngelicPhraseModel.swift */,
 				E389693E29B8A80700A632BC /* MeditationModel.swift */,
 				E3CA593229BF962100C55CB6 /* MeditationsStorageModel.swift */,
+				E33AF40029CE08B700F5200B /* OnBoardingModel.swift */,
+				E33AF40429CE097A00F5200B /* AppDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -487,6 +496,7 @@
 				E328E22D299D96F800B7B764 /* Extensions.swift in Sources */,
 				E3FEE4E829BB3A76001CAF0F /* CustomSegmentedPicker.swift in Sources */,
 				E396F9AF299E331500E6425D /* CategoryModel.swift in Sources */,
+				E33AF40529CE097A00F5200B /* AppDataModel.swift in Sources */,
 				E328E222299D94F200B7B764 /* HomeView.swift in Sources */,
 				E3A580DA29B7A16D00329EF6 /* PhraseCard.swift in Sources */,
 				E39A5F2929A412F100F91320 /* MeditationsMainView.swift in Sources */,
@@ -498,6 +508,7 @@
 				E3ACBE7F29B7F7ED00086EAB /* ParticleViewModel.swift in Sources */,
 				E35C5AE429C5D8FE003D0811 /* MeditationFeaturedCard.swift in Sources */,
 				E30FDAEB29BFAEFF00298DE5 /* MeditationOfTheDayCard.swift in Sources */,
+				E33AF40129CE08B700F5200B /* OnBoardingModel.swift in Sources */,
 				E3C22E9129BCB4FF00113C04 /* MoodFace.swift in Sources */,
 				E3ACBE8129B7F80400086EAB /* Particle.swift in Sources */,
 				E337649D29B7E60E0047CFBE /* CategoryPill.swift in Sources */,
@@ -506,6 +517,7 @@
 				E389693B29B89D2400A632BC /* MeditationView.swift in Sources */,
 				E3ACBE8329B800C900086EAB /* ParticleView.swift in Sources */,
 				E328E210299D942500B7B764 /* AngelApp.swift in Sources */,
+				E33AF40329CE08E500F5200B /* OnBoardingView.swift in Sources */,
 				E39BF31429C645F20000BE4C /* ProfileMeditationsView.swift in Sources */,
 				E3C6BB1629C48044008D18EF /* ProfileView.swift in Sources */,
 				E334A9A6299EC7C00077EB2F /* UserModel.swift in Sources */,
