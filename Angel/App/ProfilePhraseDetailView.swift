@@ -23,6 +23,8 @@ struct ProfilePhraseDetailView: View {
     
     let synthesizer = AVSpeechSynthesizer()
     
+    @State var isShareViewPresented: Bool = false
+    
     //: MARK: - BODY
     var body: some View {
         NavigationView {
@@ -69,12 +71,16 @@ struct ProfilePhraseDetailView: View {
                         }
                         
                         Button {
-                            
+                            isShareViewPresented.toggle()
                         } label: {
                             Image(systemName: "arrowshape.turn.up.right.fill")
                                 .foregroundColor(Color(DynamicColor(hexString: category.color).darkened(amount: 0.6)))
                                 .padding()
                                 .background(Circle().fill(Color(DynamicColor(hexString: category.color).darkened(amount: 0.3)).opacity(0.1)))
+                        }
+                        .sheet(isPresented: $isShareViewPresented) {
+                            ShareView(phrase: phrase, category: category)
+                                .presentationDetents([.height(100)])
                         }
                     } //: HSTACK
                     .padding(.bottom)

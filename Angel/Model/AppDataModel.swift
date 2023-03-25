@@ -9,6 +9,7 @@ import Foundation
 
 struct AppData {
     static let appName = "Angel"
+    static let appHeadline = "Angelic Phrases and Meditation"
     static let developer = "Thomas Giacinto"
     static let version = "1.0"
     static let copyright = "© 2023 Thomas Giacinto. " + String(localized: "All-Rights-Reserved")

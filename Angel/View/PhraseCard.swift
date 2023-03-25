@@ -17,12 +17,13 @@ struct PhraseCard: View {
     @Environment(\.realm) var realm
     @ObservedResults(AngelicPhrase.self) var allPhrases
     
-    
     let phrase: AngelicPhrase
     let isPremium: Bool
     @State var isFavorite: Bool = false
     
     let synthesizer = AVSpeechSynthesizer()
+    
+    @State var isShareViewPresented: Bool = false
     
     // MARK: - BODY
     var body: some View {
@@ -84,7 +85,7 @@ struct PhraseCard: View {
                     }
                     
                     Button {
-                        
+                        isShareViewPresented.toggle()
                     } label: {
                         VStack(spacing: 7) {
                             Image(systemName: "arrowshape.turn.up.right.fill")
@@ -93,6 +94,10 @@ struct PhraseCard: View {
                                 .font(.caption2)
                         }
                         .foregroundColor(Color(DynamicColor(hexString: phrase.categories.first!.color).darkened(amount: 0.5)))
+                    }
+                    .sheet(isPresented: $isShareViewPresented) {
+                        ShareView(phrase: phrase, category: phrase.categories.first!)
+                            .presentationDetents([.height(100)])
                     }
                 } //: VSTACK
                 .padding(.bottom, 20)
