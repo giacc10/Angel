@@ -36,9 +36,9 @@ struct MeditationCategoryCard: View {
         } //: VSTACK
         .padding()
         .frame(width: 200, height: 220)
-        .background(RoundedRectangle(cornerRadius: 12)
+        .background(RoundedRectangle(cornerRadius: 20)
             .strokeBorder(Color(DynamicColor(hexString: category.color).saturated(amount: 0.4)).opacity(0.3), lineWidth: 1)
-            .background(RoundedRectangle(cornerRadius: 12)
+            .background(RoundedRectangle(cornerRadius: 20)
                 .fill(
                     LinearGradient(gradient: Gradient(colors: [
                         Color(DynamicColor(hexString: category.color).lighter()),

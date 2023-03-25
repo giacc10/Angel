@@ -66,9 +66,9 @@ struct MeditationOfTheDayCard: View {
             }
         } //: HSTACK
         .padding()
-        .background(RoundedRectangle(cornerRadius: 12)
+        .background(RoundedRectangle(cornerRadius: 20)
             .strokeBorder(Color(DynamicColor(hexString: categories.first!.color).saturated(amount: 0.4)).opacity(0.3), lineWidth: 1)
-            .background(RoundedRectangle(cornerRadius: 12)
+            .background(RoundedRectangle(cornerRadius: 20)
                 .fill(
                     LinearGradient(gradient: Gradient(colors: [
                         Color(DynamicColor(hexString: categories.first!.color).lighter(amount: 0.1)),

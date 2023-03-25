@@ -47,9 +47,9 @@ struct MeditationFeaturedCard: View {
         .padding()
         .frame(width: 350)
         .frame(minHeight: 150)
-        .background(RoundedRectangle(cornerRadius: 12)
+        .background(RoundedRectangle(cornerRadius: 20)
             .strokeBorder(Color(DynamicColor(hexString: categories[0].color).saturated(amount: 0.4)).opacity(0.3), lineWidth: 1)
-            .background(RoundedRectangle(cornerRadius: 12)
+            .background(RoundedRectangle(cornerRadius: 20)
                 .fill(
                     LinearGradient(gradient: Gradient(colors: [
                         Color(DynamicColor(hexString: categories[1].color).saturated(amount: 0.4)),

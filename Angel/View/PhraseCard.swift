@@ -100,9 +100,9 @@ struct PhraseCard: View {
             } //: HSTACK
             
         } //: ZSTACK
-        .background(RoundedRectangle(cornerRadius: 12)
+        .background(RoundedRectangle(cornerRadius: 20)
             .strokeBorder(Color(DynamicColor(hexString: phrase.categories.first!.color).saturated(amount: 0.4)).opacity(0.3), lineWidth: 1)
-            .background(RoundedRectangle(cornerRadius: 12)
+            .background(RoundedRectangle(cornerRadius: 20)
                 .fill(
                     LinearGradient(gradient: Gradient(colors: [
                         Color(DynamicColor(hexString: phrase.categories.first!.color).tinted(amount: 0.7)),
