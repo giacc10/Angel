@@ -19,6 +19,7 @@ struct ProfileView: View {
     @State var isProfileMeditationsInStack = false
     @State var isProfilePhrasesInStack = false
     
+    @State var isUserFormPresented = false
     @State var isPayWallpresented = false
     
     // MARK: - BODY
@@ -67,9 +68,12 @@ struct ProfileView: View {
                             Spacer()
                             
                             Button {
-                                
+                                isUserFormPresented.toggle()
                             } label: {
                                 Image(systemName: "pencil")
+                            }
+                            .sheet(isPresented: $isUserFormPresented) {
+                                UserFormView(user: users.first!)
                             }
                             
                         } //: HSTACK

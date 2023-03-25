@@ -107,7 +107,7 @@ struct OnBoardingView: View {
                                         }
                                     }
                                     .sheet(isPresented: $isLoginTapped) {
-                                        UserFormView()
+                                        UserFormView(user: User())
                                     }
                             } //: VSTACK
                             .padding(.bottom)

@@ -20,7 +20,7 @@
 "Onboarding-Subtitle-3" = "Choose a meditations for each category, with spoken phrases, customizable duration, and background music.";
 "Hello" = "Hello";
 "Hello-Create-Profile" = "Hello, let's create your profile";
-"Tell-Me-Something" = "We just need a couple of datas before we start";
+"Subheading-Create-Profile" = "We just need a couple of datas before we start";
 "What-Is-Your-Name?" = "What is your name?";
 "Insert-Name" = "Write your name";
 "What-Is-Your-Email?" = "What is your email?";
@@ -32,6 +32,9 @@
 "Please-Insert-Your-Email" = "Please insert your email";
 "Please-Insert-Same-Email" = "Please be sure the emails are the same";
 "Create-Your-Profile" = "Create your profile";
+"Hello-Name %@" = "Hello %@";
+"Subheading-Edit-Profile" = "Nice to see you again, what you want to edit?";
+"Edit-Your-Profile" = "Edit your profile";
 "Like" = "Like";
 "Share" = "Share";
 "Buddy" = "Buddy";

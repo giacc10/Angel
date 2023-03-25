@@ -14,6 +14,7 @@ import ProgressHUD
 struct UserFormView: View {
     
     // MARK: - PROPERTIES
+    @Environment(\.dismiss) var dismiss
     @ObservedResults(User.self) var users
     @ObservedResults(MeditationsStorage.self) var meditationsStorage
 
@@ -23,18 +24,23 @@ struct UserFormView: View {
     
     var color = "#7FB3D5"
     
+    @ObservedRealmObject var user: User
+    var isUpdating: Bool {
+        user.realm != nil
+    }
+    
     // MARK: - BODY
     var body: some View {
         ZStack {
             ParticleView()
             VStack {
                 VStack(alignment: .leading) {
-                    Text(String(localized: "Hello-Create-Profile"))
+                    Text(isUpdating ? String(localized: "Hello-Name \(user.name)") : String(localized: "Hello-Create-Profile"))
                         .font(.title2)
                         .fontWeight(.bold)
                         .textCase(.uppercase)
                         .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
-                    Text(String(localized: "Tell-Me-Something"))
+                    Text(isUpdating ? String(localized: "Subheading-Edit-Profile") : String(localized: "Subheading-Create-Profile" ))
                         .font(.subheadline)
                         .fontWeight(.medium)
                         .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.2)))
@@ -117,7 +123,7 @@ struct UserFormView: View {
                     
                     Spacer()
                     
-                    ButtonCTA(text: String(localized: "Create-Your-Profile"), color: "#7FB3D5") {
+                    ButtonCTA(text: isUpdating ? String(localized: "Edit-Your-Profile") : String(localized: "Create-Your-Profile"), color: "#7FB3D5") {
                         if name == "" {
                             ProgressHUD.showFailed(String(localized: "Please-Insert-Your-Name"))
                             return
@@ -134,6 +140,16 @@ struct UserFormView: View {
                         }
                         
                         hideKeyboard()
+
+                        if isUpdating {
+                            $user.name.wrappedValue = name.trimWhiteSpace()
+                            $user.email.wrappedValue = email.trimWhiteSpace()
+                            Purchases.shared.attribution.setDisplayName(user.name)
+                            Purchases.shared.attribution.setEmail(user.email)
+                            dismiss()
+                            return
+                        }
+                        
                         let user = User()
                         user.name = name.trimWhiteSpace()
                         user.email = email.trimWhiteSpace()
@@ -156,11 +172,18 @@ struct UserFormView: View {
             ]), startPoint: .topLeading, endPoint: .bottomTrailing
             ).ignoresSafeArea()
         )
+        .onAppear {
+            if isUpdating {
+                name = user.name
+                email = user.email
+                repatedEmail = user.email
+            }
+        }
     }
 }
 
 struct CreateUserView_Previews: PreviewProvider {
     static var previews: some View {
-        UserFormView()
+        UserFormView(user: User())
     }
 }
