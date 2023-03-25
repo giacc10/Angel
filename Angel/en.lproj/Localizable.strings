@@ -88,6 +88,10 @@
 "Meditation-By-Featured-Caption" = "New featured meditations every week with merged categories";
 "More-Phrases-Coming" = "More phrases coming";
 "More-Phrases-Coming-Caption" = "New phrases for each category";
+"Daily-Notifications" = "Daily notifications";
+"Daily-Notifications-Caption" = "Receive a notification every day with the phrase of the day";
+"Custom-Fonts" = "Custom fonts";
+"Custom-Fonts-Caption" = "Choose a font for the phrases and meditations";
 "Continue" = "Continue";
 "And-Coming-Soon" = "And coming soon...";
 "Select-Plan" = "Select the plan";
@@ -99,6 +103,18 @@
 "All-Set-Premium" = "All set, wait just a couple of seconds while activating your account";
 "Go-Premium-To-Hear-Phrases" = "Go premium to hear phrases";
 "Go-Premium-To-Meditate" = "Go premium to meditate";
+
+"Coming-Soon" = "Coming Soon...";
+"For-Premium-User" = "For Premium user";
+"CS-Daily-Notifications" = "Daily notifications ";
+"CS-Daily-Notifications-Caption" = "Choose if you want to receive a daily Angelic Phrase and when to receive it.";
+"CS-Meditation-Reminder" = "Meditation reminder";
+"CS-Meditation-Reminder-Caption" = "Receive a notification about the new meditations and to remind you to meditate.";
+"CS-Custom-Font" = "Custom fonts";
+"CS-Custom-Font-Caption" = "Choose the font for the phrases and meditations.";
+"CS-More-In-The-Making" = "And more in the making...";
+"CS-More-In-The-Making-Caption" = "More features are coming soon and you will love them.";
+"CS-Get-Prepared" = "Get prepared for these upgrades and";
 
 "Start-Meditation-Speech" = "Let's start this meditation, close your eyes, relax and flow within";
 "Thank-You-Meditation-Speech" = "Thank you to have followed this meditation, i hope you feel better";

@@ -88,6 +88,10 @@
 "Meditation-By-Featured-Caption" = "Nuove meditazioni in primo piano ogni settimana con le categorie unite";
 "More-Phrases-Coming" = "Altre frasi in arrivo";
 "More-Phrases-Coming-Caption" = "Nuove frasi per ogni categoria";
+"Daily-Notifications" = "Notifiche giornaliere";
+"Daily-Notifications-Caption" = "Ricevi una notifica ogni giorno con la frase del giorno";
+"Custom-Fonts" = "Font personalizzati";
+"Custom-Fonts-Caption" = "Scegli con quale font visualizzare le frasi e le meditazioni";
 "Continue" = "Continua";
 "And-Coming-Soon" = "E in arrivo...";
 "Select-Plan" = "Seleziona il piano";
@@ -99,6 +103,18 @@
 "All-Set-Premium" = "Tutto pronto, attendi solo un paio di secondi mentre il tuo account viene attivato";
 "Go-Premium-To-Hear-Phrases" = "Passa a premium per ascoltare le frasi";
 "Go-Premium-To-Meditate" = "Passa a premium per meditare";
+
+"Coming-Soon" = "Prossimamente...";
+"For-Premium-User" = "Per utente Premium";
+"CS-Daily-Notifications" = "Notifiche giornaliere";
+"CS-Daily-Notifications-Caption" = "Scegli se vuoi ricevere una Frase Angelica quotidiana e quando riceverla.";
+"CS-Meditation-Reminder" = "Promemoria meditazione";
+"CS-Meditation-Reminder-Caption" = "Ricevi una notifica sulle nuove meditazioni e per ricordarti di meditare.";
+"CS-Custom-Font" = "Caratteri personalizzati";
+"CS-Custom-Font-Caption" = "Scegli il carattere per le frasi e le meditazioni.";
+"CS-More-In-The-Making" = "E altro ancora in preparazione...";
+"CS-More-In-The-Making-Caption" = "Altre funzioni saranno presto disponibili e le amerai.";
+"CS-Get-Prepared" = "Preparati per questi aggiornamenti e";
 
 "Start-Meditation-Speech" = "Iniziamo questa meditazione, chiudi gli occhi, rilassati e lasciati andare";
 "Thank-You-Meditation-Speech" = "Grazie per aver seguito questa meditazione, spero tu ti senta meglio";

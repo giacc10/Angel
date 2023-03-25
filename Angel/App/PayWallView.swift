@@ -81,6 +81,8 @@ struct PayWallView: View {
                             .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
                         FeatureLabel(isDone: false, headline: String(localized: "More-Phrases-Coming"), caption: String(localized: "More-Phrases-Coming-Caption"))
                             .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.4)))
+                        FeatureLabel(isDone: false, headline: String(localized: "Daily-Notifications"), caption: String(localized: "Daily-Notifications-Caption"))
+                            .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.4)))
                         Divider()
                             .padding(.top)
                     }

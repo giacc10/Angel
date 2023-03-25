@@ -88,6 +88,7 @@
 		E3C22E9129BCB4FF00113C04 /* MoodFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C22E9029BCB4FF00113C04 /* MoodFace.swift */; };
 		E3C6BB1629C48044008D18EF /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6BB1529C48044008D18EF /* ProfileView.swift */; };
 		E3CA593329BF962100C55CB6 /* MeditationsStorageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CA593229BF962100C55CB6 /* MeditationsStorageModel.swift */; };
+		E3F7C76F29CF57D900BAF775 /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F7C76E29CF57D900BAF775 /* ProfileSettingsView.swift */; };
 		E3FEE4E829BB3A76001CAF0F /* CustomSegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FEE4E729BB3A76001CAF0F /* CustomSegmentedPicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -170,6 +171,7 @@
 		E3C22E9029BCB4FF00113C04 /* MoodFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodFace.swift; sourceTree = "<group>"; };
 		E3C6BB1529C48044008D18EF /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E3CA593229BF962100C55CB6 /* MeditationsStorageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationsStorageModel.swift; sourceTree = "<group>"; };
+		E3F7C76E29CF57D900BAF775 /* ProfileSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsView.swift; sourceTree = "<group>"; };
 		E3FEE4E729BB3A76001CAF0F /* CustomSegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -253,6 +255,7 @@
 				E39BF31329C645F20000BE4C /* ProfileMeditationsView.swift */,
 				E3A7AD4829C8C9E300F1B80E /* ProfilePhrasesView.swift */,
 				E3A7AD4A29C8DBAE00F1B80E /* ProfilePhraseDetailView.swift */,
+				E3F7C76E29CF57D900BAF775 /* ProfileSettingsView.swift */,
 				E3973BE129CB8023000D03E9 /* PayWallView.swift */,
 			);
 			path = App;
@@ -490,6 +493,7 @@
 				E396F9B1299E332600E6425D /* AngelicPhraseModel.swift in Sources */,
 				E334A9AA299ECA860077EB2F /* UserFormView.swift in Sources */,
 				E334A9A4299EBC740077EB2F /* PhraseCategoryView.swift in Sources */,
+				E3F7C76F29CF57D900BAF775 /* ProfileSettingsView.swift in Sources */,
 				E35DB00029CA45EE008DB41F /* MeditationRow.swift in Sources */,
 				E3973BE429CB80A2000D03E9 /* FeatureLabel.swift in Sources */,
 				E389693F29B8A80700A632BC /* MeditationModel.swift in Sources */,

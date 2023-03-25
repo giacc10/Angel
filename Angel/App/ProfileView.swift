@@ -18,6 +18,7 @@ struct ProfileView: View {
     
     @State var isProfileMeditationsInStack = false
     @State var isProfilePhrasesInStack = false
+    @State var isProfileSettingsInStack = false
     
     @State var isUserFormPresented = false
     @State var isPayWallpresented = false
@@ -231,11 +232,14 @@ struct ProfileView: View {
                             .fontWeight(.bold)
                         Spacer()
                         Button {
-                            
+                            isProfileSettingsInStack.toggle()
                         } label: {
                             Text(String(localized: "Go-To-Settings"))
                                 .font(.footnote)
                                 .fontWeight(.bold)
+                        }
+                        .navigationDestination(isPresented: $isProfileSettingsInStack) {
+                            ProfileSettingsView(user: users.first!)
                         }
                     } //: HSTACK
                     .padding()
