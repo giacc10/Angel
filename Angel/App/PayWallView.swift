@@ -83,6 +83,8 @@ struct PayWallView: View {
                             .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.4)))
                         FeatureLabel(isDone: false, headline: String(localized: "Daily-Notifications"), caption: String(localized: "Daily-Notifications-Caption"))
                             .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.4)))
+                        FeatureLabel(isDone: false, headline: String(localized: "Custom-Fonts"), caption: String(localized: "Custom-Fonts-Caption"))
+                            .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.4)))
                         Divider()
                             .padding(.top)
                     }
@@ -124,33 +126,40 @@ struct PayWallView: View {
                                             .stroke(self.selectedPackage == pkg ? Color(DynamicColor(hexString: color).lighter(amount: 0.3)) :
                                                 Color(DynamicColor(hexString: color).darkened(amount: 0.2)), lineWidth: 4)
                                     )
-                            } //: HSTACK
-                        }
+                                } //: HSTACK
+                            }
                             
-                        ButtonCTA(text: String(localized: "Continue"), color: color) {
-                                ProgressHUD.show(String(localized: "Processing"), interaction: false)
-
-                            if let package = selectedPackage {
+                        
+                            ButtonCTA(text: String(localized: "Continue"), color: color) {
                                 
-                                Purchases.shared.purchase(package: package) { (transaction, customerInfo, error, userCancelled) in
+                                if selectedPackage == nil {
+                                    ProgressHUD.showFailed(String(localized: "Select-A-Plan"))
+                                    return
+                                }
+
+                                if let package = selectedPackage {
+                                
+                                    ProgressHUD.show(String(localized: "Processing"), interaction: false)
+                                    Purchases.shared.purchase(package: package) { (transaction, customerInfo, error, userCancelled) in
                                     
-                                    isPurchasing = true
-                                    
-                                    if customerInfo?.entitlements["premium"]?.isActive == true {
-                                        // Unlock that great "pro" content
+                                        isPurchasing = true
                                         
-                                        $user.isSubscriptionActive.wrappedValue = true
+                                        if customerInfo?.entitlements["premium"]?.isActive == true {
+                                            // Unlock that great "pro" content
+                                            
+                                            $user.isSubscriptionActive.wrappedValue = true
+                                            isPurchasing = false
+                                            ProgressHUD.dismiss()
+                                            ProgressHUD.showSuccess(String(localized: "All-Set-Premium"))
+                                            return
+                                        }
+                                        ProgressHUD.showFailed()
                                         isPurchasing = false
-                                        ProgressHUD.dismiss()
-                                        ProgressHUD.showSuccess(String(localized: "All-Set-Premium"))
-                                        return
                                     }
-                                    ProgressHUD.showFailed()
-                                    isPurchasing = false
                                 }
                             }
-                            }
                             .padding(.top)
+
                             Text(String(localized: "Support-Developer") + " 👨‍💻")
                                 .multilineTextAlignment(.center)
                                 .font(.caption)
@@ -158,7 +167,6 @@ struct PayWallView: View {
                                 .foregroundColor(Color(DynamicColor(hexString: color).darkened(amount: 0.3)))
                             
                         }
-                        
                         
                         Button {
                             Purchases.shared.restorePurchases { customerInfo, error in
