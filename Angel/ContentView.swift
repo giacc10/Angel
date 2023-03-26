@@ -7,10 +7,12 @@
 
 import SwiftUI
 import RealmSwift
+import RevenueCat
 
 struct ContentView: View {
     
     // MARK: - PROPERTIES
+    @Environment(\.realm) var realm
     @ObservedResults(User.self) var users
     
     // MARK: - BODY
@@ -21,6 +23,9 @@ struct ContentView: View {
                     .tabItem {
                         Image(systemName: "doc.append")
                         Text("Feed")
+                    }
+                    .onAppear {
+                        checkSubscription()
                     }
                 PhrasesView()
                     .tabItem {
@@ -40,6 +45,23 @@ struct ContentView: View {
             }
         } else {
             OnBoardingView()
+        }
+    }
+}
+
+extension ContentView {
+    func checkSubscription() {
+        Purchases.shared.getCustomerInfo { (customerInfo, error) in
+            // access latest customerInfo
+            if customerInfo?.activeSubscriptions.isEmpty == true {
+                let user = realm.objects(User.self).where { $0.id == 0 }.first!
+                try! realm.write {
+                    user.isSubscriptionActive = false
+                }
+                print("##: SUBSCRIPTION NOT ACTIVE")
+            } else {
+                print("##: SUBSCRIPTION ACTIVE")
+            }
         }
     }
 }
