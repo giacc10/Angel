@@ -14,6 +14,7 @@ class Category: Object, ObjectKeyIdentifiable {
     @Persisted var name: CategoryName
     @Persisted var longName: String
     @Persisted var headline: List<String>
+    @Persisted var headlineShort: List<String>
     @Persisted var color: String
     @Persisted var icon: String
     

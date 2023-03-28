@@ -112,6 +112,12 @@ extension ProfilePhraseDetailView {
         switch Locale.current.language.languageCode?.identifier {
         case "it":
             return "it-IT"
+        case "fr":
+            return "fr-FR"
+        case "es":
+            return "es-ES"
+        case "pt":
+            return "pt-PT"
         default:
             return "en-US"
         }

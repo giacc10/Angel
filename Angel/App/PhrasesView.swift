@@ -16,7 +16,7 @@ struct PhrasesView: View {
     
     // MARK: - BODY
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack{
                 List {
                     ForEach(phrasesRealmManager.categories, id: \.id) { category in
@@ -41,7 +41,7 @@ struct PhrasesView: View {
                     }
                 }
             }
-        } //: NAVIGATIONVIEW
+        } //: NAVIGATIONSTACK
     }
 }
 

@@ -125,16 +125,22 @@ extension PhraseCard {
         switch Locale.current.language.languageCode?.identifier {
         case "it":
             return "it-IT"
+        case "fr":
+            return "fr-FR"
+        case "es":
+            return "es-ES"
+        case "pt":
+            return "pt-PT"
         default:
             return "en-US"
         }
     }
     
     func speakPhrase() {
-        if !isPremium {
-            ProgressHUD.showFailed(String(localized: "Go-Premium-To-Hear-Phrases"))
-            return
-        }
+//        if !isPremium {
+//            ProgressHUD.showFailed(String(localized: "Go-Premium-To-Hear-Phrases"))
+//            return
+//        }
         let utterance = AVSpeechUtterance(string: LocalizedStringKey(phrase.key).stringValue())
 //        utterance.voice = AVSpeechSynthesisVoice(language: Locale.preferredLanguages.first)
         utterance.voice = AVSpeechSynthesisVoice(language: getLanguageCode())

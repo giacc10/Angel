@@ -56,12 +56,24 @@ extension String {
     
     static func localizedString(for key: String, locale: Locale = .current) -> String {
         
-        let language = locale.languageCode
+        var language = locale.languageCode
+        if language == "pt" {
+            language = "pt-PT"
+        }
         let path = Bundle.main.path(forResource: language, ofType: "lproj")!
+        print(path)
         let bundle = Bundle(path: path)!
         let localizedString = NSLocalizedString(key, bundle: bundle, comment: "")
         
         return localizedString
+    }
+    
+    func capitalizingFirstLetter() -> String {
+            return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
     }
 }
 

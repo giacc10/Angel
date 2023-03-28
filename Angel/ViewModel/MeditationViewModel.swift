@@ -13,8 +13,8 @@ final class MeditationViewModel: ObservableObject {
     @ObservedResults(MeditationsStorage.self) var meditationsStorages
     
     let phrasesRealmManager = PhrasesRealmManager()
-    let durations: [TimeInterval] = [1, 600, 900, 1800, 2700, 3600]
-    let tracks: [String] = ["A Meditation", "Angelic Interlude", "Asia Travel", "Battle Angel", "Believe In Miracle", "Blessed Meditation", "Calling Emotional Angelic Melodic", "Did You Know Angels Play Guitar?", "Documentary", "Dreamy Breathing", "Epic Era", "For Documentary", "For When It Rains", "Francisco Samuel Epic", "Inner Peace Meditation", "Inspirational Asia", "Inspiring Asia", "Love Meditation", "Mindfulness Relaxation", "Monumental Victory", "Open Angel", "Peaceful Garden Healing", "Pure", "Solo Path", "Tolworth", "Voice Of An Angel Three", "You Are Always With Me"]
+    let durations: [TimeInterval] = [300, 600, 900, 1800, 2700, 3600]
+    let tracks: [String] = ["A Meditation", "Angelic Interlude", "Asia Travel", "Battle Angel", "Believe In Miracle", "Blessed Meditation", "Calling Emotional Angelic Melodic", "Did You Know Angels Play Guitar?", "Documentary", "Dreamy Breathing", "For Documentary", "For When It Rains", "Francisco Samuel Epic", "Inner Peace Meditation", "Inspirational Asia", "Inspiring Asia", "Love Meditation", "Mindfulness Relaxation", "Monumental Victory", "Open Angel", "Peaceful Garden Healing", "Pure", "Solo Path", "Tolworth", "Voice Of An Angel Three", "You Are Always With Me"]
     
 //    @ObservedRealmObject private(set) var meditation: Meditation = Meditation()
     private(set) var meditationOfTheDay: Meditation = Meditation()
@@ -70,8 +70,8 @@ final class MeditationViewModel: ObservableObject {
             let randomCategory = phrasesRealmManager.categories.randomElement()!
             let newTodaysMeditation = Meditation()
             newTodaysMeditation.date = today
-            newTodaysMeditation.title = "Today \(randomCategory.name.localizedString())"
-            newTodaysMeditation.caption = "Lorem ipsum dolor sit amet consecutor tes"
+            newTodaysMeditation.title = String(localized: "Today-Title-Meditation \(randomCategory.name.localizedString())")
+            newTodaysMeditation.caption = NSLocalizedString(randomCategory.headline.randomElement()!, comment: "")
             newTodaysMeditation.categories.append(randomCategory.name.rawValue)
             newTodaysMeditation.duration = durations[Int.random(in: 0...2)]
             newTodaysMeditation.track = tracks.randomElement()!
@@ -116,7 +116,7 @@ final class MeditationViewModel: ObservableObject {
                 let newFeaturedMeditation = Meditation()
                 newFeaturedMeditation.date = Date().startOfDay()
                 newFeaturedMeditation.title = "\(randomCategories[0].name.localizedString()) & \(randomCategories[1].name.localizedString())"
-                newFeaturedMeditation.caption = "Lorem ipsum dolor sit amet consecutor tes"
+                newFeaturedMeditation.caption = NSLocalizedString(randomCategories[0].headlineShort.randomElement()!, comment: "").capitalizingFirstLetter() + String(localized: "And-Spaces") + NSLocalizedString(randomCategories[1].headlineShort.randomElement()!, comment: "")
                 for category in randomCategories {
                     newFeaturedMeditation.categories.append(category.name.rawValue)
                 }

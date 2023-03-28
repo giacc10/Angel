@@ -34,21 +34,22 @@ struct MeditationDetailView: View {
             ZStack {
                 ParticleView()
                 VStack {
-                    Text(mainCategory().longName)
+                    Text(LocalizedStringKey(mainCategory().longName))
                         .font(.title)
                         .fontWeight(.bold)
                         .textCase(.uppercase)
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.2)))
-                    Text(mainCategory().headline.randomElement()!)
+                    Text(LocalizedStringKey(mainCategory().headline.randomElement()!))
                         .font(.headline)
                         .fontWeight(.semibold)
-                        .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.1)))
-                    Text("meditation.caption")
-                        .fontWeight(.medium)
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.1)))
-                        .padding(.top)
+//                    Text("meditation.caption")
+//                        .fontWeight(.medium)
+//                        .multilineTextAlignment(.center)
+//                        .foregroundColor(Color(DynamicColor(hexString: mainCategory().color).darkened(amount: 0.1)))
+//                        .padding(.top)
                     
                     Spacer()
                     

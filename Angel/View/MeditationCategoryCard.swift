@@ -25,7 +25,7 @@ struct MeditationCategoryCard: View {
                     .fontWeight(.bold)
                     .foregroundColor(Color(DynamicColor(hexString: category.color).darkened(amount: 0.2)))
                 Spacer()
-                Text(category.headline.randomElement()!)
+                Text(LocalizedStringKey(category.headline.randomElement()!))
                     .font(.footnote)
                     .fontWeight(.medium)
                     .multilineTextAlignment(.leading)
